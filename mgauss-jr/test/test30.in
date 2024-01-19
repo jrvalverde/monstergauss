@@ -1,0 +1,68 @@
+*MOL Gopt, Method=VA05, Ring
+*PRT InitialGuess=Yes, Geometry=Yes
+*PUN Zmatrix
+Acetaldehyde <--> Vinyl Alcohol in-plane Cs TS (Order: 1 (Cs), 2 (C1))
+ 0 1
+C1
+O2  C1  CO
+C3  C1  CC   O2  CCO
+H4  C1  CH4  O2  H4CO  C3  TAU4
+H5  C1  CH5  O2  H5CO  C3  TAU5
+H6  C3  CH6  C1  H6CC  O2  TAU6
+H7  C3  CH6  C1  H6CC  O2 -TAU6
+
+CO   =   1.30
+CC   =   1.45
+CH4  =   1.08
+CH5  =   1.80
+CH6  =   1.08
+CCO  = 120.0
+H4CO = 120.0
+H5CO =  45.0
+H6CC = Tetra
+TAU6 = 120.0
+
+TAU4 = 180.0
+TAU5 =   0.0
+
+ 0 0 0
+ 0 0 0 0
+  50   1   0   0
+
+   4   6   8
+ 0 1 0
+ 0 2 0
+ 0 3 0
+ 0 0 0
+ 0 1 2 0
+ 0 1 3 0
+ 0 0 0 0
+*MOL Gopt=Readconstraints, Method=VA05, Ring, Guess=None
+*PRT PopAnal=No
+Acetaldehyde <--> Vinyl Alcohol TS Order Check (Order: 1 (Cs), 2 (C1))
+ 0 1
+C1
+O2     C1        CO
+C3     C1        CC         O2        CCO
+H4     C1        CH4        O2        H4CO       C3        TAU4        0
+H5     C1        CH5        O2        H5CO       C3        TAU5        0
+H6     C3        CH6        C1        H6CC       O2        TAU6        0
+H7     C3        CH6        C1        H6CC       O2       -TAU6        0
+
+CO       =    1.2948573
+CC       =    1.4947845
+CH4      =    1.1088250
+CH5      =    1.7023118
+CH6      =    1.0964901
+CCO      =    107.22215
+H4CO     =    113.34383
+H5CO     =     37.29293
+H6CC     =    105.11306
+TAU6     =    125.26910
+
+TAU4     =    180.00000
+TAU5     =       .00000
+
+
+   2   1   1   0
+

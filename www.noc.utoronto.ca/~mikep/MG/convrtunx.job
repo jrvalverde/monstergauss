@@ -1,0 +1,112 @@
+#! /bin/csh
+#
+# Convert the Monstergauss source code "in place" to a different version.
+# This file saved as ~mgauss/bin/convrtunx.job.
+#
+# Usage: ~mgauss/bin/convrtunx.job >&/tmp/convrtunx.out &.
+#
+switch ("`uname`")
+case HP-UX:
+   set os = hp
+   breaksw
+case IRIX*:
+   set os = sgi
+   breaksw
+default:
+   set os = UNKNOWN
+   breaksw
+endsw
+#
+# Make a directory for the new source to be written to temporarily.
+#
+if (! -d /tmp/newgauss) then
+   echo " Creating /tmp/newgauss directory."
+   mkdir /tmp/newgauss
+endif
+if (-f /tmp/tape.job) then
+   echo " Deleting /tmp/tape.job."
+   rm -f /tmp/tape.job
+endif
+#
+cd ~mgauss/src
+#
+# Move each source file to file.sav.
+#
+echo " "
+echo " Moving source files to 'file.sav'."
+foreach file (gl*)
+   if ("$file:e" == "sav") then
+      echo " *** File $file already has '.sav' extension ***"
+      if (-f $file:r) then
+         echo " *** Confusion: file $file:r also exists ***"
+         echo " *** Abondoning Monstergauss conversion ***"
+         exit(1)
+      endif
+   else
+      mv -i $file $file.sav
+   endif
+end
+#
+# Convert each file separately.
+#
+foreach file (gl*)
+   echo " "
+   echo " Converting $file to $file:r."
+   if ("$file:e" != 'sav') then
+      echo " *** File $file does not have the '.sav' extension ***"
+      echo " *** Abondoning Monstergauss conversion ***"
+      exit(1)
+   endif
+   ~mgauss/bin/$os/convrt2 <<EOF
+#MACH   =UNX      CONVERT TO UNX SYSTEM                                 
+#NA     =      36 NUMBER OF ATOMS                                       
+#NB     =     200 NUMBER OF BASIS FUNCTIONS (A.O.'S)                    
+#NS     =     120 NUMBER OF SHELLS                                      
+#NP     =     300 NUMBER OF PRIMITIVE GAUSSIANS                         
+#NR     =     101 NUMBER OF OCCUPIED ORBITALS IN RHF                    
+#NF     =     120 NUMBER OF FOCK MATRICES IN RHF                        
+#NC     =     120 NUMBER OF CONFIGURATIONS IN RHF                       
+#NO     =     125 NUMBER OF OPTIMIZABLE PARAMETERS                      
+#NT     =      70 NUMBER OF TRANSFORMED ORBITALS                        
+#NCON   =   32000 NUMBER OF CONFIGURATIONS IN CI                        
+#MA     =      25 NUMBER OF ACTIVE OCCUPIED MO IN CI                    
+#MV     =      50 NUMBER OF ACTIVE SUBSTITUTING MO IN CI                
+#NDHF   =     100 NUMBER OF BASIS FUNCTIONS IN DHF                      
+#IRECL  =    6400 RECORD SIZE IN BYTES (GOULD=6144, IBM=6232, REST=6400)
+ 
+src/$file
+EOF
+#
+   if ($status != 0) then
+      exit(1)
+   endif
+#
+# Rename the new source file to it's proper name.
+#
+   mv -i /tmp/newgauss/file001 $file:r
+#
+# Strip the trailing blanks from the new source file.
+#
+   ex $file:r <<'EOF' >/dev/null
+1,$s/ *$//
+wq
+'EOF'
+#
+# Delete '/tmp/tape.job' which is not needed.
+#
+   rm -f /tmp/tape.job
+#
+# End of loop over source files.
+#
+   echo " *******************************************************************"
+end
+#
+# Clean up.
+#
+if (-d /tmp/newgauss) then
+   rm -rf /tmp/newgauss
+endif
+echo " "
+echo " Delete file /tmp/convrtunx.out now."
+echo " Source files should be ready for compilation."
+echo " After successful compilation/testing, delete the src/gl*.sav files."

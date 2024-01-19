@@ -1,0 +1,142 @@
+#! /bin/ksh
+#
+# Copy the Monstergauss source code to a tar cartridge tape.
+# This file saved as ~mgauss/bin/tartape.job.
+#
+# Version: 1994/10/12.
+#
+# Usage: ~mgauss/bin/tartape.job /tmp/mgauss.tar >&/tmp/tartape.out
+#        ~mgauss/bin/tartape.job /dev/rmt/2m     >&/tmp/tartape.out
+#
+#
+if [ "$#" != "1" ]; then
+   echo 'Usage: ~mgauss/bin/tartape.job /tmp/mgauss.tar >&/tmp/tartape.out'
+   echo '       ~mgauss/bin/tartape.job /dev/rmt/2m     >&/tmp/tartape.out'
+   exit 1
+fi
+#
+tardev=$1
+#
+# Load the system-dependent parameters.
+#
+if [ -f /usr/local/bin/Getsystemoptions ]; then
+   . /usr/local/bin/Getsystemoptions
+else
+   echo "*** $0 can't find /usr/local/bin/Getsystemoptions ***"
+   exit 1
+fi
+#
+# Set the backup utility/device by selecting one of the following sets:
+#
+case $host in
+alchemy)
+   rewind="mt -t $tardev rew"
+   unload="mt -t $tardev offl" ;;
+aurum)
+   rewind="/usr/local/bin/mts 2 rewind"
+   unload="/usr/local/bin/mts 2 offline" ;;
+plumbum | todah)
+   rewind="/usr/apollo/bin/rbak -dev ct -rewind"
+   unload="/usr/apollo/bin/rbak -dev ct -rewind" ;;
+esac
+#
+# Rewind the tape - due to a bug on HP-UX, the first one will
+# probably fail, so just ignore the error message if any.
+#
+echo "$tardev" | grep -s '^/dev/' >/dev/null
+if [ "$?" = "0" ]; then
+   $rewind >/dev/null 2>&1
+   $rewind
+   if [ "$?" != "0" ]; then
+      echo "*** '$rewind' failed - backup aborted ***"
+      exit 1
+   fi
+fi
+#
+cd ~mgauss
+#
+# Copy the useful parts of the directory tree.
+#
+echo "Copy Monstergauss to a tar tape."
+echo ""
+echo "Tape contents brief description:"
+echo "basis/*           - data files for basis.f."
+echo "bin/*.job         - scripts for converting MG, creating the manual."
+echo "doc/*             - documentation for MG."
+echo "src.tar.Z         - compressed source files."
+echo "test.tar.Z        - compressed test cases."
+echo ""
+echo "The documentation files include:"
+echo "doc/gauss.out.Z   - MG installation instructions."
+echo "doc/manual.out.Z  - MG manual."
+echo ""
+echo "The source files include:"
+echo "src/basis.f       - basis set extraction program."
+echo "src/compar.f      - MG output comparison program."
+echo "src/convrt1.f     - MG source conversion program, part 1."
+echo "src/convrt2.f     - MG source conversion program, part 2."
+echo "src/gmerge.f      - MG output file merger for BITNET mail."
+echo "src/gsplit.f      - MG output file splitter for BITNET mail."
+echo "src/manual.f      - MG manual preparation program."
+echo "src/gl*           - MG source code."
+echo "src/makefile      - MG UNIX compilation control file."
+echo ""
+echo "The test files include:"
+echo "test/gtest*       - script to run MG test cases."
+echo "test/test??.*     - MG test case input and output files."
+echo ""
+echo "To get the files by ftp from alchemy.chem.utoronto.ca:"
+echo ""
+echo "cd directory-where-Monstergauss-will-be"
+echo "mkdir basis bin doc"
+echo "ftp alchemy.chem.utoronto.ca   (use login 'guest')"
+echo "cd /u1/mgauss"
+echo "ascii"
+echo "cd basis"
+echo "lcd basis"
+echo "mget *"
+echo "cd ../bin"
+echo "lcd ../bin"
+echo "mget *.job"
+echo "binary"
+echo "cd ../doc"
+echo "lcd ../doc"
+echo "mget convrt.*"
+echo "mget gauss.*"
+echo "mget manual.*"
+echo "cd .."
+echo "lcd .."
+echo "get src.tar.Z"
+echo "get test.tar.Z"
+echo "quit"
+echo ""
+echo "Extract the files from tar archive file or tape by:"
+echo ""
+echo "cd directory-where-Monstergauss-will-be"
+echo ""
+echo "List the tape with 'tar tvf $tardev',"
+echo "extract the tape with 'tar xpvf $tardev',"
+echo "where '$tardev' is replaced by the appropriate input file/device name."
+echo ""
+echo "Extract the *.tar.Z files by:"
+echo ""
+echo "zcat src.tar.Z | tar xpvf -"
+echo "zcat test.tar.Z | tar xpvf -"
+echo "chown -R new-owner *"
+echo "chgrp -R new-group *"
+echo ""
+echo "Tar image contents:"
+echo ""
+tar cvf $tardev \
+ basis \
+ bin/*.job \
+ doc/convrt* doc/gauss* doc/manual* \
+ src.tar.Z \
+ test.tar.Z
+#src/basis.f src/compar.f src/convrt?.f src/gmerge.f \
+#src/gsplit.f src/manual.f src/gl* src/makefile \
+#test/gtest* test/test[0-9][0-9]*
+#
+echo ""
+echo "tar tape creation complete."
+exit 0

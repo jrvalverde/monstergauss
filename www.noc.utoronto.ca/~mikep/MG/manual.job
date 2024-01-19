@@ -1,0 +1,67 @@
+#! /bin/csh
+#
+# manual.job - prepare Monstergauss Users Manual.
+#
+# Usage: manual.job >&/tmp/manual.out &
+#
+switch ("`uname`")
+case HP-UX:
+   set os = hp
+   breaksw
+case IRIX*:
+   set os = sgi
+   breaksw
+default:
+   set os = UNKNOWN
+   breaksw
+endsw
+#
+# The manual is placed into ~mgauss/doc/manual.out.
+#
+if (-f ~mgauss/doc/manual.out) then
+   echo 'File ~mgauss/doc/manual.out already exists -'
+   echo 'delete it and try again.'
+   exit(1)
+endif
+~mgauss/bin/$os/manual <<'EOF'
+  
+  
+  
+  
+  
+  
+  
+  
+              M   M   OOO   N   N   SSS   TTTTT  EEEEE  RRRR
+              MM MM  O   O  NN  N  S   S    T    E      R   R 
+              M M M  O   O  N N N  S        T    E      R   R 
+              M M M  O   O  N N N   SSS     T    EEEEE  RRRR
+              M   M  O   O  N N N      S    T    E      R R 
+              M   M  O   O  N  NN  S   S    T    E      R  R
+              M   M   OOO   N   N   SSS     T    EEEEE  R   R 
+  
+  
+  
+                     GGG     A    U   U   SSS    SSS
+                    G   G   A A   U   U  S   S  S   S 
+                    G      A   A  U   U  S      S 
+                    G GGG  AAAAA  U   U   SSS    SSS
+                    G   G  A   A  U   U      S      S 
+                    G   G  A   A  U   U  S   S  S   S 
+                     GGG   A   A   UUU    SSS    SSS
+C=
+  
+  
+  
+                                 CONTENTS 
+                                 ******** 
+  
+  
+'EOF'
+#
+if ($status != 0) then
+   exit(1)
+endif
+echo 'The Monstergauss manual is in ~mgauss/doc/manual.out.'
+echo " "
+echo 'To print a copy, do: imagenfp2 ~mgauss/doc/manual.out'

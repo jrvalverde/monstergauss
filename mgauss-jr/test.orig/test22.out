@@ -1,0 +1,2155 @@
+ WELCOME TO U OF T MONSTERGAUSS                                                                         UNX VERSION: 13 AUG 1991
+ ******************************
+0CONTROL CARDS:
+
+ *MOL RHF,GOPT,ME=ZM,FORCE                                               
+ *PRT IGC=Y                                                              
+ *CON                                                                    
+
+0SEQUENCE    GROUP     MG OPTIONS         GROUP OPTIONS (USER CONTROLLABLE)                  LINKS TO BE CALLED          JUMP
+
+     1         2      000000012200 000000000000000000000000000000000000000000000000   01000000000000000000000000000000     0
+     2         3      000000012200 004000000000000000000000000000000000000000000000   11000100000000000000000000000000     0
+     3         4      000000012200 000000010000000010000000000000000000000000000000   11000000000000000000000000000000     0
+     4         5      000000012200 100000000000000010000000000000000000000000000000   00100000000000000000000000000000     0
+     5         6      000000012200 000000000000000000001000000000000000000000000000   10000000000000000000000000000000     0
+     9         2      000000012200 100000000000000000000000000000000000000000000000   01000000000000000000000000000000     0
+    10         3      000000012200 004000000000000000000000000000000000000000000000   01000100000000000000000000000000     0
+    11         5      000000012200 100000000000000010000000000000000000000000000000   00100000000000000000000000000000     0
+    16         2      000000012200 100000000000000000000000000000000000000000000000   01000000000000000000000000000000    -2
+    18         6      000000012200 000000000000001000000000000000000000000000000000   10000000000000000000000000000000     0
+    21         7      000000012200 000000000000000000000000000000000000000000000000   01100000001000000000000000000000     0
+0OPTION NUMBERS:      000000000111 111111122222222223333333333444444444455555555556   66666666677777777778888888888999
+                      123456789012 345678901234567890123456789012345678901234567890   12345678901234567890123456789012
+
+0CONVERSION FACTORS:  1 BOHR =  .52916717 ANGSTROMS
+0                     1 HARTREE/BOHR = 8.2380000 MDYNE
+
+                      1 HARTREE/ANGSTROM**2 = 4.3593000 MDYNE/ANGSTROM
+
+                      1 ELECTRON*BOHR = 2.5415806 DEBYE
+
+                      1 HARTREE/PARTICLE =    .00000 KCAL/MOL =     .0000 KJ/MOL =   .000000 EV/PARTICLE =       .00 CM(-1)/PARTICLE
+
+                      1 ATOMIC UNIT OF ELECTRIC FIELD =  .0000000D+00 VOLTS/CM
+1H2O GVB                                                                 
+ ------------------------------------------------------------------------
+0CHARGE  =   0          MULTIPLICITY  =  1
+
+0FREE FORMAT Z MATRIX:
+
+ 8                                                                       
+ 0 1 1.0                                                                 
+ 1 1 1.0 2 129.0                                                         
+ 1 1 1.0 2 129.0 3 180.0                                                 
+                                                                         
+0NO VARIABLES USED - SWITCHING TO STANDARD Z MATRIX FORMAT FOR OUTPUT
+1
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1   1.0000000   (  2)       2   129.00000   (  4)   
+   4    1    1   1.0000000   (  3)       2   129.00000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7771460      .0000000     -.6293204                1.4686209      .0000000    -1.1892658              1     1.00782504
+   4    1    -.7771460      .0000000     -.6293204               -1.4686209      .0000000    -1.1892658              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+
+0BASIS SET TYPE: STANDARD STO-3G      ( 5D/ 7F)
+ POLARIZATION  : NONE                                                                                 
+ DIFFUSE FUNCS : NONE                                                                                 
+ CONTAINS   4 SHELLS AND   7 BASIS FUNCTIONS
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       57 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1RHF OPEN SHELL SPECIFICATION
+0GROUP     : FDS    
+ DEGENERACY: 3220000
+ ALPHA OCC : 0000000
+ BETA OCC  : 0000000
+
+0ORBITAL GROUP :       F       D       S       A       V
+0NUMBER OF MO  :       3       2       2       0       0
+
+0MC-SCF TYPE: GVB      READ   2 CONFIGURATIONS
+
+ 4-7,5-6                                                                 
+
+0NOTE: THE CONFIGURATIONS ARE SPECIFIED IN TERMS OF THE MO NUMBERS BEFORE THE MO ARE SORTED BY GROUPS.
+0MAP BETWEEN INITIAL MO NUMBERS AND RE-ORDERED MO NUMBERS:
+ INITIAL MO:    1   2   3   4   5   6   7
+ ORDERED MO:    1   2   3   4   5   6   7
+
+0COULOMB COUPLING COEFFICIENTS   A(I,J)
+0  MO          OCCA      OCCB         CLOSED   
+0CLOSED       5.0000    5.0000        2.0000
+
+0EXCHANGE COUPLING COEFFICIENTS   B(I,J)
+0  MO          OCCA      OCCB         CLOSED   
+0CLOSED       5.0000    5.0000        1.0000
+
+0EH INITIAL GUESS ... SCALE FACTOR (K/2) =  .8750
+ SMALLEST EIGENVALUE OF OVERLAP IS  3.70128D-01
+1INITIAL GUESS COEFFICIENTS         5 ALPHA SPIN ELECTRONS,    5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.48095   -1.60878    -.57800    -.47529    -.46000    -.03783    1.09388
+ 
+   1  1   O   1S      -1.00068     .20901     .00000    -.02266     .00000     .00000     .15489
+   2  1   O   2S        .00129    -.83133     .00000     .12667     .00000     .00000    -.97255
+   3  1   O   2PX       .00000     .00000    -.63109     .00000     .00000    -.94586     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ       .00191    -.05672     .00000     .95737     .00000     .00000     .48802
+ 
+   6  3   H   1S        .00409    -.18587    -.43033    -.07747     .00000     .81398     .81020
+ 
+   7  4   H   1S        .00409    -.18587     .43033    -.07747     .00000    -.81398     .81020
+ 
+ 
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 25, RE-ORDERED BY GROUPS
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 27, RE-ORDERED BY GROUPS
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.807130096  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.644657050      -74.837526954             
+   1   1      -83.250504440      -74.443374344              6.8368D-02                                             2.3704D-01    YES 
+   1   2      -83.790928685      -74.983798589   6.6525D-02 1.6579D-01                                             8.0000D-01    YES 
+   1   3      -83.554404912      -74.747274817   4.5004D-02 3.6396D-02                                             8.0000D-01    YES 
+   1   4      -83.910297934      -75.103167839   1.6296D-02 2.1372D-02                                             8.0000D-01    YES 
+   1   5      -83.701546492      -74.894416396   9.4725D-03 1.1124D-02                                             8.0000D-01    YES 
+   1   6      -83.832633464      -75.025503368   5.1900D-03 7.5588D-03                                             8.0000D-01    YES 
+   1   7      -83.751460495      -74.944330399   3.3958D-03 4.5802D-03                                4-POINT      8.0000D-01    YES 
+   1   8      -83.783672771      -74.976542675              8.7617D-05                                             8.0000D-01    YES 
+   1   9      -83.782832332      -74.975702236   3.7113D-05 4.9008D-05                                             8.0000D-01    YES 
+   1  10      -83.783388404      -74.976258308   1.4202D-05 3.2821D-05                                             8.0000D-01    YES 
+   1  11      -83.783036758      -74.975906662   8.7935D-06 1.9767D-05                                             8.0000D-01    YES 
+   1  12      -83.783260321      -74.976130225   5.5703D-06 1.2724D-05                                4-POINT      8.0000D-01    YES 
+   1  13      -83.785020054      -74.977889958                                      2.9068D-03                     8.0000D-01    YES 
+   2   1      -83.782277792      -74.975147696              4.6116D-04                                             5.3333D-01    YES 
+   2   2      -83.786220851      -74.979090755   4.4490D-03 7.4798D-04                                             8.0000D-01    YES 
+   2   3      -83.783966026      -74.976835931   3.6050D-04 3.2022D-04                                             8.0000D-01    YES 
+   2   4      -83.785637104      -74.978507008   1.1955D-04 1.4488D-04                                             8.0000D-01    YES 
+   2   5      -83.784855250      -74.977725154   3.7320D-05 5.3309D-05                                             8.0000D-01    YES 
+   2   6      -83.785386724      -74.978256629   1.4491D-05 3.5898D-05                                             8.0000D-01    YES 
+   2   7      -83.785073202      -74.977943106   8.0068D-06 1.6195D-05                                             8.0000D-01    YES 
+   2   8      -83.785285286      -74.978155191   5.1182D-06 1.1845D-05                                4-POINT      8.0000D-01    YES 
+   2   9      -83.785233045      -74.978102949                           1.7982D-02 4.6801D-04                     8.0000D-01    YES 
+   3   1      -83.784891693      -74.977761598              6.0959D-05                                             5.3333D-01    YES 
+   3   2      -83.785364067      -74.978233971   5.5949D-04 1.0843D-04                                             8.0000D-01    YES 
+   3   3      -83.785078138      -74.977948042   3.9779D-05 4.6118D-05                                             8.0000D-01    YES 
+   3   4      -83.785285520      -74.978155425   1.6141D-05 1.9920D-05                                             8.0000D-01    YES 
+   3   5      -83.785191541      -74.978061445   3.4504D-06 7.2954D-06                                             8.0000D-01    YES 
+   3   6      -83.785258850      -74.978128754   1.8671D-06 4.6108D-06                                             8.0000D-01    YES 
+   3   7      -83.785219045      -74.978088949   1.0086D-06 2.0243D-06                                4-POINT      8.0000D-01    YES 
+   3   8      -83.785235976      -74.978105880                           2.0685D-03 4.8165D-05                     8.0000D-01    YES 
+   4   1      -83.785201558      -74.978071462              6.1925D-06                                             5.3333D-01    YES 
+   4   2      -83.785249048      -74.978118952   5.6694D-05 1.1124D-05                                             8.0000D-01    YES 
+   4   3      -83.785220107      -74.978090012   2.0050D-06 4.7061D-06                                             8.0000D-01    YES 
+   4   4      -83.785241209      -74.978111113   8.5212D-07 2.1700D-06                                             8.0000D-01    YES 
+   4   5      -83.785231056      -74.978100961   3.6941D-07 7.5675D-07                                             8.0000D-01    YES 
+   4   6      -83.785236006      -74.978105910                           2.1038D-04 6.5390D-06        4-POINT      8.0000D-01    YES 
+   5   1      -83.785236006      -74.978105910                                      3.0932D-14                     8.0000D-01    YES 
+   6   1      -83.785236006      -74.978105910                            .0000D+00 9.8854D-17                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978106  HARTREES          ORBITAL CONVERGENCE IS 2.48993D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0152 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1MOLECULAR ORBITALS         5 ALPHA SPIN ELECTRONS,   5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.25552    -.98640    -.59370    -.72838    -.39416    -.00045    -.01167
+ 
+   1  1   O   1S        .99439    -.25039     .00000     .04916     .00000     .00000     .12500
+   2  1   O   2S        .02543     .99937     .00000    -.05711     .00000     .00000    -.80645
+   3  1   O   2PX       .00000     .00000    -.61025     .00000     .00000    -.95944     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ      -.00217     .34301     .00000     .68440     .00000     .00000     .75622
+ 
+   6  3   H   1S       -.00637    -.04678    -.44804    -.33510     .00000     .80437     .76320
+ 
+   7  4   H   1S       -.00637    -.04678     .44804    -.33510     .00000    -.80437     .76320
+ 
+ 
+ THE FIRST   3 MO ARE DOUBLY OCCUPIED FROZEN CORE ORBITALS
+0MO   4  TO   7 ARE USED FOR GVB PAIRS:
+   PAIR      COEFF          PAIR      COEFF          
+   4-  7   -.084982         5-  6   -.019927       
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (ALPHA SPIN)     (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91237     .00000     .12232     .12232
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12232     .00000     .31891    -.01973
+ 
+         4   H          .12232     .00000    -.01973     .31891
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (BETA SPIN)      (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91237     .00000     .12232     .12232
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12232     .00000     .31891    -.01973
+ 
+         4   H          .12232     .00000    -.01973     .31891
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (TOTAL)          (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         7.82475     .00000     .24463     .24463
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .24463     .00000     .63782    -.03945
+ 
+         4   H          .24463     .00000    -.03945     .63782
+ 
+0ATOMIC CHARGES (ALPHA(1), BETA(2)), ATOMIC SPIN DENSITIES(3), ATOMIC CHARGES (TOTAL(4), NET(5))
+
+                           1          2          3          4          5
+ 
+         1   O         4.15700    4.15700     .00000    8.31401    -.31401
+ 
+         2   X          .00000     .00000     .00000     .00000     .00000
+ 
+         3   H          .42150     .42150     .00000     .84300     .15700
+ 
+         4   H          .42150     .42150     .00000     .84300     .15700
+ 
+1BOND ORDER AND VALENCE INDICES (I. MAYER, I.J.Q.C., 29, 477-483 (1986))
+
+
+          BOND ORDER MATRIX
+
+                           1          2          3          4
+ 
+         1   O          .00000     .00000     .95187     .95187
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .95187     .00000     .00000     .00831
+ 
+         4   H          .95187     .00000     .00831     .00000
+ 
+0                      VALENCE  FREE VALENCE
+
+                           1          2
+ 
+         1   O         1.93393     .03020
+ 
+         2   X          .00000     .00000
+ 
+         3   H          .97535     .01517
+ 
+         4   H          .97535     .01517
+ 
+1POINT  2 OF GEOMETRY OPTIMIZATION (SECOND POINT ON PARABOLA)
+
+
+ INTERVAL    -.0200      VARIABLES ...    2   3
+ 
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9800000   (  2)       2   129.00000   (  4)   
+   4    1    1    .9800000   (  3)       2   129.00000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7616030      .0000000     -.6167340                1.4392485      .0000000    -1.1654804              1     1.00782504
+   4    1    -.7616030      .0000000     -.6167340               -1.4392485      .0000000    -1.1654804              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      180     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       90
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       45 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.986867445  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.964370057      -74.977502613             
+   1   1      -83.990272632      -75.003405187              3.5768D-03                                             8.0000D-01    YES 
+   1   2      -83.956931776      -74.970064332   5.4848D-04 1.3302D-03                                             5.3333D-01    YES 
+   1   3      -83.965825296      -74.978957851   4.5134D-04 5.4951D-04                                             8.0000D-01    YES 
+   1   4      -83.963970288      -74.977102844   1.1136D-04 2.7647D-04                                             8.0000D-01    YES 
+   1   5      -83.964987562      -74.978120118   8.6738D-05 9.1675D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.964410927      -74.977543483              6.6924D-06                                             8.0000D-01    YES 
+   1   7      -83.964490194      -74.977622749   1.7458D-06 3.6589D-06                                             8.0000D-01    YES 
+   1   8      -83.964442147      -74.977574703   1.1190D-06 2.5427D-06                                             8.0000D-01    YES 
+   1   9      -83.964471846      -74.977604402   7.0282D-07 1.5257D-06                                4-POINT      8.0000D-01    YES 
+   1  10      -83.964461250      -74.977593805                                      9.4649D-05                     8.0000D-01    YES 
+   2   1      -83.964563242      -74.977695797              1.8594D-05                                             8.0000D-01    YES 
+   2   2      -83.964402013      -74.977534568   4.1926D-05 2.0530D-05                                             5.3333D-01    YES 
+   2   3      -83.964491571      -74.977624126   3.7841D-06 8.9117D-06                                             8.0000D-01    YES 
+   2   4      -83.964452104      -74.977584659   1.5708D-06 4.0406D-06                                             8.0000D-01    YES 
+   2   5      -83.964470170      -74.977602725   6.6245D-07 1.3624D-06                                             8.0000D-01    YES 
+   2   6      -83.964457618      -74.977590174   4.0097D-07 1.0331D-06                                4-POINT      8.0000D-01    YES 
+   2   7      -83.964461365      -74.977593921                           4.3103D-04 9.1025D-06                     8.0000D-01    YES 
+   3   1      -83.964469818      -74.977602373              1.6329D-06                                             8.0000D-01    YES 
+   3   2      -83.964457364      -74.977589919   6.1040D-07 1.6299D-06                                             5.3333D-01    YES 
+   3   3      -83.964461366      -74.977593922                           3.8451D-05 8.0614D-07                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.977594  HARTREES          ORBITAL CONVERGENCE IS 2.59340D-07
+
+0S =  .014 (  .000 EXPECTED),   S(S+1) =   .0138 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  3 OF GEOMETRY OPTIMIZATION (THIRD POINT ON PARABOLA)
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1   1.0200000   (  2)       2   129.00000   (  4)   
+   4    1    1   1.0200000   (  3)       2   129.00000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7926889      .0000000     -.6419068                1.4979933      .0000000    -1.2130511              1     1.00782504
+   4    1    -.7926889      .0000000     -.6419068               -1.4979933      .0000000    -1.2130511              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      176     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       94
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       65 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.634441270  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.611068754      -74.976627483             
+   1   1      -83.576886259      -74.942444988              4.6576D-03                                             5.3333D-01    YES 
+   1   2      -83.608499960      -74.974058690   2.1435D-03 3.3295D-03                                             8.0000D-01    YES 
+   1   3      -83.609095956      -74.974654686   8.5999D-04 1.0844D-03                                             8.0000D-01    YES 
+   1   4      -83.612222197      -74.977780926   2.2918D-04 5.2984D-04                                             8.0000D-01    YES 
+   1   5      -83.610479523      -74.976038253   1.6997D-04 1.8575D-04                                4-POINT      8.0000D-01    YES 
+   1   6      -83.611513604      -74.977072334              1.0824D-05                                             8.0000D-01    YES 
+   1   7      -83.611364367      -74.976923097   3.0506D-06 6.3367D-06                                             8.0000D-01    YES 
+   1   8      -83.611454229      -74.977012958   1.9806D-06 4.3468D-06                                             8.0000D-01    YES 
+   1   9      -83.611397564      -74.976956293   1.2760D-06 2.7203D-06                                4-POINT      8.0000D-01    YES 
+   1  10      -83.611425230      -74.976983960                                      2.1771D-04                     8.0000D-01    YES 
+   2   1      -83.611275571      -74.976834301              2.7761D-05                                             5.3333D-01    YES 
+   2   2      -83.611485222      -74.977043951   2.3892D-04 5.0354D-05                                             8.0000D-01    YES 
+   2   3      -83.611351914      -74.976910644   1.7668D-05 2.2029D-05                                             8.0000D-01    YES 
+   2   4      -83.611448733      -74.977007463   3.6716D-06 9.1244D-06                                             8.0000D-01    YES 
+   2   5      -83.611404756      -74.976963485   1.5986D-06 3.3603D-06                                             8.0000D-01    YES 
+   2   6      -83.611437513      -74.976996243   8.8023D-07 2.1321D-06                                4-POINT      8.0000D-01    YES 
+   2   7      -83.611425799      -74.976984529                           8.7207D-04 2.1663D-05                     8.0000D-01    YES 
+   3   1      -83.611411339      -74.976970068              2.7561D-06                                             5.3333D-01    YES 
+   3   2      -83.611431903      -74.976990633   2.5521D-05 5.1601D-06                                             8.0000D-01    YES 
+   3   3      -83.611418343      -74.976977073   9.6753D-07 2.2738D-06                                             8.0000D-01    YES 
+   3   4      -83.611429908      -74.976988637   3.7318D-07 9.2592D-07                                             8.0000D-01    YES 
+   3   5      -83.611425805      -74.976984535                           9.4484D-05 2.3137D-06                     8.0000D-01    YES 
+   4   1      -83.611425805      -74.976984535                            .0000D+00 1.8696D-14                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.976985  HARTREES          ORBITAL CONVERGENCE IS 4.79915D-07
+
+0S =  .016 (  .000 EXPECTED),   S(S+1) =   .0168 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  4 OF GEOMETRY OPTIMIZATION - POSITION OF PROJECTED MINIMUM RELATIVE TO CENTRAL POINT (POINT  1)
+
+     -.0037   FOR INTERVAL    -.0200      VARIABLES ...    2   3
+
+0PREDICTED ENERGY AT MINIMUM IS      -74.978134 HARTREES
+
+
+ FORCE CONSTANT =  1.78007976D+01 MDYNE/ANGSTROM
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9962691   (  2)       2   129.00000   (  4)   
+   4    1    1    .9962691   (  3)       2   129.00000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7742465      .0000000     -.6269725                1.4631417      .0000000    -1.1848288              1     1.00782504
+   4    1    -.7742465      .0000000     -.6269725               -1.4631417      .0000000    -1.1848288              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.840111404  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.818132527      -74.978021123             
+   1   1      -83.847619894      -75.007508490              4.0614D-03                                             8.0000D-01    YES 
+   1   2      -83.809452643      -74.969341238   6.2295D-04 1.5002D-03                                             5.3333D-01    YES 
+   1   3      -83.819884130      -74.979772726   5.2993D-04 6.3646D-04                                             8.0000D-01    YES 
+   1   4      -83.817627869      -74.977516465   1.3150D-04 3.2166D-04                                             8.0000D-01    YES 
+   1   5      -83.818894797      -74.978783393   1.0416D-04 1.0985D-04                                4-POINT      8.0000D-01    YES 
+   1   6      -83.818190200      -74.978078796              7.9853D-06                                             8.0000D-01    YES 
+   1   7      -83.818286728      -74.978175324   2.1099D-06 4.3740D-06                                             8.0000D-01    YES 
+   1   8      -83.818227368      -74.978115964   1.3570D-06 3.0507D-06                                             8.0000D-01    YES 
+   1   9      -83.818264412      -74.978153008   8.5997D-07 1.8443D-06                                4-POINT      8.0000D-01    YES 
+   1  10      -83.818251312      -74.978139908                                      1.1663D-04                     8.0000D-01    YES 
+   2   1      -83.818373642      -74.978262237              2.2580D-05                                             8.0000D-01    YES 
+   2   2      -83.818179196      -74.978067792   4.8679D-05 2.4956D-05                                             5.3333D-01    YES 
+   2   3      -83.818289614      -74.978178210   1.0436D-05 1.1315D-05                                             8.0000D-01    YES 
+   2   4      -83.818240201      -74.978128797   1.8614D-06 4.6960D-06                                             8.0000D-01    YES 
+   2   5      -83.818262031      -74.978150626   7.8376D-07 1.6105D-06                                             8.0000D-01    YES 
+   2   6      -83.818246596      -74.978135192   5.1130D-07 1.3108D-06                                4-POINT      8.0000D-01    YES 
+   2   7      -83.818251479      -74.978140075                           4.9202D-04 1.1041D-05                     8.0000D-01    YES 
+   3   1      -83.818261227      -74.978149823              1.9420D-06                                             8.0000D-01    YES 
+   3   2      -83.818245924      -74.978134520   8.8161D-07 2.3417D-06                                             5.3333D-01    YES 
+   3   3      -83.818254742      -74.978143338   4.5867D-07 1.1575D-06                                             8.0000D-01    YES 
+   3   4      -83.818251480      -74.978140076                           5.6899D-05 1.2661D-06                     8.0000D-01    YES 
+   4   1      -83.818251480      -74.978140076                            .0000D+00 6.8823D-15                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978140  HARTREES          ORBITAL CONVERGENCE IS 2.70473D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0150 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  2 OF GEOMETRY OPTIMIZATION (SECOND POINT ON PARABOLA)
+
+
+ INTERVAL    1.0000      VARIABLES ...    4   5
+ 
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9962691   (  2)       2   130.00000   (  4)   
+   4    1    1    .9962691   (  3)       2   130.00000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7631864      .0000000     -.6403895                1.4422407      .0000000    -1.2101837              1     1.00782504
+   4    1    -.7631864      .0000000     -.6403895               -1.4422407      .0000000    -1.2101837              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.845063762  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.823382255      -74.978318493             
+   1   1      -83.821425756      -74.976361994              1.4054D-03                                             5.3333D-01    YES 
+   1   2      -83.821778395      -74.976714633   7.2403D-04 1.0735D-03                                             8.0000D-01    YES 
+   1   3      -83.823287845      -74.978224083   2.5184D-04 3.9634D-04                                             8.0000D-01    YES 
+   1   4      -83.823214521      -74.978150759   9.4546D-05 1.5616D-04                                             8.0000D-01    YES 
+   1   5      -83.823400992      -74.978337230   3.7082D-05 6.2830D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.823407767      -74.978344005              1.4716D-06                                             8.0000D-01    YES 
+   1   7      -83.823409570      -74.978345808   2.9869D-07 8.0215D-07                                             8.0000D-01    YES 
+   1   8      -83.823408907      -74.978345144                                      4.4951D-05                     8.0000D-01    YES 
+   2   1      -83.823380827      -74.978317065              5.8499D-06                                             5.3333D-01    YES 
+   2   2      -83.823421117      -74.978357355   5.3213D-05 1.0524D-05                                             8.0000D-01    YES 
+   2   3      -83.823394520      -74.978330758   1.8976D-06 4.4834D-06                                             8.0000D-01    YES 
+   2   4      -83.823413361      -74.978349599   7.7557D-07 1.9679D-06                                             8.0000D-01    YES 
+   2   5      -83.823404548      -74.978340786   3.2346D-07 6.6421D-07                                             8.0000D-01    YES 
+   2   6      -83.823408932      -74.978345170                           1.9766D-04 4.3867D-06                     8.0000D-01    YES 
+   3   1      -83.823408932      -74.978345170                            .0000D+00 1.7600D-14                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978345  HARTREES          ORBITAL CONVERGENCE IS 4.39533D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0149 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  3 OF GEOMETRY OPTIMIZATION (THIRD POINT ON PARABOLA)
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9962691   (  2)       2   131.00000   (  4)   
+   4    1    1    .9962691   (  3)       2   131.00000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7518939      .0000000     -.6536114                1.4209004      .0000000    -1.2351699              1     1.00782504
+   4    1    -.7518939      .0000000     -.6536114               -1.4209004      .0000000    -1.2351699              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.850270535  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.828439620      -74.978169084             
+   1   1      -83.826509079      -74.976238543              1.3944D-03                                             5.3333D-01    YES 
+   1   2      -83.826937732      -74.976667197   7.4540D-04 1.0799D-03                                             8.0000D-01    YES 
+   1   3      -83.828337306      -74.978066771   2.5794D-04 3.9928D-04                                             8.0000D-01    YES 
+   1   4      -83.828287731      -74.978017195   9.6443D-05 1.5733D-04                                             8.0000D-01    YES 
+   1   5      -83.828454542      -74.978184006   3.8146D-05 6.2738D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.828462128      -74.978191593              1.3448D-06                                             8.0000D-01    YES 
+   1   7      -83.828466677      -74.978196142                                      4.5754D-05                     8.0000D-01    YES 
+   2   1      -83.828443069      -74.978172534              5.3966D-06                                             5.3333D-01    YES 
+   2   2      -83.828478604      -74.978208068   5.4075D-05 1.0625D-05                                             8.0000D-01    YES 
+   2   3      -83.828452399      -74.978181863   1.9067D-06 4.5040D-06                                             8.0000D-01    YES 
+   2   4      -83.828471216      -74.978200680   7.7559D-07 1.9636D-06                                             8.0000D-01    YES 
+   2   5      -83.828462348      -74.978191813   3.2149D-07 6.5822D-07                                             8.0000D-01    YES 
+   2   6      -83.828466703      -74.978196168                           2.0046D-04 4.3737D-06                     8.0000D-01    YES 
+   3   1      -83.828466703      -74.978196168                            .0000D+00 1.2281D-14                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978196  HARTREES          ORBITAL CONVERGENCE IS 4.22205D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0149 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  4 OF GEOMETRY OPTIMIZATION - POSITION OF PROJECTED MINIMUM RELATIVE TO CENTRAL POINT (POINT  2)
+
+      .0792   FOR INTERVAL    1.0000      VARIABLES ...    4   5
+
+0PREDICTED ENERGY AT MINIMUM IS      -74.978346 HARTREES
+
+
+ FORCE CONSTANT =  5.06737190D+00 MDYNE*ANGSTROM/RADIAN**2
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9962691   (  2)       2   130.07920   (  4)   
+   4    1    1    .9962691   (  3)       2   130.07920   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7623004      .0000000     -.6414438                1.4405664      .0000000    -1.2121762              1     1.00782504
+   4    1    -.7623004      .0000000     -.6414438               -1.4405664      .0000000    -1.2121762              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.845466694  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.823790285      -74.978323591             
+   1   1      -83.826529240      -74.981062546              1.9139D-03                                             8.0000D-01    YES 
+   1   2      -83.824458796      -74.978992102   4.9887D-04 5.9091D-04                                             8.0000D-01    YES 
+   1   3      -83.823744047      -74.978277353   8.1195D-05 1.7867D-04                                             5.3333D-01    YES 
+   1   4      -83.823972389      -74.978505695   8.8310D-05 1.4624D-04                                4-POINT      8.0000D-01    YES 
+   1   5      -83.823730352      -74.978263658              7.5738D-05                                             8.0000D-01    YES 
+   1   6      -83.823792882      -74.978326188   2.0118D-05 2.7873D-05                                             8.0000D-01    YES 
+   1   7      -83.823806076      -74.978339382   4.5965D-06 1.1375D-05                                             8.0000D-01    YES 
+   1   8      -83.823807631      -74.978340937   1.7476D-06 4.1954D-06                                             8.0000D-01    YES 
+   1   9      -83.823812938      -74.978346244   6.7986D-07 1.6939D-06                                4-POINT      8.0000D-01    YES 
+   1  10      -83.823813088      -74.978346394                                      4.2986D-05                     8.0000D-01    YES 
+   2   1      -83.823851244      -74.978384550              8.0257D-06                                             8.0000D-01    YES 
+   2   2      -83.823789925      -74.978323231   1.7166D-05 8.5906D-06                                             5.3333D-01    YES 
+   2   3      -83.823825826      -74.978359132   1.7025D-06 4.0213D-06                                             8.0000D-01    YES 
+   2   4      -83.823809205      -74.978342511   6.9536D-07 1.7645D-06                                             8.0000D-01    YES 
+   2   5      -83.823817004      -74.978350310   2.8854D-07 5.9157D-07                                             8.0000D-01    YES 
+   2   6      -83.823813109      -74.978346415                           1.7864D-04 3.9435D-06                     8.0000D-01    YES 
+   3   1      -83.823813109      -74.978346415                            .0000D+00 1.5438D-14                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978346  HARTREES          ORBITAL CONVERGENCE IS 3.91523D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0149 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  2 OF GEOMETRY OPTIMIZATION (SECOND POINT ON PARABOLA)
+
+
+ INTERVAL     .0050      VARIABLES ...    2   3
+ 
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1   1.0012691   (  2)       2   130.07920   (  4)   
+   4    1    1   1.0012691   (  3)       2   130.07920   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7661262      .0000000     -.6446631                1.4477962      .0000000    -1.2182598              1     1.00782504
+   4    1    -.7661262      .0000000     -.6446631               -1.4477962      .0000000    -1.2182598              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       55 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.801295420  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.779601483      -74.978306064             
+   1   1      -83.775368507      -74.974073087              5.7473D-04                                             5.3333D-01    YES 
+   1   2      -83.779358483      -74.978063063   2.6476D-04 4.2185D-04                                             8.0000D-01    YES 
+   1   3      -83.779287077      -74.977991658   1.1042D-04 1.3271D-04                                             8.0000D-01    YES 
+   1   4      -83.779728430      -74.978433010   2.5701D-05 6.6162D-05                                             8.0000D-01    YES 
+   1   5      -83.779479629      -74.978184209   2.9638D-05 2.2396D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.779596981      -74.978301561              2.1836D-06                                             8.0000D-01    YES 
+   1   7      -83.779613236      -74.978317817   4.6745D-07 9.5878D-07                                             8.0000D-01    YES 
+   1   8      -83.779606880      -74.978311460                                      2.4043D-05                     8.0000D-01    YES 
+   2   1      -83.779589775      -74.978294356              3.0118D-06                                             5.3333D-01    YES 
+   2   2      -83.779613809      -74.978318390   2.8210D-05 5.4417D-06                                             8.0000D-01    YES 
+   2   3      -83.779599010      -74.978303590   9.8837D-07 2.3214D-06                                             8.0000D-01    YES 
+   2   4      -83.779611021      -74.978315602   3.8636D-07 9.6869D-07                                             8.0000D-01    YES 
+   2   5      -83.779606887      -74.978311468                           1.0483D-04 2.3537D-06                     8.0000D-01    YES 
+   3   1      -83.779606887      -74.978311468                            .0000D+00 1.0021D-14                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978311  HARTREES          ORBITAL CONVERGENCE IS 4.75859D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0153 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  3 OF GEOMETRY OPTIMIZATION (THIRD POINT ON PARABOLA)
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9912691   (  2)       2   130.07920   (  4)   
+   4    1    1    .9912691   (  3)       2   130.07920   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7584747      .0000000     -.6382246                1.4333366      .0000000    -1.2060926              1     1.00782504
+   4    1    -.7584747      .0000000     -.6382246               -1.4333366      .0000000    -1.2060926              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       47 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.890083572  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.868338244      -74.978254673             
+   1   1      -83.881068758      -74.990985186              1.7348D-03                                             8.0000D-01    YES 
+   1   2      -83.864574694      -74.974491122   2.6623D-04 6.3966D-04                                             5.3333D-01    YES 
+   1   3      -83.869018434      -74.978934862   2.2349D-04 2.6700D-04                                             8.0000D-01    YES 
+   1   4      -83.868110882      -74.978027311   5.5005D-05 1.3361D-04                                             8.0000D-01    YES 
+   1   5      -83.868616994      -74.978533423   4.3223D-05 4.4912D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.868336202      -74.978252630              3.0685D-06                                             8.0000D-01    YES 
+   1   7      -83.868373994      -74.978290422   8.0814D-07 1.6801D-06                                             8.0000D-01    YES 
+   1   8      -83.868351216      -74.978267644   5.1544D-07 1.1579D-06                                             8.0000D-01    YES 
+   1   9      -83.868360017      -74.978276445                                      4.6953D-05                     8.0000D-01    YES 
+   2   1      -83.868410871      -74.978327300              8.8424D-06                                             8.0000D-01    YES 
+   2   2      -83.868330521      -74.978246950   2.0161D-05 1.0058D-05                                             5.3333D-01    YES 
+   2   3      -83.868374882      -74.978291310   1.8881D-06 4.4451D-06                                             8.0000D-01    YES 
+   2   4      -83.868355329      -74.978271757   7.7770D-07 1.9811D-06                                             8.0000D-01    YES 
+   2   5      -83.868364458      -74.978280887   3.2817D-07 6.7309D-07                                             8.0000D-01    YES 
+   2   6      -83.868360044      -74.978276473                           2.0700D-04 4.4806D-06                     8.0000D-01    YES 
+   3   1      -83.868360044      -74.978276473                            .0000D+00 1.6097D-14                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978276  HARTREES          ORBITAL CONVERGENCE IS 4.39129D-07
+
+0S =  .014 (  .000 EXPECTED),   S(S+1) =   .0145 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  4 OF GEOMETRY OPTIMIZATION - POSITION OF PROJECTED MINIMUM RELATIVE TO CENTRAL POINT (POINT  1)
+
+      .0008   FOR INTERVAL     .0050      VARIABLES ...    2   3
+
+0PREDICTED ENERGY AT MINIMUM IS      -74.978348 HARTREES
+
+
+ FORCE CONSTANT =  1.82899341D+01 MDYNE/ANGSTROM
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9971032   (  2)       2   130.07920   (  4)   
+   4    1    1    .9971032   (  3)       2   130.07920   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7629387      .0000000     -.6419809                1.4417725      .0000000    -1.2131910              1     1.00782504
+   4    1    -.7629387      .0000000     -.6419809               -1.4417725      .0000000    -1.2131910              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.838067382  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.816407666      -74.978340284             
+   1   1      -83.811415515      -74.973348133              6.7833D-04                                             5.3333D-01    YES 
+   1   2      -83.816107633      -74.978040251   3.0973D-04 4.9810D-04                                             8.0000D-01    YES 
+   1   3      -83.816043440      -74.977976058   1.2934D-04 1.5586D-04                                             8.0000D-01    YES 
+   1   4      -83.816553987      -74.978486605   3.0060D-05 7.7566D-05                                             8.0000D-01    YES 
+   1   5      -83.816268121      -74.978200739   3.4370D-05 2.6067D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.816404291      -74.978336909              2.4884D-06                                             8.0000D-01    YES 
+   1   7      -83.816422255      -74.978354873   5.2441D-07 1.0773D-06                                             8.0000D-01    YES 
+   1   8      -83.816415165      -74.978347783                                      2.7781D-05                     8.0000D-01    YES 
+   2   1      -83.816395295      -74.978327913              3.4890D-06                                             5.3333D-01    YES 
+   2   2      -83.816423151      -74.978355769   3.3057D-05 6.2903D-06                                             8.0000D-01    YES 
+   2   3      -83.816406115      -74.978338733   1.1340D-06 2.6650D-06                                             8.0000D-01    YES 
+   2   4      -83.816418116      -74.978350734   4.6849D-07 1.1890D-06                                             8.0000D-01    YES 
+   2   5      -83.816415175      -74.978347793                           1.2292D-04 2.7210D-06                     8.0000D-01    YES 
+   3   1      -83.816411212      -74.978343830              5.8893D-07                                             5.3333D-01    YES 
+   3   2      -83.816415175      -74.978347793                           7.3461D-06 1.6357D-07                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978348  HARTREES          ORBITAL CONVERGENCE IS 2.82782D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0150 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  2 OF GEOMETRY OPTIMIZATION (SECOND POINT ON PARABOLA)
+
+
+ INTERVAL     .5000      VARIABLES ...    4   5
+ 
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9971032   (  2)       2   130.57920   (  4)   
+   4    1    1    .9971032   (  3)       2   130.57920   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7573073      .0000000     -.6486142                1.4311306      .0000000    -1.2257265              1     1.00782504
+   4    1    -.7573073      .0000000     -.6486142               -1.4311306      .0000000    -1.2257265              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.840646144  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.818945403      -74.978299259             
+   1   1      -83.817973302      -74.977327158              6.9584D-04                                             5.3333D-01    YES 
+   1   2      -83.818190772      -74.977544628   3.6911D-04 5.4000D-04                                             8.0000D-01    YES 
+   1   3      -83.818883877      -74.978237733   1.2868D-04 1.9976D-04                                             8.0000D-01    YES 
+   1   4      -83.818862338      -74.978216194   4.8038D-05 7.8815D-05                                             8.0000D-01    YES 
+   1   5      -83.818945333      -74.978299189   1.9018D-05 3.1460D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.818949826      -74.978303682              7.0956D-07                                             8.0000D-01    YES 
+   1   7      -83.818952133      -74.978305989                                      2.2980D-05                     8.0000D-01    YES 
+   2   1      -83.818939795      -74.978293651              2.7928D-06                                             5.3333D-01    YES 
+   2   2      -83.818958225      -74.978312081   2.7100D-05 5.4169D-06                                             8.0000D-01    YES 
+   2   3      -83.818944766      -74.978298622   9.6946D-07 2.2851D-06                                             8.0000D-01    YES 
+   2   4      -83.818956108      -74.978309964   3.7229D-07 9.3525D-07                                             8.0000D-01    YES 
+   2   5      -83.818952140      -74.978305996                           1.0023D-04 2.1994D-06                     8.0000D-01    YES 
+   3   1      -83.818952140      -74.978305996                            .0000D+00 7.4070D-15                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978306  HARTREES          ORBITAL CONVERGENCE IS 4.55828D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0149 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  3 OF GEOMETRY OPTIMIZATION (THIRD POINT ON PARABOLA)
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9971032   (  2)       2   129.57920   (  4)   
+   4    1    1    .9971032   (  3)       2   129.57920   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7685119      .0000000     -.6352986                1.4523045      .0000000    -1.2005632              1     1.00782504
+   4    1    -.7685119      .0000000     -.6352986               -1.4523045      .0000000    -1.2005632              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.835552435  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.813826636      -74.978274201             
+   1   1      -83.816810469      -74.981258034              2.0807D-03                                             8.0000D-01    YES 
+   1   2      -83.814610482      -74.979058046   5.4004D-04 6.3809D-04                                             8.0000D-01    YES 
+   1   3      -83.813757026      -74.978204590   8.7030D-05 1.9526D-04                                             5.3333D-01    YES 
+   1   4      -83.814033348      -74.978480913   9.5312D-05 1.5861D-04                                4-POINT      8.0000D-01    YES 
+   1   5      -83.813767954      -74.978215518              7.8304D-05                                             8.0000D-01    YES 
+   1   6      -83.813830289      -74.978277854   2.0803D-05 2.8715D-05                                             8.0000D-01    YES 
+   1   7      -83.813847026      -74.978294590   4.7655D-06 1.1826D-05                                             8.0000D-01    YES 
+   1   8      -83.813846775      -74.978294340   1.8156D-06 4.3370D-06                                             8.0000D-01    YES 
+   1   9      -83.813853606      -74.978301170   7.1300D-07 1.7872D-06                                4-POINT      8.0000D-01    YES 
+   1  10      -83.813853324      -74.978300888                                      4.6880D-05                     8.0000D-01    YES 
+   2   1      -83.813897362      -74.978344926              8.9908D-06                                             8.0000D-01    YES 
+   2   2      -83.813826440      -74.978274004   1.8840D-05 9.7191D-06                                             5.3333D-01    YES 
+   2   3      -83.813867943      -74.978315507   1.9051D-06 4.4946D-06                                             8.0000D-01    YES 
+   2   4      -83.813848849      -74.978296413   7.8238D-07 1.9868D-06                                             8.0000D-01    YES 
+   2   5      -83.813857776      -74.978305341   3.2828D-07 6.7351D-07                                             8.0000D-01    YES 
+   2   6      -83.813853349      -74.978300913                           1.9468D-04 4.3534D-06                     8.0000D-01    YES 
+   3   1      -83.813853349      -74.978300913                            .0000D+00 2.0244D-14                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978301  HARTREES          ORBITAL CONVERGENCE IS 4.40135D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0150 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1POINT  4 OF GEOMETRY OPTIMIZATION - POSITION OF PROJECTED MINIMUM RELATIVE TO CENTRAL POINT (POINT  1)
+
+      .0143   FOR INTERVAL     .5000      VARIABLES ...    4   5
+
+0PREDICTED ENERGY AT MINIMUM IS      -74.978348 HARTREES
+
+
+ FORCE CONSTANT =  5.07608326D+00 MDYNE*ANGSTROM/RADIAN**2
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9971032   (  2)       2   130.09353   (  4)   
+   4    1    1    .9971032   (  3)       2   130.09353   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7627781      .0000000     -.6421716                1.4414690      .0000000    -1.2135516              1     1.00782504
+   4    1    -.7627781      .0000000     -.6421716               -1.4414690      .0000000    -1.2135516              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       51 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.838140385  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.816481182      -74.978340796             
+   1   1      -83.815475170      -74.977334784              7.1753D-04                                             5.3333D-01    YES 
+   1   2      -83.815679067      -74.977538682   3.7039D-04 5.5249D-04                                             8.0000D-01    YES 
+   1   3      -83.816421179      -74.978280794   1.3085D-04 2.0419D-04                                             8.0000D-01    YES 
+   1   4      -83.816391822      -74.978251436   4.8768D-05 8.0574D-05                                             8.0000D-01    YES 
+   1   5      -83.816482496      -74.978342111   1.9251D-05 3.2309D-05                                4-POINT      8.0000D-01    YES 
+   1   6      -83.816486533      -74.978346147              7.9409D-07                                             8.0000D-01    YES 
+   1   7      -83.816488214      -74.978347828                                      2.3076D-05                     8.0000D-01    YES 
+   2   1      -83.816475013      -74.978334628              2.9205D-06                                             5.3333D-01    YES 
+   2   2      -83.816494531      -74.978354146   2.7261D-05 5.6236D-06                                             8.0000D-01    YES 
+   2   3      -83.816480434      -74.978340049   9.9678D-07 2.3387D-06                                             8.0000D-01    YES 
+   2   4      -83.816492334      -74.978351949   3.8982D-07 9.8124D-07                                             8.0000D-01    YES 
+   2   5      -83.816488221      -74.978347835                           1.0085D-04 2.2318D-06                     8.0000D-01    YES 
+   3   1      -83.816488221      -74.978347835                            .0000D+00 8.8133D-15                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.978348  HARTREES          ORBITAL CONVERGENCE IS 4.68896D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0150 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+
+0OPTIMIZATION TERMINATED
+0FINAL ENERGY IS    -74.978348 HARTREES
+
+0ENERGY COMPONENTS:   NUCLEAR:      8.838140385,   ELECTRONIC:    -83.816488221
+1MOLECULAR ORBITALS         5 ALPHA SPIN ELECTRONS,   5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.25733    -.99071    -.59132    -.73289    -.39553    -.00044    -.01155
+ 
+   1  1   O   1S        .99439    -.25100     .00000     .04778     .00000     .00000     .12445
+   2  1   O   2S        .02547    1.00209     .00000    -.05042     .00000     .00000    -.80613
+   3  1   O   2PX       .00000     .00000    -.61386     .00000     .00000    -.95466     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ      -.00226     .33687     .00000     .68140     .00000     .00000     .76705
+ 
+   6  3   H   1S       -.00638    -.04725    -.44896    -.33574     .00000     .80895     .76242
+ 
+   7  4   H   1S       -.00638    -.04725     .44896    -.33574     .00000    -.80895     .76242
+ 
+ 
+ THE FIRST   3 MO ARE DOUBLY OCCUPIED FROZEN CORE ORBITALS
+0MO   4  TO   7 ARE USED FOR GVB PAIRS:
+   PAIR      COEFF          PAIR      COEFF          
+   4-  7   -.084220         5-  6   -.019729       
+
+0S =  .000 (  .000 EXPECTED),   S(S+1) =   .0000 (   .0000 EXPECTED)
+
+0FINAL COEFFICIENT MATRIX CONVERGENCE IS  4.68896D-07
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (ALPHA SPIN)     (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91305     .00000     .12200     .12200
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12200     .00000     .32014    -.02067
+ 
+         4   H          .12200     .00000    -.02067     .32014
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (BETA SPIN)      (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91305     .00000     .12200     .12200
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12200     .00000     .32014    -.02067
+ 
+         4   H          .12200     .00000    -.02067     .32014
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (TOTAL)          (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         7.82610     .00000     .24400     .24400
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .24400     .00000     .64028    -.04134
+ 
+         4   H          .24400     .00000    -.04134     .64028
+ 
+0ATOMIC CHARGES (ALPHA(1), BETA(2)), ATOMIC SPIN DENSITIES(3), ATOMIC CHARGES (TOTAL(4), NET(5))
+
+                           1          2          3          4          5
+ 
+         1   O         4.15705    4.15705     .00000    8.31410    -.31410
+ 
+         2   X          .00000     .00000     .00000     .00000     .00000
+ 
+         3   H          .42147     .42147     .00000     .84295     .15705
+ 
+         4   H          .42147     .42147     .00000     .84295     .15705
+ 
+1BOND ORDER AND VALENCE INDICES (I. MAYER, I.J.Q.C., 29, 477-483 (1986))
+
+
+          BOND ORDER MATRIX
+
+                           1          2          3          4
+ 
+         1   O          .00000     .00000     .95337     .95337
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .95337     .00000     .00000     .00706
+ 
+         4   H          .95337     .00000     .00706     .00000
+ 
+0                      VALENCE  FREE VALENCE
+
+                           1          2
+ 
+         1   O         1.93638     .02964
+ 
+         2   X          .00000     .00000
+ 
+         3   H          .97533     .01491
+ 
+         4   H          .97533     .01491
+ 
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      186     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       84
+0DTWOL: FMTGEN WAS CALLED       37 TIMES.
+1INTERNAL COORDINATE DERIVATIVES (MDYNE OR MDYNE-ANGSTROM/RADIAN)
+
+0  I   AN   Z1     BL                  Z2      ALPHA                Z3      BETA                 Z4
+
+   1    8
+   2    0    1    .000000   (  1)   
+   3    1    1    .000065   (  2)       2     -.000045   (  4)   
+   4    1    1    .000065   (  3)       2     -.000045   (  5)       3      .000000   (  6)       0
+0GRADIENT LENGTH OVER ALL INTERNAL COORDINATES (NO CONSTRAINTS):  4.56361D-05
+ LARGEST (ABSOLUTE) GRADIENT COMPONENT:      .000065
+
+
+0NORMAL TERMINATION, TOTAL CPU TIME FOR THIS CALCULATION WAS      .086 MINUTES.
+1WELCOME TO U OF T MONSTERGAUSS                                                                         UNX VERSION: 13 AUG 1991
+ ******************************
+0CONTROL CARDS:
+
+ *MOL RHF,GOPT,ME=BFGS                                                   
+ *PRT IGC=Y                                                              
+ *IOP                                                                    
+    4  28   1 PRINT LAGRANGE MATRIX                                      
+    4  30   1 PRINT VCC                                                  
+    8  21   2 PRINT FORCE COMPONENTS                                     
+    0   0   0                                                            
+ *CON                                                                    
+
+0SEQUENCE    GROUP     MG OPTIONS         GROUP OPTIONS (USER CONTROLLABLE)                  LINKS TO BE CALLED          JUMP
+
+     1         2      000000012300 000000000000000000000000000000000000000000000000   01000000000000000000000000000000     0
+     2         3      000000012300 004000000000000000000000000000000000000000000000   11000100000000000000000000000000     0
+     3         4      000000012300 000000010000000010000000000000000000000000000000   11000000000000000000000000000000     0
+     4         5      000000012300 100000000000000111000000000000000000000000000000   00100000000000000000000000000000     0
+     5         6      000000012300 000000000000000000001000000000000000000000000000   10000000000000000000000000000000     0
+     8         7      000000012300 011000002000000000000000000000000000000000000000   01100000001000000000000000000000     0
+    10         3      000000012300 004000000010000000000000000000000000000000000000   01000100000000000000000000000000     0
+    11         5      000000012300 100000001000000010000000000000000000000000000000   00100000000000000000000000000000     0
+    15         7      000000012300 111000001000000000000000000000000000000000000000   01100000001000000000000000000000    -2
+    18         6      000000012300 000000000000001000000000000000000000000000000000   10000000000000000000000000000000     0
+0OPTION NUMBERS:      000000000111 111111122222222223333333333444444444455555555556   66666666677777777778888888888999
+                      123456789012 345678901234567890123456789012345678901234567890   12345678901234567890123456789012
+
+0CONVERSION FACTORS:  1 BOHR =  .52916717 ANGSTROMS
+0                     1 HARTREE/BOHR = 8.2380000 MDYNE
+
+                      1 HARTREE/ANGSTROM**2 = 4.3593000 MDYNE/ANGSTROM
+
+                      1 ELECTRON*BOHR = 2.5415806 DEBYE
+
+                      1 HARTREE/PARTICLE =    .00000 KCAL/MOL =     .0000 KJ/MOL =   .000000 EV/PARTICLE =       .00 CM(-1)/PARTICLE
+
+                      1 ATOMIC UNIT OF ELECTRIC FIELD =  .0000000D+00 VOLTS/CM
+1H2O GVB                                                                 
+ ------------------------------------------------------------------------
+0CHARGE  =   0          MULTIPLICITY  =  1
+
+0FREE FORMAT Z MATRIX:
+
+ 8                                                                       
+ 0 1 1.0                                                                 
+ 1 1 1.0 2 127.5                                                         
+ 1 1 1.0 2 127.5 3 180.0                                                 
+                                                                         
+0NO VARIABLES USED - SWITCHING TO STANDARD Z MATRIX FORMAT FOR OUTPUT
+1
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1   1.0000000   (  2)       2   127.50000   (  4)   
+   4    1    1   1.0000000   (  3)       2   127.50000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7933533      .0000000     -.6087614                1.4992490      .0000000    -1.1504142              1     1.00782504
+   4    1    -.7933533      .0000000     -.6087614               -1.4992490      .0000000    -1.1504142              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+
+0BASIS SET TYPE: STANDARD STO-3G      ( 5D/ 7F)
+ POLARIZATION  : NONE                                                                                 
+ DIFFUSE FUNCS : NONE                                                                                 
+ CONTAINS   4 SHELLS AND   7 BASIS FUNCTIONS
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       61 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1RHF OPEN SHELL SPECIFICATION
+0GROUP     : FDS    
+ DEGENERACY: 3220000
+ ALPHA OCC : 0000000
+ BETA OCC  : 0000000
+
+0ORBITAL GROUP :       F       D       S       A       V
+0NUMBER OF MO  :       3       2       2       0       0
+
+0MC-SCF TYPE: GVB      READ   2 CONFIGURATIONS
+
+ 4-7,5-6                                                                 
+
+0NOTE: THE CONFIGURATIONS ARE SPECIFIED IN TERMS OF THE MO NUMBERS BEFORE THE MO ARE SORTED BY GROUPS.
+0MAP BETWEEN INITIAL MO NUMBERS AND RE-ORDERED MO NUMBERS:
+ INITIAL MO:    1   2   3   4   5   6   7
+ ORDERED MO:    1   2   3   4   5   6   7
+
+0COULOMB COUPLING COEFFICIENTS   A(I,J)
+0  MO          OCCA      OCCB         CLOSED   
+0CLOSED       5.0000    5.0000        2.0000
+
+0EXCHANGE COUPLING COEFFICIENTS   B(I,J)
+0  MO          OCCA      OCCB         CLOSED   
+0CLOSED       5.0000    5.0000        1.0000
+
+0EH INITIAL GUESS ... SCALE FACTOR (K/2) =  .8750
+ SMALLEST EIGENVALUE OF OVERLAP IS  3.70350D-01
+1INITIAL GUESS COEFFICIENTS         5 ALPHA SPIN ELECTRONS,    5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.48095   -1.60905    -.58141    -.47433    -.46000    -.03507    1.09944
+ 
+   1  1   O   1S      -1.00068     .20897     .00000    -.02195     .00000     .00000     .15523
+   2  1   O   2S        .00127    -.83102     .00000     .12270     .00000     .00000    -.97490
+   3  1   O   2PX       .00000     .00000    -.62227     .00000     .00000    -.95716     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ       .00185    -.05499     .00000     .96005     .00000     .00000     .47309
+ 
+   6  3   H   1S        .00411    -.18626    -.43268    -.07507     .00000     .80948     .81256
+ 
+   7  4   H   1S        .00411    -.18626     .43268    -.07507     .00000    -.80948     .81256
+ 
+ 
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 25, RE-ORDERED BY GROUPS
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 27, RE-ORDERED BY GROUPS
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.800174947  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.643023365      -74.842848418             
+   1   1      -83.425537671      -74.625362724              4.6285D-02                                             1.5802D-01    YES 
+   1   2      -83.461039003      -74.660864056   6.6503D-02 1.2526D-01                                             8.0000D-01    YES 
+   1   3      -83.910394190      -75.110219243   3.3393D-02 5.0181D-02                                             8.0000D-01    YES 
+   1   4      -83.619355819      -74.819180872   1.4589D-02 2.2179D-02                                             8.0000D-01    YES 
+   1   5      -83.863930201      -75.063755255   8.6422D-03 1.5878D-02                                             8.0000D-01    YES 
+   1   6      -83.714932255      -74.914757308   6.5240D-03 8.4198D-03                                             8.0000D-01    YES 
+   1   7      -83.812000703      -75.011825756   3.7998D-03 5.8209D-03                                4-POINT      8.0000D-01    YES 
+   1   8      -83.775514431      -74.975339484              4.0066D-05                                             8.0000D-01    YES 
+   1   9      -83.774994932      -74.974819985   1.0289D-05 2.2377D-05                                             8.0000D-01    YES 
+   1  10      -83.775275552      -74.975100605   6.6099D-06 1.5238D-05                                             8.0000D-01    YES 
+   1  11      -83.775108776      -74.974933829   4.1344D-06 9.3152D-06                                             8.0000D-01    YES 
+   1  12      -83.775213592      -74.975038645   2.6514D-06 6.0887D-06                                4-POINT      8.0000D-01    YES 
+   1  13      -83.777079334      -74.976904387                                      2.9495D-03                     8.0000D-01    YES 
+   2   1      -83.773968863      -74.973793916              5.2268D-04                                             5.3333D-01    YES 
+   2   2      -83.778310018      -74.978135072   4.5273D-03 7.8931D-04                                             8.0000D-01    YES 
+   2   3      -83.775964352      -74.975789405   3.6032D-04 3.3716D-04                                             8.0000D-01    YES 
+   2   4      -83.777723709      -74.977548762   1.2265D-04 1.5718D-04                                             8.0000D-01    YES 
+   2   5      -83.776894106      -74.976719159   4.0263D-05 5.7877D-05                                             8.0000D-01    YES 
+   2   6      -83.777472605      -74.977297658   1.6048D-05 3.9858D-05                                             8.0000D-01    YES 
+   2   7      -83.777127891      -74.976952944   8.9736D-06 1.8234D-05                                             8.0000D-01    YES 
+   2   8      -83.777364422      -74.977189475   5.8216D-06 1.3516D-05                                4-POINT      8.0000D-01    YES 
+   2   9      -83.777305005      -74.977130058                           1.8355D-02 4.9049D-04                     8.0000D-01    YES 
+   3   1      -83.776903550      -74.976728603              7.0967D-05                                             5.3333D-01    YES 
+   3   2      -83.777450976      -74.977276029   5.8602D-04 1.1786D-04                                             8.0000D-01    YES 
+   3   3      -83.777131104      -74.976956157   4.0833D-05 4.9779D-05                                             8.0000D-01    YES 
+   3   4      -83.777364557      -74.977189610   1.6874D-05 2.2390D-05                                             8.0000D-01    YES 
+   3   5      -83.777257249      -74.977082302   3.9210D-06 8.2217D-06                                             8.0000D-01    YES 
+   3   6      -83.777334010      -74.977159063   2.1445D-06 5.3274D-06                                             8.0000D-01    YES 
+   3   7      -83.777288572      -74.977113625   1.1828D-06 2.3862D-06                                4-POINT      8.0000D-01    YES 
+   3   8      -83.777308298      -74.977133351                           2.1713D-03 5.2139D-05                     8.0000D-01    YES 
+   4   1      -83.777266720      -74.977091773              7.4323D-06                                             5.3333D-01    YES 
+   4   2      -83.777323428      -74.977148481   6.1285D-05 1.2480D-05                                             8.0000D-01    YES 
+   4   3      -83.777289867      -74.977114920   2.3905D-06 5.2431D-06                                             8.0000D-01    YES 
+   4   4      -83.777314453      -74.977139506   9.7975D-07 2.5060D-06                                             8.0000D-01    YES 
+   4   5      -83.777302536      -74.977127589   4.3524D-07 8.9339D-07                                             8.0000D-01    YES 
+   4   6      -83.777308334      -74.977133387                           2.2781D-04 7.3801D-06        4-POINT      8.0000D-01    YES 
+   5   1      -83.777308334      -74.977133387                                      5.0970D-14                     8.0000D-01    YES 
+   6   1      -83.777308334      -74.977133387                            .0000D+00  .0000D+00                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.977133  HARTREES          ORBITAL CONVERGENCE IS 2.56717D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0153 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1VECTOR COUPLING COEFFICIENTS  (NFOCK X NFOCK+2)
+
+
+              1           2           3           4           5           6           7
+0
+   1      1.000000    -.992723    -.999599    -.000401    -.007277    2.000000   -1.000000
+   2      1.985446     .992723    -.992325    -.000398    -.084995     .992723     .000000
+   3      1.999198    1.984650     .999599    -.020019    -.007274     .999599     .000000
+   4       .000802     .000796     .000000     .000401    -.000003     .000401     .000000
+   5       .014554     .000000     .014548     .000006     .007277     .007277     .000000
+0
+1LAGRANGE MULTIPLIERS MATRIX
+
+
+              1           2           3           4           5           6           7
+0
+   1    -20.252085     .000000     .000000     .053334     .000000     .000000     .000608
+   2       .000000    -.978292     .000000     .379032     .000000     .000000     .000598
+   3       .000000     .000000    -.598573     .000000     .000000    -.000584     .000000
+   4       .053334     .379032     .000000    -.726412     .000000     .000000    -.012195
+   5       .000000     .000000     .000000     .000000    -.392235     .000000     .000000
+   6       .000000     .000000    -.000584     .000000     .000000    -.000457     .000000
+   7       .000608     .000598     .000000    -.012195     .000000     .000000    -.011726
+0
+1MOLECULAR ORBITALS         5 ALPHA SPIN ELECTRONS,   5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.25209    -.97829    -.59857    -.72641    -.39223    -.00046    -.01173
+ 
+   1  1   O   1S        .99439    -.24929     .00000     .05183     .00000     .00000     .12630
+   2  1   O   2S        .02543     .99491     .00000    -.06857     .00000     .00000    -.81296
+   3  1   O   2PX       .00000     .00000    -.60566     .00000     .00000    -.96776     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ      -.00205     .35396     .00000     .68830     .00000     .00000     .74129
+ 
+   6  3   H   1S       -.00640    -.04636    -.44659    -.33300     .00000     .80189     .76650
+ 
+   7  4   H   1S       -.00640    -.04636     .44659    -.33300     .00000    -.80189     .76650
+ 
+ 
+ THE FIRST   3 MO ARE DOUBLY OCCUPIED FROZEN CORE ORBITALS
+0MO   4  TO   7 ARE USED FOR GVB PAIRS:
+   PAIR      COEFF          PAIR      COEFF          
+   4-  7   -.085306         5-  6   -.020023       
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (ALPHA SPIN)     (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91263     .00000     .12313     .12313
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12313     .00000     .31624    -.01883
+ 
+         4   H          .12313     .00000    -.01883     .31624
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (BETA SPIN)      (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91263     .00000     .12313     .12313
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12313     .00000     .31624    -.01883
+ 
+         4   H          .12313     .00000    -.01883     .31624
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (TOTAL)          (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         7.82527     .00000     .24627     .24627
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .24627     .00000     .63249    -.03766
+ 
+         4   H          .24627     .00000    -.03766     .63249
+ 
+0ATOMIC CHARGES (ALPHA(1), BETA(2)), ATOMIC SPIN DENSITIES(3), ATOMIC CHARGES (TOTAL(4), NET(5))
+
+                           1          2          3          4          5
+ 
+         1   O         4.15890    4.15890     .00000    8.31780    -.31780
+ 
+         2   X          .00000     .00000     .00000     .00000     .00000
+ 
+         3   H          .42055     .42055     .00000     .84110     .15890
+ 
+         4   H          .42055     .42055     .00000     .84110     .15890
+ 
+1BOND ORDER AND VALENCE INDICES (I. MAYER, I.J.Q.C., 29, 477-483 (1986))
+
+
+          BOND ORDER MATRIX
+
+                           1          2          3          4
+ 
+         1   O          .00000     .00000     .94926     .94926
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .94926     .00000     .00000     .01021
+ 
+         4   H          .94926     .00000     .01021     .00000
+ 
+0                      VALENCE  FREE VALENCE
+
+                           1          2
+ 
+         1   O         1.92897     .03045
+ 
+         2   X          .00000     .00000
+ 
+         3   H          .97475     .01528
+ 
+         4   H          .97475     .01528
+ 
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      186     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       84
+0DTWOL: FMTGEN WAS CALLED       47 TIMES.
+1ENERGY TERMS:
+0KINETIC:     74.501658236
+ V (NE) :   -196.136713966
+ V (EE) :       .000000000
+ NUCLEAR:      8.800174947
+          ----------------
+ TOTAL  :   -112.834880783
+
+0ATOMIC POSITION DERIVATIVE COMPONENTS (MDYNE)
+0CENTER               VNE(OPR)         VNE(WFN)          T(WFN)          VEE(WFN)          COEF            NUCLEAR           TOTAL
+0 1   O     X         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Y         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Z       -2.1470092       55.4829295       -5.0500603      -23.4952923       -2.4389037      -22.4685308        -.1168667
+0 2   X     X         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Y         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Z         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+0 3   H     X       15.1169143       20.3269674       -3.3854082      -15.1500010       -1.2433636      -15.5570303         .1080787
+            Y         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Z      -11.1684682      -15.4994920        2.5250301       11.7476461        1.2194519       11.2342654         .0584334
+0 4   H     X      -15.1169143      -20.3269674        3.3854082       15.1500010        1.2433636       15.5570303        -.1080787
+            Y         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Z      -11.1684682      -15.4994920        2.5250301       11.7476461        1.2194519       11.2342654         .0584334
+1INTERNAL COORDINATE DERIVATIVES (MDYNE OR MDYNE-ANGSTROM/RADIAN)
+
+0  I   AN   Z1     BL                  Z2      ALPHA                Z3      BETA                 Z4
+
+   1    8
+   2    0    1    .000000   (  1)   
+   3    1    1    .050173   (  2)       2     -.112152   (  4)   
+   4    1    1    .050173   (  3)       2     -.112152   (  5)       3      .000000   (  6)       0
+0GRADIENT LENGTH OVER ALL INTERNAL COORDINATES (NO CONSTRAINTS):  7.09353D-02
+ LARGEST (ABSOLUTE) GRADIENT COMPONENT:      .112152
+
+1GEOMETRY OPTIMIZATION CONSTRAINTS
+
+0SET   1:
+ INTERVAL    1.0000      VARIABLES ...    2   3
+0SET   2:
+ INTERVAL    1.0000      VARIABLES ...    4   5
+0SET   3:
+ INTERVAL     .0000      VARIABLES ...    1   6
+
+0MAP BETWEEN Z MATRIX PARAMETERS AND OPTIMIZED PARAMETERS (IGOPT)
+ IGOPT: 0 IS FIXED, I IS OPTIMIZATION VARIABLE NUMBER, -J REFERS BACK TO Z MATRIX PARAMETER J
+0Z MATRIX:    1    2    3    4    5    6
+0IGOPT(Z):    0    1   -2    2   -4    0
+
+0THERE ARE   2 PARAMETERS TO BE OPTIMIZED
+
+0INITIAL HESSIAN GUESS CONSTANTS (MDYNE/ANGSTROM):
+0BEND:  1.0000     TORSION:   .5000     CARTESIAN: 10.0000
+1BFGS OPTIMIZATION (VER: APR  2, 1989)
+0N =   2,   MAXIT =   40,   IPRINT =   1,   MODE =   0,   ITYPE =   0
+0ACC =  1.00000D-04,   GRLEN =  5.00000D-04
+
+0SCALE:
+
+      1   1.0000000D+00     2   1.0000000D+00
+
+0INITIAL PARAMETERS:
+
+      1   1.0000000D+00     2   2.2252948D+00
+
+0HESSIAN DIAGONAL ELEMENTS (MDYNE/ANGSTROM):
+
+      1   1.9679186D+01     2   2.0000000D+00
+0ENERGY =    -74.977133387  HARTREES
+0GRADIENT:
+
+      1   1.0034517D-01     2  -2.2430483D-01
+0GRADIENT LENGTH =   1.7375530D-01
+
+1NEW INTERNAL COORDINATES FOR: H2O GVB                                                                 
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9949009   (  2)       2   133.92586   (  4)   
+   4    1    1    .9949009   (  3)       2   133.92586   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7165655      .0000000     -.6901896                1.3541383      .0000000    -1.3042941              1     1.00782504
+   4    1    -.7165655      .0000000     -.6901896               -1.3541383      .0000000    -1.3042941              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0ITERATION    1     NFUNC =    4     E =    -74.978144802     GRD LEN = 7.4443064D-02
+ X:  9.98765D-01  2.25245D+00
+ G:  5.02248D-02 -9.25257D-02
+0ITERATION    2     NFUNC =    5     E =    -74.978347478     GRD LEN = 2.8168293D-03
+ X:  9.97139D-01  2.27137D+00
+ G: -1.39851D-04  3.98114D-03
+1GRADIENT LENGTH CONVERGED WITHIN GRLEN
+0RESULTS AT ITERATION    3
+0FINAL PARAMETERS:
+
+      1   9.9710796D-01     2   2.2705701D+00
+0ENERGY =    -74.978347835  HARTREES
+0GRADIENT:
+
+      1   1.7870939D-04     2  -7.2866368D-05
+0GRADIENT LENGTH =   1.3646712D-04
+
+0    6 FUNCTION EVALUATIONS,    0 RESTARTS
+0ENERGY COMPONENTS:   NUCLEAR:      8.838101168,   ELECTRONIC:    -83.816449004
+
+0FINAL DERIVATIVES ...
+1INTERNAL COORDINATE DERIVATIVES (MDYNE OR MDYNE-ANGSTROM/RADIAN)
+
+0  I   AN   Z1     BL                  Z2      ALPHA                Z3      BETA                 Z4
+
+   1    8
+   2    0    1    .000000   (  1)   
+   3    1    1    .000089   (  2)       2     -.000036   (  4)   
+   4    1    1    .000089   (  3)       2     -.000036   (  5)       3      .000000   (  6)       0
+0GRADIENT LENGTH OVER ALL INTERNAL COORDINATES (NO CONSTRAINTS):  5.57125D-05
+ LARGEST (ABSOLUTE) GRADIENT COMPONENT:      .000089
+
+
+0FINAL PARAMETERS ...
+1NEW INTERNAL COORDINATES FOR: H2O GVB                                                                 
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9971080   (  2)       2   130.09408   (  4)   
+   4    1    1    .9971080   (  3)       2   130.09408   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7627755      .0000000     -.6421820                1.4414642      .0000000    -1.2135712              1     1.00782504
+   4    1    -.7627755      .0000000     -.6421820               -1.4414642      .0000000    -1.2135712              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+1MOLECULAR ORBITALS         5 ALPHA SPIN ELECTRONS,   5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.25733    -.99075    -.59132    -.73285    -.39553    -.00044    -.01155
+ 
+   1  1   O   1S        .99439    -.25100     .00000     .04777     .00000     .00000     .12445
+   2  1   O   2S        .02548    1.00209     .00000    -.05036     .00000     .00000    -.80612
+   3  1   O   2PX       .00000     .00000    -.61386     .00000     .00000    -.95465     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ      -.00227     .33683     .00000     .68141     .00000     .00000     .76706
+ 
+   6  3   H   1S       -.00638    -.04724    -.44896    -.33575     .00000     .80894     .76241
+ 
+   7  4   H   1S       -.00638    -.04724     .44896    -.33575     .00000    -.80894     .76241
+ 
+ 
+ THE FIRST   3 MO ARE DOUBLY OCCUPIED FROZEN CORE ORBITALS
+0MO   4  TO   7 ARE USED FOR GVB PAIRS:
+   PAIR      COEFF          PAIR      COEFF          
+   4-  7   -.084223         5-  6   -.019729       
+
+0S =  .000 (  .000 EXPECTED),   S(S+1) =   .0000 (   .0000 EXPECTED)
+
+0FINAL COEFFICIENT MATRIX CONVERGENCE IS  2.93607D-07
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (ALPHA SPIN)     (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91305     .00000     .12200     .12200
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12200     .00000     .32014    -.02067
+ 
+         4   H          .12200     .00000    -.02067     .32014
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (BETA SPIN)      (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91305     .00000     .12200     .12200
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12200     .00000     .32014    -.02067
+ 
+         4   H          .12200     .00000    -.02067     .32014
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (TOTAL)          (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         7.82610     .00000     .24400     .24400
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .24400     .00000     .64029    -.04133
+ 
+         4   H          .24400     .00000    -.04133     .64029
+ 
+0ATOMIC CHARGES (ALPHA(1), BETA(2)), ATOMIC SPIN DENSITIES(3), ATOMIC CHARGES (TOTAL(4), NET(5))
+
+                           1          2          3          4          5
+ 
+         1   O         4.15705    4.15705     .00000    8.31409    -.31409
+ 
+         2   X          .00000     .00000     .00000     .00000     .00000
+ 
+         3   H          .42148     .42148     .00000     .84295     .15705
+ 
+         4   H          .42148     .42148     .00000     .84295     .15705
+ 
+1BOND ORDER AND VALENCE INDICES (I. MAYER, I.J.Q.C., 29, 477-483 (1986))
+
+
+          BOND ORDER MATRIX
+
+                           1          2          3          4
+ 
+         1   O          .00000     .00000     .95337     .95337
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .95337     .00000     .00000     .00705
+ 
+         4   H          .95337     .00000     .00705     .00000
+ 
+0                      VALENCE  FREE VALENCE
+
+                           1          2
+ 
+         1   O         1.93639     .02964
+ 
+         2   X          .00000     .00000
+ 
+         3   H          .97534     .01491
+ 
+         4   H          .97534     .01491
+ 
+
+0NORMAL TERMINATION, TOTAL CPU TIME FOR THIS CALCULATION WAS      .055 MINUTES.
+1WELCOME TO U OF T MONSTERGAUSS                                                                         UNX VERSION: 13 AUG 1991
+ ******************************
+0CONTROL CARDS:
+
+ *MOL RHF,GOPT,ME=DOC,FORCE                                              
+ *PRT IGC=Y                                                              
+ *CON                                                                    
+
+0SEQUENCE    GROUP     MG OPTIONS         GROUP OPTIONS (USER CONTROLLABLE)                  LINKS TO BE CALLED          JUMP
+
+     1         2      000000012300 000000000000000000000000000000000000000000000000   01000000000000000000000000000000     0
+     2         3      000000012300 004000000000000000000000000000000000000000000000   11000100000000000000000000000000     0
+     3         4      000000012300 000000010000000010000000000000000000000000000000   11000000000000000000000000000000     0
+     4         5      000000012300 100000000000000010000000000000000000000000000000   00100000000000000000000000000000     0
+     5         6      000000012300 000000000000000000001000000000000000000000000000   10000000000000000000000000000000     0
+     8         7      000000012300 041000001000000000000000000000000000000000000000   00000000001000000000000000000000     0
+    10         3      000000012300 004000000010000000000000000000000000000000000000   01000100000000000000000000000000     0
+    11         5      000000012300 100000001000000010000000000000000000000000000000   00100000000000000000000000000000     0
+    15         7      000000012300 141000001000000000000000000000000000000000000000   00000000001000000000000000000000    -2
+    18         6      000000012300 000000000000001000000000000000000000000000000000   10000000000000000000000000000000     0
+    21         7      000000012300 000000000000000000000000000000000000000000000000   01100000001000000000000000000000     0
+0OPTION NUMBERS:      000000000111 111111122222222223333333333444444444455555555556   66666666677777777778888888888999
+                      123456789012 345678901234567890123456789012345678901234567890   12345678901234567890123456789012
+
+0CONVERSION FACTORS:  1 BOHR =  .52916717 ANGSTROMS
+0                     1 HARTREE/BOHR = 8.2380000 MDYNE
+
+                      1 HARTREE/ANGSTROM**2 = 4.3593000 MDYNE/ANGSTROM
+
+                      1 ELECTRON*BOHR = 2.5415806 DEBYE
+
+                      1 HARTREE/PARTICLE =    .00000 KCAL/MOL =     .0000 KJ/MOL =   .000000 EV/PARTICLE =       .00 CM(-1)/PARTICLE
+
+                      1 ATOMIC UNIT OF ELECTRIC FIELD =  .0000000D+00 VOLTS/CM
+1H2O GVB                                                                 
+ ------------------------------------------------------------------------
+0CHARGE  =   0          MULTIPLICITY  =  1
+
+0FREE FORMAT Z MATRIX:
+
+ 8                                                                       
+ 0 1 1.0                                                                 
+ 1 1 1.0 2 127.5                                                         
+ 1 1 1.0 2 127.5 3 180.0                                                 
+                                                                         
+0NO VARIABLES USED - SWITCHING TO STANDARD Z MATRIX FORMAT FOR OUTPUT
+1
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1   1.0000000   (  2)       2   127.50000   (  4)   
+   4    1    1   1.0000000   (  3)       2   127.50000   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7933533      .0000000     -.6087614                1.4992490      .0000000    -1.1504142              1     1.00782504
+   4    1    -.7933533      .0000000     -.6087614               -1.4992490      .0000000    -1.1504142              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+
+0BASIS SET TYPE: STANDARD STO-3G      ( 5D/ 7F)
+ POLARIZATION  : NONE                                                                                 
+ DIFFUSE FUNCS : NONE                                                                                 
+ CONTAINS   4 SHELLS AND   7 BASIS FUNCTIONS
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      178     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       92
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       61 TIMES
+
+
+        228 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1RHF OPEN SHELL SPECIFICATION
+0GROUP     : FDS    
+ DEGENERACY: 3220000
+ ALPHA OCC : 0000000
+ BETA OCC  : 0000000
+
+0ORBITAL GROUP :       F       D       S       A       V
+0NUMBER OF MO  :       3       2       2       0       0
+
+0MC-SCF TYPE: GVB      READ   2 CONFIGURATIONS
+
+ 4-7,5-6                                                                 
+
+0NOTE: THE CONFIGURATIONS ARE SPECIFIED IN TERMS OF THE MO NUMBERS BEFORE THE MO ARE SORTED BY GROUPS.
+0MAP BETWEEN INITIAL MO NUMBERS AND RE-ORDERED MO NUMBERS:
+ INITIAL MO:    1   2   3   4   5   6   7
+ ORDERED MO:    1   2   3   4   5   6   7
+
+0COULOMB COUPLING COEFFICIENTS   A(I,J)
+0  MO          OCCA      OCCB         CLOSED   
+0CLOSED       5.0000    5.0000        2.0000
+
+0EXCHANGE COUPLING COEFFICIENTS   B(I,J)
+0  MO          OCCA      OCCB         CLOSED   
+0CLOSED       5.0000    5.0000        1.0000
+
+0EH INITIAL GUESS ... SCALE FACTOR (K/2) =  .8750
+ SMALLEST EIGENVALUE OF OVERLAP IS  3.70350D-01
+1INITIAL GUESS COEFFICIENTS         5 ALPHA SPIN ELECTRONS,    5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.48095   -1.60905    -.58141    -.47433    -.46000    -.03507    1.09944
+ 
+   1  1   O   1S      -1.00068     .20897     .00000    -.02195     .00000     .00000     .15523
+   2  1   O   2S        .00127    -.83102     .00000     .12270     .00000     .00000    -.97490
+   3  1   O   2PX       .00000     .00000    -.62227     .00000     .00000    -.95716     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ       .00185    -.05499     .00000     .96005     .00000     .00000     .47309
+ 
+   6  3   H   1S        .00411    -.18626    -.43268    -.07507     .00000     .80948     .81256
+ 
+   7  4   H   1S        .00411    -.18626     .43268    -.07507     .00000    -.80948     .81256
+ 
+ 
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 25, RE-ORDERED BY GROUPS
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 27, RE-ORDERED BY GROUPS
+1GENERALIZED VALENCE BOND METHOD               NUCLEAR REPULSION ENERGY IS      8.800174947  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -83.643023365      -74.842848418             
+   1   1      -83.425537671      -74.625362724              4.6285D-02                                             1.5802D-01    YES 
+   1   2      -83.461039003      -74.660864056   6.6503D-02 1.2526D-01                                             8.0000D-01    YES 
+   1   3      -83.910394190      -75.110219243   3.3393D-02 5.0181D-02                                             8.0000D-01    YES 
+   1   4      -83.619355819      -74.819180872   1.4589D-02 2.2179D-02                                             8.0000D-01    YES 
+   1   5      -83.863930201      -75.063755255   8.6422D-03 1.5878D-02                                             8.0000D-01    YES 
+   1   6      -83.714932255      -74.914757308   6.5240D-03 8.4198D-03                                             8.0000D-01    YES 
+   1   7      -83.812000703      -75.011825756   3.7998D-03 5.8209D-03                                4-POINT      8.0000D-01    YES 
+   1   8      -83.775514431      -74.975339484              4.0066D-05                                             8.0000D-01    YES 
+   1   9      -83.774994932      -74.974819985   1.0289D-05 2.2377D-05                                             8.0000D-01    YES 
+   1  10      -83.775275552      -74.975100605   6.6099D-06 1.5238D-05                                             8.0000D-01    YES 
+   1  11      -83.775108776      -74.974933829   4.1344D-06 9.3152D-06                                             8.0000D-01    YES 
+   1  12      -83.775213592      -74.975038645   2.6514D-06 6.0887D-06                                4-POINT      8.0000D-01    YES 
+   1  13      -83.777079334      -74.976904387                                      2.9495D-03                     8.0000D-01    YES 
+   2   1      -83.773968863      -74.973793916              5.2268D-04                                             5.3333D-01    YES 
+   2   2      -83.778310018      -74.978135072   4.5273D-03 7.8931D-04                                             8.0000D-01    YES 
+   2   3      -83.775964352      -74.975789405   3.6032D-04 3.3716D-04                                             8.0000D-01    YES 
+   2   4      -83.777723709      -74.977548762   1.2265D-04 1.5718D-04                                             8.0000D-01    YES 
+   2   5      -83.776894106      -74.976719159   4.0263D-05 5.7877D-05                                             8.0000D-01    YES 
+   2   6      -83.777472605      -74.977297658   1.6048D-05 3.9858D-05                                             8.0000D-01    YES 
+   2   7      -83.777127891      -74.976952944   8.9736D-06 1.8234D-05                                             8.0000D-01    YES 
+   2   8      -83.777364422      -74.977189475   5.8216D-06 1.3516D-05                                4-POINT      8.0000D-01    YES 
+   2   9      -83.777305005      -74.977130058                           1.8355D-02 4.9049D-04                     8.0000D-01    YES 
+   3   1      -83.776903550      -74.976728603              7.0967D-05                                             5.3333D-01    YES 
+   3   2      -83.777450976      -74.977276029   5.8602D-04 1.1786D-04                                             8.0000D-01    YES 
+   3   3      -83.777131104      -74.976956157   4.0833D-05 4.9779D-05                                             8.0000D-01    YES 
+   3   4      -83.777364557      -74.977189610   1.6874D-05 2.2390D-05                                             8.0000D-01    YES 
+   3   5      -83.777257249      -74.977082302   3.9210D-06 8.2217D-06                                             8.0000D-01    YES 
+   3   6      -83.777334010      -74.977159063   2.1445D-06 5.3274D-06                                             8.0000D-01    YES 
+   3   7      -83.777288572      -74.977113625   1.1828D-06 2.3862D-06                                4-POINT      8.0000D-01    YES 
+   3   8      -83.777308298      -74.977133351                           2.1713D-03 5.2139D-05                     8.0000D-01    YES 
+   4   1      -83.777266720      -74.977091773              7.4323D-06                                             5.3333D-01    YES 
+   4   2      -83.777323428      -74.977148481   6.1285D-05 1.2480D-05                                             8.0000D-01    YES 
+   4   3      -83.777289867      -74.977114920   2.3905D-06 5.2431D-06                                             8.0000D-01    YES 
+   4   4      -83.777314453      -74.977139506   9.7975D-07 2.5060D-06                                             8.0000D-01    YES 
+   4   5      -83.777302536      -74.977127589   4.3524D-07 8.9339D-07                                             8.0000D-01    YES 
+   4   6      -83.777308334      -74.977133387                           2.2781D-04 7.3801D-06        4-POINT      8.0000D-01    YES 
+   5   1      -83.777308334      -74.977133387                                      5.0970D-14                     8.0000D-01    YES 
+   6   1      -83.777308334      -74.977133387                            .0000D+00  .0000D+00                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -74.977133  HARTREES          ORBITAL CONVERGENCE IS 2.56717D-07
+
+0S =  .015 (  .000 EXPECTED),   S(S+1) =   .0153 (   .0000 EXPECTED)
+0*** THE S AND S(S+1) VALUES ABOVE HAVE BEEN REPLACED BY THE EXACT VALUES DETERMINED FROM THE MULTIPLICITY
+ AS THE FORMULA TO CALCULATE THE SPIN FOR MC-SCF/GVB WAVEFUNCTIONS IS NOT YET AVAILABLE. ***
+1MOLECULAR ORBITALS         5 ALPHA SPIN ELECTRONS,   5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.25209    -.97829    -.59857    -.72641    -.39223    -.00046    -.01173
+ 
+   1  1   O   1S        .99439    -.24929     .00000     .05183     .00000     .00000     .12630
+   2  1   O   2S        .02543     .99491     .00000    -.06857     .00000     .00000    -.81296
+   3  1   O   2PX       .00000     .00000    -.60566     .00000     .00000    -.96776     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ      -.00205     .35396     .00000     .68830     .00000     .00000     .74129
+ 
+   6  3   H   1S       -.00640    -.04636    -.44659    -.33300     .00000     .80189     .76650
+ 
+   7  4   H   1S       -.00640    -.04636     .44659    -.33300     .00000    -.80189     .76650
+ 
+ 
+ THE FIRST   3 MO ARE DOUBLY OCCUPIED FROZEN CORE ORBITALS
+0MO   4  TO   7 ARE USED FOR GVB PAIRS:
+   PAIR      COEFF          PAIR      COEFF          
+   4-  7   -.085306         5-  6   -.020023       
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (ALPHA SPIN)     (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91263     .00000     .12313     .12313
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12313     .00000     .31624    -.01883
+ 
+         4   H          .12313     .00000    -.01883     .31624
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (BETA SPIN)      (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91263     .00000     .12313     .12313
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12313     .00000     .31624    -.01883
+ 
+         4   H          .12313     .00000    -.01883     .31624
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (TOTAL)          (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         7.82527     .00000     .24627     .24627
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .24627     .00000     .63249    -.03766
+ 
+         4   H          .24627     .00000    -.03766     .63249
+ 
+0ATOMIC CHARGES (ALPHA(1), BETA(2)), ATOMIC SPIN DENSITIES(3), ATOMIC CHARGES (TOTAL(4), NET(5))
+
+                           1          2          3          4          5
+ 
+         1   O         4.15890    4.15890     .00000    8.31780    -.31780
+ 
+         2   X          .00000     .00000     .00000     .00000     .00000
+ 
+         3   H          .42055     .42055     .00000     .84110     .15890
+ 
+         4   H          .42055     .42055     .00000     .84110     .15890
+ 
+1BOND ORDER AND VALENCE INDICES (I. MAYER, I.J.Q.C., 29, 477-483 (1986))
+
+
+          BOND ORDER MATRIX
+
+                           1          2          3          4
+ 
+         1   O          .00000     .00000     .94926     .94926
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .94926     .00000     .00000     .01021
+ 
+         4   H          .94926     .00000     .01021     .00000
+ 
+0                      VALENCE  FREE VALENCE
+
+                           1          2
+ 
+         1   O         1.92897     .03045
+ 
+         2   X          .00000     .00000
+ 
+         3   H          .97475     .01528
+ 
+         4   H          .97475     .01528
+ 
+1GEOMETRY OPTIMIZATION CONSTRAINTS
+
+0SET   1:
+ INTERVAL    1.0000      VARIABLES ...    2   3
+0SET   2:
+ INTERVAL    1.0000      VARIABLES ...    4   5
+0SET   3:
+ INTERVAL     .0000      VARIABLES ...    1   6
+
+0MAP BETWEEN Z MATRIX PARAMETERS AND OPTIMIZED PARAMETERS (IGOPT)
+ IGOPT: 0 IS FIXED, I IS OPTIMIZATION VARIABLE NUMBER, -J REFERS BACK TO Z MATRIX PARAMETER J
+0Z MATRIX:    1    2    3    4    5    6
+0IGOPT(Z):    0    1   -2    2   -4    0
+
+0THERE ARE   2 PARAMETERS TO BE OPTIMIZED
+
+0INITIAL HESSIAN GUESS CONSTANTS (MDYNE/ANGSTROM):
+0BEND:  1.0000     TORSION:   .5000     CARTESIAN: 10.0000
+1DERIVATIVE-FREE OPTIMALLY CONDITIONED OPTIMIZATION (VER: DEC 04, 1988)
+0  2 PARAMETERS,     40 ITERATIONS,    PRINT MODULUS    1,   MODE =   0,   ITYPE =   0
+0LOWER BOUND =       .000000000          STEP =  1.00000D-03          EPS =  1.00000D-08          EXTRAPOLATION FACTOR = 10.00000
+
+0INITIAL PARAMETERS:
+
+      1   1.0000000D+00     2   2.2252948D+00
+
+0HESSIAN DIAGONAL ELEMENTS (HARTREE/ANGSTROM**2):
+
+      1   4.5142995D+00     2   4.5878926D-01
+0INITIAL ENERGY =    -74.977133387
+0*** ENERGY BELOW LOWER BOUND - LOWER BOUND RESET TO     -74.992839673 BY THE DAMPED GL**3 FORMULA
+0ITERATION     1,  E =    -74.978290670       7 FUNCTION EVALUATIONS,   TRACE: UHR1                
+ X:  9.97345D-01  2.28051D+00
+0ITERATION     2,  E =    -74.978347716      10 FUNCTION EVALUATIONS,   TRACE: U                   
+ X:  9.97306D-01  2.27040D+00
+0ITERATION     3,  E =    -74.978347773      13 FUNCTION EVALUATIONS,   TRACE: U                   
+ X:  9.96927D-01  2.27048D+00
+0ITERATION     4,  E =    -74.978347808      16 FUNCTION EVALUATIONS,   TRACE: U                   
+ X:  9.97012D-01  2.27070D+00
+0ITERATION     5,  E =    -74.978347810      21 FUNCTION EVALUATIONS,   TRACE: UHH                 
+ X:  9.97038D-01  2.27074D+00
+1*** ENERGY VALUES CONVERGED WITHIN EPS - TRY SPECIAL STEP
+0SPECIAL STEP GAVE NO IMPROVEMENT - RESET TO BEST PARAMETER SET
+0RESULTS AT ITERATION    5
+0FINAL PARAMETERS:
+
+      1   9.9703834D-01     2   2.2707418D+00
+0ENERGY =    -74.978347810
+0     23 FUNCTION EVALUATIONS,         0 RESTARTS
+
+0ENERGY COMPONENTS:   NUCLEAR:      8.838768476,   ELECTRONIC:    -83.817116287
+
+0FINAL PARAMETERS ...
+1NEW INTERNAL COORDINATES FOR: H2O GVB                                                                 
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    8
+   2    0    1   1.0000000   (  1)   
+   3    1    1    .9970383   (  2)       2   130.10392   (  4)   
+   4    1    1    .9970383   (  3)       2   130.10392   (  5)       3   180.00000   (  6)       0
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    8     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             16    15.99491464
+   2    0     .0000000      .0000000     1.0000000                 .0000000      .0000000     1.8897620              0      .00000000
+   3    1     .7626120      .0000000     -.6422682                1.4411552      .0000000    -1.2137340              1     1.00782504
+   4    1    -.7626120      .0000000     -.6422682               -1.4411552      .0000000    -1.2137340              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+1MOLECULAR ORBITALS         5 ALPHA SPIN ELECTRONS,   5 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6          7
+ 
+    EIGENVALUES---   -20.25734    -.99078    -.59132    -.73292    -.39555    -.00044    -.01154
+ 
+   1  1   O   1S        .99439     .25101     .00000     .04776     .00000     .00000     .12445
+   2  1   O   2S        .02548   -1.00211     .00000    -.05030     .00000     .00000    -.80618
+   3  1   O   2PX       .00000     .00000    -.61389     .00000     .00000    -.95463     .00000
+   4  1   O   2PY       .00000     .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   O   2PZ      -.00227    -.33678     .00000     .68139     .00000     .00000     .76716
+ 
+   6  3   H   1S       -.00638     .04724    -.44897    -.33574     .00000     .80902     .76243
+ 
+   7  4   H   1S       -.00638     .04724     .44897    -.33574     .00000    -.80902     .76243
+ 
+ 
+ THE FIRST   3 MO ARE DOUBLY OCCUPIED FROZEN CORE ORBITALS
+0MO   4  TO   7 ARE USED FOR GVB PAIRS:
+   PAIR      COEFF          PAIR      COEFF          
+   4-  7   -.084208         5-  6   -.019725       
+
+0S =  .000 (  .000 EXPECTED),   S(S+1) =   .0000 (   .0000 EXPECTED)
+
+0FINAL COEFFICIENT MATRIX CONVERGENCE IS  2.17694D-07
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (ALPHA SPIN)     (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91306     .00000     .12200     .12200
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12200     .00000     .32014    -.02068
+ 
+         4   H          .12200     .00000    -.02068     .32014
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (BETA SPIN)      (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         3.91306     .00000     .12200     .12200
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .12200     .00000     .32014    -.02068
+ 
+         4   H          .12200     .00000    -.02068     .32014
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (TOTAL)          (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2          3          4
+ 
+         1   O         7.82613     .00000     .24400     .24400
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .24400     .00000     .64029    -.04136
+ 
+         4   H          .24400     .00000    -.04136     .64029
+ 
+0ATOMIC CHARGES (ALPHA(1), BETA(2)), ATOMIC SPIN DENSITIES(3), ATOMIC CHARGES (TOTAL(4), NET(5))
+
+                           1          2          3          4          5
+ 
+         1   O         4.15707    4.15707     .00000    8.31413    -.31413
+ 
+         2   X          .00000     .00000     .00000     .00000     .00000
+ 
+         3   H          .42147     .42147     .00000     .84293     .15707
+ 
+         4   H          .42147     .42147     .00000     .84293     .15707
+ 
+1BOND ORDER AND VALENCE INDICES (I. MAYER, I.J.Q.C., 29, 477-483 (1986))
+
+
+          BOND ORDER MATRIX
+
+                           1          2          3          4
+ 
+         1   O          .00000     .00000     .95338     .95338
+ 
+         2   X          .00000     .00000     .00000     .00000
+ 
+         3   H          .95338     .00000     .00000     .00704
+ 
+         4   H          .95338     .00000     .00704     .00000
+ 
+0                      VALENCE  FREE VALENCE
+
+                           1          2
+ 
+         1   O         1.93640     .02963
+ 
+         2   X          .00000     .00000
+ 
+         3   H          .97533     .01490
+ 
+         4   H          .97533     .01490
+ 
+0RYSSET ROOT STATISTICS:     INTERPOLATED:      186     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       84
+0DTWOL: FMTGEN WAS CALLED       37 TIMES.
+1INTERNAL COORDINATE DERIVATIVES (MDYNE OR MDYNE-ANGSTROM/RADIAN)
+
+0  I   AN   Z1     BL                  Z2      ALPHA                Z3      BETA                 Z4
+
+   1    8
+   2    0    1    .000000   (  1)   
+   3    1    1   -.000641   (  2)       2      .000440   (  4)   
+   4    1    1   -.000641   (  3)       2      .000440   (  5)       3      .000000   (  6)       0
+0GRADIENT LENGTH OVER ALL INTERNAL COORDINATES (NO CONSTRAINTS):  4.48989D-04
+ LARGEST (ABSOLUTE) GRADIENT COMPONENT:      .000641
+
+
+0NORMAL TERMINATION, TOTAL CPU TIME FOR THIS CALCULATION WAS      .106 MINUTES.
+12.1u 2.8s 0:17 87%

@@ -1,0 +1,129 @@
+$JOB J.C9H15.1 GAU,1080 S SLOF=O.C9H15 TIME=10
+$AS 7 TO Z.C9H15.1
+$AS 8 TO 8.C9H15 BLOC=N 
+$RUN GAUSS
+*MOL BA=M3, GOPT, ME=OC, RING, RESTART, GU=N
+*PRT P=Y, G=Y 
+*PUN Z
+*IOP
+  18  26   2  SET ANGLE / DIHEDRAL ANGLE CUTOFF BOND LENGTH TO 2.0 ANG
+  
+H+ EXOCYCLIC METHYLENE CIS-FUSED [2,4]-BICYCLOOCTANE GOPT, STO-3G 
+ 1 1
+C1
+C2     C1        C1C2 
+C3     C2        C2C3       C1        C3C2C1
+C4     C3        C3C4       C2        C4C3C2     C1        TAUC4       0
+C5     C1        C1C5       C2        C5C1C2     C3        TAUC5       0
+C6     C2        C2C6       C1        C6C2C1     C3        TAUC6       0
+C7     C6        C6C7       C2        C7C6C2     C1        TAUC7       0
+C8     C1        C1C8       C2        C8C1C2     C5        TAUC8       0
+C9     C8        C8C9       C1        C9C8C1     C2        TAUC9       0
+H10    C1        C1H10      C2        H10C1C2    C5        TAUH10      0
+H11    C2        C2H11      C1        H11C2C1    C3        TAUH11      0
+H12    C4        C4H12      C3        H12C4C3    C2        TAUH12      0
+H13    C4        C4H13      C3        H13C4C3    H12       TAUH13      0
+H14    C5        C5H14      C1        H14C5C1    C2        TAUH14      0
+H15    C5        C5H15      C1        H15C5C1    C2        TAUH15      0
+H16    C6        C6H16      C2        H16C6C2    C7        TAUH16      0
+H17    C6        C6H17      C2        H17C6C2    C7        TAUH17      0
+H18    C7        C7H18      C6        H18C7C6    C2        TAUH18      0
+H19    C7        C7H19      C6        H19C7C6    C2        TAUH19      0
+H20    C8        C8H20      C1        H20C8C1    C9        TAUH20      0
+H21    C8        C8H21      C1        H21C8C1    C9        TAUH21      0
+H22    C9        C9H22      C8        H22C9C8    C1        TAUH22      0
+H23    C9        C9H23      C8        H23C9C8    C1        TAUH23      0
+H24    C4        C4H24      C3        H24C4C3    H12       TAUH24      0
+  
+C1C2     =    1.5621510 
+C2C3     =    1.5342011 
+C3C4     =    1.500 
+C1C5     =    1.5589988 
+C2C6     =    1.5438670 
+C6C7     =    1.5469656 
+C1C8     =    1.5409937 
+C8C9     =    1.5469093 
+C1H10    =    1.0882362 
+C2H11    =    1.0900185 
+C4H12    =    1.0810589 
+C4H13    =    1.0811272 
+C5H14    =    1.0883779 
+C5H15    =    1.0885495 
+C6H16    =    1.0878663 
+C6H17    =    1.0872356 
+C7H18    =    1.0876653 
+C7H19    =    1.0875831 
+C8H20    =    1.0879860 
+C8H21    =    1.0872523 
+C9H22    =    1.0876677 
+C9H23    =    1.0875577 
+C4H24    =    1.0811272 
+C3C2C1   =     88.76995 
+C4C3C2   =    133.97149 
+C5C1C2   =     90.07246 
+C6C2C1   =    113.37976 
+C7C6C2   =    110.27816 
+C8C1C2   =    113.05726 
+C9C8C1   =    110.52317 
+H10C1C2  =    112.83402 
+H11C2C1  =    113.19807 
+H12C4C3  =    106.0 
+H13C4C3  =    110.0 
+H14C5C1  =    114.59449 
+H15C5C1  =    114.71224 
+H16C6C2  =    110.22623 
+H17C6C2  =    109.76999 
+H18C7C6  =    108.61941 
+H19C7C6  =    108.90386 
+H20C8C1  =    110.28282 
+H21C8C1  =    109.69541 
+H22C9C8  =    108.64871 
+H23C9C8  =    108.91238 
+H24C4C3  =    110.0 
+TAUC4    =    179.67951 
+TAUC5    =       .17570 
+TAUC6    =    119.36025 
+TAUC7    =     52.00101 
+TAUC8    =   -119.70064 
+TAUC9    =    -51.85610 
+TAUH10   =    114.99383 
+TAUH11   =   -114.91963 
+TAUH12   =    -90.0 
+TAUH13   =    120.0 
+TAUH14   =    116.45500 
+TAUH15   =   -116.92767 
+TAUH16   =    121.19786 
+TAUH17   =   -120.82722 
+TAUH18   =     69.69928 
+TAUH19   =    185.70759 
+TAUH20   =   -121.31951 
+TAUH21   =    120.74244 
+TAUH22   =    -69.50781 
+TAUH23   =    174.47749 
+TAUH24   =   -120.0 
+  
+ 0 0 0
+ 0 0 0 0
+ 100   1   0
+  
+ 0 1 0
+ 0 2 0
+ 0 3 0
+ 0 5 0
+ 0 6 0
+ 0 7 0
+ 0 8 0
+ 0 9 0
+ 0 0 0
+ 0 1 2 0
+ 0 1 5 0
+ 0 2 3 0
+ 0 3 5 0
+ 0 2 6 0
+ 0 6 7 0
+ 0 7 9 0
+ 0 8 9 0
+ 0 1 8 0
+ 0 0 0 0
+$EOJ
+$$

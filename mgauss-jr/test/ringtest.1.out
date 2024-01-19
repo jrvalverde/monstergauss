@@ -1,0 +1,266 @@
+ WELCOME TO U OF T MONSTERGAUSS                                                                         UNX VERSION: 13 AUG 1991
+ ******************************
+0CONTROL CARDS:
+
+ *MOL BA=M3, GOPT, ME=OC, RING, RESTART, GU=N                            
+ *PRT P=Y, G=Y                                                           
+ *PUN Z                                                                  
+ *IOP                                                                    
+   18  26   2  SET ANGLE / DIHEDRAL ANGLE CUTOFF BOND LENGTH TO 2.0 ANG  
+    0   0   0                                                            
+
+0SEQUENCE    GROUP     MG OPTIONS         GROUP OPTIONS (USER CONTROLLABLE)                  LINKS TO BE CALLED          JUMP
+
+     1         2      000000010300 000001000000000000000000000000000000000000000000   01000000000000000000000000000000     0
+     2         3      000000010300 304000000000000000000000000000000000000000000000   11000100000000000000000000000000     0
+     3         4      000000010300 500000000000000010000000000000000000000000000000   01000000000000000000000000000000     0
+     4         5      000000010300 400000000000000000000000000000000000000000000000   10000000000000000000000000000000     0
+     5         6      000000010300 001001000000000000001000000000000000000000000000   10000000000000000000000000000000     0
+     8         7      000000010300 221000101000100000000000000000000000000000000000   01100000001000000000000000000000     0
+    10         3      000000010300 004000000010000000000000000000000000000000000000   01000100000000000000000000000000     0
+    11         5      000000010300 400000001000000000000000000000000000000000000000   10000000000000000000000000000000     0
+    15         7      000000010300 121000101000000000000000000000000000000000000000   01100000001000000000000000000000    -2
+    18         6      000000010300 001001000000021000000000000000000000000000000000   10000000000000000000000000000000     0
+0OPTION NUMBERS:      000000000111 111111122222222223333333333444444444455555555556   66666666677777777778888888888999
+                      123456789012 345678901234567890123456789012345678901234567890   12345678901234567890123456789012
+
+0CONVERSION FACTORS:  1 BOHR = 0.52917706 ANGSTROMS
+0                     1 HARTREE/BOHR = 8.2388584 MDYNE
+
+                      1 HARTREE/ANGSTROM**2 = 4.3598149 MDYNE/ANGSTROM
+
+                      1 ELECTRON*BOHR = 2.5417655 DEBYE
+
+                      1 HARTREE/PARTICLE = 627.50959 KCAL/MOL = 2625.5001 KJ/MOL = 27.211611 EV/PARTICLE = 219474.67 CM(-1)/PARTICLE
+
+                      1 ATOMIC UNIT OF ELECTRIC FIELD = 5.1422506E+09 VOLTS/CM
+1EXOCYCLIC METHYLENE CIS-FUSED [2,4]-BICYCLOOCTANE GOPT, STO-3G          
+ ------------------------------------------------------------------------
+0CHARGE  =   0          MULTIPLICITY  =  1
+
+0FREE FORMAT Z MATRIX:
+
+ C1                                                                      
+ C2     C1        C1C2                                                   
+ C3     C2        C2C3       C1        C3C2C1                            
+ C4     C3        C3C4       C2        C4C3C2     C1       TAUC4         
+ C5     C1        C1C5       C2        C5C1C2     C3       TAUC5         
+ C6     C2        C2C6       C1        C6C2C1     C3       TAUC6         
+ C7     C6        C6C7       C2        C7C6C2     C1       TAUC7         
+ C8     C1        C1C8       C2        C8C1C2     C5       TAUC8         
+ C9     C8        C8C9       C1        C9C8C1     C2       TAUC9         
+ H10    C1        C1H10      C2        H10C1C2    C5       TAUH10        
+ H11    C2        C2H11      C1        H11C2C1    C3       TAUH11        
+ H12    C4        C4H12      C3        H12C4C3    C2       TAUH12        
+ H13    C4        C4H13      C3        H13C4C3    C2       TAUH13        
+ H14    C5        C5H14      C1        H14C5C1    C2       TAUH14        
+ H15    C5        C5H15      C1        H15C5C1    C2       TAUH15        
+ H16    C6        C6H16      C2        H16C6C2    C7       TAUH16        
+ H17    C6        C6H17      C2        H17C6C2    C7       TAUH17        
+ H18    C7        C7H18      C6        H18C7C6    C2       TAUH18        
+ H19    C7        C7H19      C6        H19C7C6    C2       TAUH19        
+ H20    C8        C8H20      C1        H20C8C1    C9       TAUH20        
+ H21    C8        C8H21      C1        H21C8C1    C9       TAUH21        
+ H22    C9        C9H22      C8        H22C9C8    C1       TAUH22        
+ H23    C9        C9H23      C8        H23C9C8    C1       TAUH23        
+                                                                         
+0VARIABLES (OPTIMIZED ON GOPT RUNS):
+ C1C2     =    1.55616                                                   
+ C2C3     =    1.53165                                                   
+ C3C4     =    1.30584                                                   
+ C1C5     =    1.53165                                                   
+ C2C6     =    1.55616                                                   
+ C6C7     =    1.55616                                                   
+ C1C8     =    1.55616                                                   
+ C8C9     =    1.55616                                                   
+ C1H10    =    1.085                                                     
+ C2H11    =    1.085                                                     
+ C4H12    =    1.085                                                     
+ C4H13    =    1.085                                                     
+ C5H14    =    1.085                                                     
+ C5H15    =    1.085                                                     
+ C6H16    =    1.085                                                     
+ C6H17    =    1.085                                                     
+ C7H18    =    1.085                                                     
+ C7H19    =    1.085                                                     
+ C8H20    =    1.085                                                     
+ C8H21    =    1.085                                                     
+ C9H22    =    1.085                                                     
+ C9H23    =    1.085                                                     
+ C3C2C1   =   88.88                                                      
+ C4C3C2   =  133.98                                                      
+ C5C1C2   =   90.19                                                      
+ C6C2C1   =   TETRA                                                      
+ C7C6C2   =   TETRA                                                      
+ C8C1C2   =   TETRA                                                      
+ C9C8C1   =   TETRA                                                      
+ H10C1C2  =  114.00                                                      
+ H11C2C1  =  114.00                                                      
+ H12C4C3  =  122.00                                                      
+ H13C4C3  =  122.00                                                      
+ H14C5C1  =  114.00                                                      
+ H15C5C1  =  114.00                                                      
+ H16C6C2  =   TETRA                                                      
+ H17C6C2  =   TETRA                                                      
+ H18C7C6  =   TETRA                                                      
+ H19C7C6  =   TETRA                                                      
+ H20C8C1  =   TETRA                                                      
+ H21C8C1  =   TETRA                                                      
+ H22C9C8  =   TETRA                                                      
+ H23C9C8  =   TETRA                                                      
+ TAUC4    =  180.00                                                      
+ TAUC5    =    0.00                                                      
+ TAUC6    =  120.00                                                      
+ TAUC7    =   60.00                                                      
+ TAUC8    = -120.00                                                      
+ TAUC9    =  -60.00                                                      
+ TAUH10   =  120.00                                                      
+ TAUH11   = -120.00                                                      
+ TAUH12   =    0.00                                                      
+ TAUH13   =  180.00                                                      
+ TAUH14   =  116.60                                                      
+ TAUH15   = -116.60                                                      
+ TAUH16   =  120.00                                                      
+ TAUH17   = -120.00                                                      
+ TAUH18   =   60.00                                                      
+ TAUH19   =  180.00                                                      
+ TAUH20   = -120.00                                                      
+ TAUH21   =  120.00                                                      
+ TAUH22   =  -60.00                                                      
+ TAUH23   =  180.00                                                      
+1
+ GEOMETRY RESTARTED FROM DISK FILE
+
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    6
+   2    6    1   0.0000000   (  1)   
+   3    6    2   0.0000000   (  2)       1     0.00000   ( 23)   
+   4    6    3   0.0000000   (  3)       2     0.00000   ( 24)       1     0.00000   ( 44)       0
+   5    6    1   0.0000000   (  4)       2     0.00000   ( 25)       3     0.00000   ( 45)       0
+   6    6    2   0.0000000   (  5)       1     0.00000   ( 26)       3     0.00000   ( 46)       0
+   7    6    6   0.0000000   (  6)       2     0.00000   ( 27)       1     0.00000   ( 47)       0
+   8    6    1   0.0000000   (  7)       2     0.00000   ( 28)       5     0.00000   ( 48)       0
+   9    6    8   0.0000000   (  8)       1     0.00000   ( 29)       2     0.00000   ( 49)       0
+  10    1    1   0.0000000   (  9)       2     0.00000   ( 30)       5     0.00000   ( 50)       0
+  11    1    2   0.0000000   ( 10)       1     0.00000   ( 31)       3     0.00000   ( 51)       0
+  12    1    4   0.0000000   ( 11)       3     0.00000   ( 32)       2     0.00000   ( 52)       0
+  13    1    4   0.0000000   ( 12)       3     0.00000   ( 33)       2     0.00000   ( 53)       0
+  14    1    5   0.0000000   ( 13)       1     0.00000   ( 34)       2     0.00000   ( 54)       0
+  15    1    5   0.0000000   ( 14)       1     0.00000   ( 35)       2     0.00000   ( 55)       0
+  16    1    6   0.0000000   ( 15)       2     0.00000   ( 36)       7     0.00000   ( 56)       0
+  17    1    6   0.0000000   ( 16)       2     0.00000   ( 37)       7     0.00000   ( 57)       0
+  18    1    7   0.0000000   ( 17)       6     0.00000   ( 38)       2     0.00000   ( 58)       0
+  19    1    7   0.0000000   ( 18)       6     0.00000   ( 39)       2     0.00000   ( 59)       0
+  20    1    8   0.0000000   ( 19)       1     0.00000   ( 40)       9     0.00000   ( 60)       0
+  21    1    8   0.0000000   ( 20)       1     0.00000   ( 41)       9     0.00000   ( 61)       0
+  22    1    9   0.0000000   ( 21)       8     0.00000   ( 42)       1     0.00000   ( 62)       0
+  23    1    9   0.0000000   ( 22)       8     0.00000   ( 43)       1     0.00000   ( 63)       0
+ ---------------------------------------------------------------------------------------------------
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   2
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   3
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   4
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   5
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   6
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   7
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   8
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD   9
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  10
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  11
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  12
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  13
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  14
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  15
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  16
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  17
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  18
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  19
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  20
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  21
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  22
+0ILLEGAL BOND LENGTH ON Z MATRIX CARD  23
+0ATOM 3 CANNOT LIE ON THE Z AXIS
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   2    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   3    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   4    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   5    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   6    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   7    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   8    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+   9    6    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000             12    12.00000000
+  10    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  11    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  12    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  13    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  14    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  15    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  16    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  17    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  18    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  19    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  20    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  21    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  22    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+  23    1    0.0000000     0.0000000     0.0000000                0.0000000     0.0000000     0.0000000              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+0RUN TERMINATED DUE TO Z MATRIX ERROR(S)
+
+0*** DUE TO AN UNFORTUNATE ERROR, THIS CALCULATION HAS BEEN TERMINATED     ... 5 ... 4 ... 3 ... 2 ... 1 ...
+1
+
+                                                            .AXXXXXXIIXXXXXXA.
+                                                         XXXXXXXXXAAAAAAAAAXXXXXXXA
+                                                      AXXXXXV..................VXXXXXA
+                                                   AXXXV..........................VXXXA.
+                                                  AXXXV.............................VXXXXXXA
+                                           .....AXXXV................................VXX....XXA
+                                          AXXXXXXXXV..................................XXX.....VXXA
+                                         AXXXV....VA.................................AXV........VXXXXXXX...
+                                        AXXXV......VA...............................AV...........VATTTTTTTVXXXA
+                            .......   ./AXXV........VA............................TT..............O..........TVXA
+                         .AXXXXXXXXXA...XXV..........T......................../A.................O.............VXA
+                        AXXVTTTTTTTXXVTXXVT............LLVL................AXXV.................O...............VXA.
+                      AXXXV.......DXV..VA.................VXXXA-.....///AAXXV..............LL...................IXXA
+                     AXXV........AV.........................TTTTVXXXATTT/...................VA................./AXXX
+                    /AXV.........VX.........................................................XXA................AXXTXD
+                    AXXV.........IX..AV.......................             ..................VO.............2XXV..XB-
+                    XX4A..........DOAV........................ WHAT A BOMB ..................XB....L...JAVXXXV..../X-
+                    -X.4XL.........EO.........................             .................OB......TTTTT/........3XE
+                   3X/...TXXLLL.....O..........................................,O,.........OO....................AXV
+                    VX.............OS,.......................................,BO.........BBO..................../XXD
+                    VXA............,OL.....................................OXB........JXP......................AXXV
+                     VXA.............OO..........,O,....................JXXXXXX./...................6..........AXXXV
+                      VATTT...........OAO,...,,,O,BO...............,,-JXXXXXX./XLX,.............../XA.......,AXXXV
+                      3XXV..............TTAOOTT...BXXL-JVXXXXXXXXXXXXXXXXXXXXXXXXA-,...VXV.........VXL.../AXXV
+                        JXV..............,,OO.....AXXXVTTTTTTTTTTTTTT......XXX..4XXXXXLXV............VXXXXV
+                         VXXXV.VAXXXXXXXXXXXX..XXXX.......XXX..............XXX...3OOOOOXXXXXXXXXXXXXXXXXV
+                             VXXXXXXXXXXXXXXXXXXX.........XXX..............XXXXXXXXXXXXXXXXXXXXXXXXVT
+                                              TVXXXXXXXXXXXXX..............XXXVT
+                                                          XXX..............XXX
+                                                          XXX..............XXX                        .II.
+                             .IIII.              ...II....XXX..............XXX            .........IIIIIIIIIIIIII....
+                .IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII          IIIIIIIII
+                III                                                       IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+                 TIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIITTTTTXXX                                 TIT
+                                                         XXX................XXX
+                                           .            XXX.................XXXCCC..CCCCC.
+                                       .CCCCCCCCC...CCCXXXX.................XXXX....CCCC..CCC.
+                                     .CCCCTTCCCCC.CC....XXXX.................XXXX....CC.....CCC.
+                                     .DTCCC......CCCCCCCCCCL........,,JCCCCCCCCCCCCCCC...CCCCC.
+                                      .   CCC...........CCCCCCCCCCCCCCCCCT.TCCCCC....CCCC    .
+                                            CCCCCC..................................1HC)
+                                                CCCC..............................CCCC
+          GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+0SUCCESS -- IF YOU HAVE TRIED TO DO SOMETHING AND FAILED,
+ YOU ARE BETTER OFF THAN IF YOU HAD TRIED TO DO NOTHING AND SUCCEEDED.
+
+0*** ABNORMAL TERMINATION, TOTAL CPU TIME FOR THIS CALCULATION WAS     0.000 MINUTES.

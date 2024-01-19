@@ -1,0 +1,36 @@
+#
+# Robots.txt file for KRAKEN.
+#
+User-agent: *
+#
+# General stuff.
+#
+Disallow: /cgi-bin/
+Disallow: /images/
+Disallow: /ipaudit/
+Disallow: /local/
+Disallow: /net-ops/accounting
+Disallow: /net-ops/configuration
+Disallow: /net-ops/events
+Disallow: /net-ops/info
+Disallow: /net-ops/performance
+Disallow: /net-ops/security
+Disallow: /net-ops/services
+Disallow: /networker/
+#
+# Spamivore stuff.
+#
+Disallow: /Spamivore/
+#
+# Mike's stuff.
+#
+Disallow: /~mikep/Hockey/Info/
+Disallow: /~mikep/Spamivore/
+Disallow: /~mikep/Vb/Info/
+Disallow: /~mikep/gifs/
+Disallow: /~mikep/icons/
+Disallow: /~mikep/jokes/
+Disallow: /~mikep/mpgs/
+Disallow: /~mikep/win9x/bin/
+Disallow: /~mikep/win9x/nav/
+Disallow: /~mikep/win9x/patches/

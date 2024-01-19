@@ -1,0 +1,17 @@
+*MOL BA=E4,DM,OEP
+*PRT MOINTS=Y
+*IOP
+   5  13   2 DIPOLE DECOMPOSITION IN L601
+   7  20   1 GENERAL DECOMPOSITION IN L907
+   7  67   1 USE L907
+
+     NH3    EXPERIMENTAL GEOMETRY
+ 0 1
+   7
+  1   1 1.012
+  1   1 1.012    2    106.7
+  1   1 1.012    2    106.7     3      106.7   1
+
+  -3           7
+
+   7   1

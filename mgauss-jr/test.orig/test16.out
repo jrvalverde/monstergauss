@@ -1,0 +1,304 @@
+ WELCOME TO U OF T MONSTERGAUSS                                                                         UNX VERSION: 13 AUG 1991
+ ******************************
+0CONTROL CARDS:
+
+ *MOL RHF, FORCE                                                         
+ *PRT I=Y, P=Y                                                           
+ *IOP                                                                    
+    4  28   1 PRINT LAGRANGE MULTIPLIERS                                 
+    4  30   1 PRINT VECTOR COUPLING COEFFICIENTS                         
+    8  21   2 PRINT GRADIENT COMPONENTS                                  
+    0   0   0                                                            
+
+0SEQUENCE    GROUP     MG OPTIONS         GROUP OPTIONS (USER CONTROLLABLE)                  LINKS TO BE CALLED          JUMP
+
+     1         2      000000012100 000000000000000000000000000000000000000000000000   01000000000000000000000000000000     0
+     2         3      000000012100 004000000000000000000000000000000000000000000000   11000100000000000000000000000000     0
+     3         4      000000012100 000000010000000010000000000000000000000000000000   11000000000000000000000000000000     0
+     4         5      000000012100 100000000000000111000000000000000000000000000000   00100000000000000000000000000000     0
+     5         6      000000012100 000001000000000000001000000000000000000000000000   10000000000000000000000000000000     0
+     8         7      000000012100 000000002000000000000000000000000000000000000000   01100000001000000000000000000000     0
+0OPTION NUMBERS:      000000000111 111111122222222223333333333444444444455555555556   66666666677777777778888888888999
+                      123456789012 345678901234567890123456789012345678901234567890   12345678901234567890123456789012
+
+0CONVERSION FACTORS:  1 BOHR =  .52917706 ANGSTROMS
+0                     1 HARTREE/BOHR = 8.2388584 MDYNE
+
+                      1 HARTREE/ANGSTROM**2 = 4.3598149 MDYNE/ANGSTROM
+
+                      1 ELECTRON*BOHR = 2.5417655 DEBYE
+
+                      1 HARTREE/PARTICLE = 627.50959 KCAL/MOL = 2625.5001 KJ/MOL = 27.211611 EV/PARTICLE = 219474.67 CM(-1)/PARTICLE
+
+                      1 ATOMIC UNIT OF ELECTRIC FIELD = 5.1422506D+09 VOLTS/CM
+1NH TRIPLET SIGMA MINUS  STO-3G                                          
+ ------------------------------------------------------------------------
+0CHARGE  =   0          MULTIPLICITY  =  3
+
+0FREE FORMAT Z MATRIX:
+
+    7                                                                    
+    1   1 1.087                                                          
+                                                                         
+0NO VARIABLES USED - SWITCHING TO STANDARD Z MATRIX FORMAT FOR OUTPUT
+1
+0---------------------------------------------------------------------------------------------------
+                                             Z MATRIX
+0  I   AN   Z1      BL                  Z2     ALPHA                Z3      BETA                Z4
+ ---------------------------------------------------------------------------------------------------
+   1    7
+   2    1    1   1.0870000   (  1)   
+ ---------------------------------------------------------------------------------------------------
+
+
+ ------------------------------------------------------------------------------------------------------------------------------------
+                    COORDINATES IN ANGSTROMS                               COORDINATES IN BOHR                    ATOMIC ISOTOPE/MASS
+   I   AN        X             Y             Z                        X             Y             Z               MASS#    MASS (AMU)
+ ------------------------------------------------------------------------------------------------------------------------------------
+   1    7     .0000000      .0000000      .0000000                 .0000000      .0000000      .0000000             14    14.00307401
+   2    1     .0000000      .0000000     1.0870000                 .0000000      .0000000     2.0541329              1     1.00782504
+ ------------------------------------------------------------------------------------------------------------------------------------
+
+0BASIS SET TYPE: STANDARD STO-3G      ( 5D/ 7F)
+ POLARIZATION  : NONE                                                                                 
+ DIFFUSE FUNCS : NONE                                                                                 
+ CONTAINS   3 SHELLS AND   6 BASIS FUNCTIONS
+0RYSSET ROOT STATISTICS:     INTERPOLATED:       84     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       24
+0STANDARD CUTOFFS SELECTED IN SHELL.
+0SHELL: FMTGEN WAS CALLED       19 TIMES
+
+
+         83 TWO ELECTRON INTEGRALS WRITTEN OUT ON UNIT  9 WITH INTEGRAL CUTOFF  1.00000D-10
+1RHF OPEN SHELL SPECIFICATION
+0GROUP     : FA    
+ DEGENERACY: 320000
+ ALPHA OCC : 000000
+ BETA OCC  : 000000
+
+0ORBITAL GROUP :       F       D       S       A       V
+0NUMBER OF MO  :       3       0       0       2       1
+
+0LEVEL    DEGENERACY    DOUBLE OCC    SINGLE ALPHA    SINGLE BETA    CONFIGURATIONS    SAMPLE CONFIGURATION
+0  1           2             0              2               0               1          A   A   
++                                                                                      __  __  
+
+0COULOMB COUPLING COEFFICIENTS   A(I,J)
+0  MO          OCCA      OCCB         CLOSED   OPEN 1   OPEN 2   
+0CLOSED       3.0000    3.0000        2.0000   1.0000   1.0000
+ OPEN 1       1.0000     .0000        1.0000    .0000    .5000
+ OPEN 2       1.0000     .0000        1.0000    .5000    .0000
+
+0EXCHANGE COUPLING COEFFICIENTS   B(I,J)
+0  MO          OCCA      OCCB         CLOSED   OPEN 1   OPEN 2   
+0CLOSED       3.0000    3.0000        1.0000    .5000    .5000
+ OPEN 1       1.0000     .0000         .5000    .0000    .5000
+ OPEN 2       1.0000     .0000         .5000    .5000    .0000
+
+0EH INITIAL GUESS ... SCALE FACTOR (K/2) =  .8750
+ SMALLEST EIGENVALUE OF OVERLAP IS  3.76231D-01
+1INITIAL GUESS COEFFICIENTS         5 ALPHA SPIN ELECTRONS,    3 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6
+ 
+    EIGENVALUES---   -15.68059   -1.19740    -.46500    -.42000    -.42000     .49085
+ 
+   1  1   N   1S       1.00110     .20699     .04597     .00000     .00000     .13066
+   2  1   N   2S       -.00397    -.83862    -.24864     .00000     .00000    -.79824
+   3  1   N   2PX       .00000     .00000     .00000    -.00205    1.00000     .00000
+   4  1   N   2PY       .00000     .00000     .00000    1.00000     .00205     .00000
+   5  1   N   2PZ       .00154     .06276     .86665     .00000     .00000    -.71962
+ 
+   6  2   H   1S       -.00384    -.32833     .25372     .00000     .00000    1.19556
+ 
+ 
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 25, RE-ORDERED BY GROUPS
+ THESE MO COEFFICIENTS HAVE BEEN WRITTEN TO FILE 27, RE-ORDERED BY GROUPS
+1RHF OPEN SHELL SCF               NUCLEAR REPULSION ENERGY IS      3.407763956  HARTREES
+0CONVERGENCE ON DENSITY MATRIX REQUIRED TO EXIT IS  1.0000D-06,  INITIAL SCALE FACTOR (SCALST) IS  .80000
+ SCALE FACTOR CUT RATIO (FACTDN) IS  .66667,  SCALE FACTOR INCREASE RATIO (FACTUP) IS 1.20000
+ SCALE FACTOR LOWER LIMIT (SLIMDN) IS  .00050,  SCALE FACTOR UPPER LIMIT (SLIMUP) IS  .80000
+ SWITCH TO INCREASE MODE AT D CONVERGENCE  2.0000D-03 (SCRIT, RHF=INCR MODE ONLY).
+0 CYCLE                   ENERGY                    SCF CONVERGENCE         CI CONVERGENCE         EXTRAPOLATION     SCALE      RESET
+0 CI SCF       ELECTRONIC           TOTAL          COEFF      DENSITY      COEFF      DENSITY
+
+   1   0      -57.548903300      -54.141139344             
+   1   1      -57.460741976      -54.052978020              1.1072D-01                                             5.3333D-01    YES 
+   1   2      -57.561684306      -54.153920351   2.9995D-02 8.2859D-02                                             8.0000D-01    YES 
+   1   3      -57.662736697      -54.254972741   6.3810D-03 1.8906D-02                                             8.0000D-01    YES 
+   1   4      -57.666453119      -54.258689163   1.4646D-03 4.3621D-03                                             8.0000D-01    YES 
+   1   5      -57.666910653      -54.259146697   3.2434D-04 9.6858D-04                                4-POINT      8.0000D-01    YES 
+   1   6      -57.666968701      -54.259204746              9.6862D-06                                             8.0000D-01    YES 
+   1   7      -57.666974609      -54.259210654   4.7010D-07 1.4369D-06                                             8.0000D-01    YES 
+   1   8      -57.666975104      -54.259211149                                       .0000D+00                     8.0000D-01    YES 
+0AT TERMINATION TOTAL ENERGY IS      -54.259211  HARTREES          ORBITAL CONVERGENCE IS 1.42963D-07
+
+0S = 1.000 ( 1.000 EXPECTED),   S(S+1) =  2.0000 (  2.0000 EXPECTED)
+1VECTOR COUPLING COEFFICIENTS  (NFOCK X NFOCK+2)
+
+
+              1           2           3           4           5
+0
+   1      1.000000    -.500000    -.500000    2.000000   -1.000000
+   2      1.000000     .000000    -.500000     .000000     .000000
+   3      1.000000     .500000     .000000     .000000     .000000
+0
+1LAGRANGE MULTIPLIERS MATRIX
+
+
+              1           2           3           4           5           6
+0
+   1    -15.329582     .000000     .000000     .000000     .000000     .000000
+   2       .000000    -.962566     .000000     .000000     .000000     .000000
+   3       .000000     .000000    -.455574     .000000     .000000     .000000
+   4       .000000     .000000     .000000    -.232467     .000000     .000000
+   5       .000000     .000000     .000000     .000000    -.232467     .000000
+   6       .000000     .000000     .000000     .000000     .000000     .596049
+0
+1MOLECULAR ORBITALS         5 ALPHA SPIN ELECTRONS,   3 BETA SPIN ELECTRONS
+
+                           1          2          3          4          5          6
+ 
+    EIGENVALUES---   -15.32958    -.96257    -.45557    -.23247    -.23247     .59605
+ 
+   1  1   N   1S        .99447    -.23320     .10983     .00000     .00000     .09394
+   2  1   N   2S        .02395     .85963    -.54378     .00000     .00000    -.60587
+   3  1   N   2PX       .00000     .00000     .00000    -.00205    1.00000     .00000
+   4  1   N   2PY       .00000     .00000     .00000    1.00000     .00205     .00000
+   5  1   N   2PZ       .00397     .12820     .65391     .00000     .00000    -.91040
+ 
+   6  2   H   1S       -.00647     .25595     .51093     .00000     .00000    1.12913
+ 
+ 
+ THE FIRST   3 MO ARE DOUBLY OCCUPIED FROZEN CORE ORBITALS
+0OPEN SHELL ORBITAL OCCUPANCIES:    MO     OCCA     OCCB
+                                     4    1.0000    .0000
+                                     5    1.0000    .0000
+1MULLIKEN POPULATION MATRIX (ALPHA SPIN)
+
+                           1          2          3          4          5          6
+ 
+   1  1   N   1S       1.05541    -.05556     .00000     .00000     .00000    -.00049
+   2  1   N   2S       -.05556    1.03523     .00000     .00000     .00000    -.02604
+   3  1   N   2PX       .00000     .00000    1.00000     .00000     .00000     .00000
+   4  1   N   2PY       .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   N   2PZ       .00000     .00000     .00000     .00000     .44405     .15144
+ 
+   6  2   H   1S       -.00049    -.02604     .00000     .00000     .15144     .32660
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (ALPHA SPIN)     (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2
+ 
+         1   N         4.42358     .12491
+ 
+         2   H          .12491     .32660
+ 
+1MULLIKEN POPULATION MATRIX (BETA SPIN) 
+
+                           1          2          3          4          5          6
+ 
+   1  1   N   1S       1.05541    -.05556     .00000     .00000     .00000    -.00049
+   2  1   N   2S       -.05556    1.03523     .00000     .00000     .00000    -.02604
+   3  1   N   2PX       .00000     .00000     .00000     .00000     .00000     .00000
+   4  1   N   2PY       .00000     .00000     .00000     .00000     .00000     .00000
+   5  1   N   2PZ       .00000     .00000     .00000     .00000     .44405     .15144
+ 
+   6  2   H   1S       -.00049    -.02604     .00000     .00000     .15144     .32660
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (BETA SPIN)      (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2
+ 
+         1   N         2.42358     .12491
+ 
+         2   H          .12491     .32660
+ 
+1MULLIKEN POPULATION MATRIX (TOTAL)     
+
+                           1          2          3          4          5          6
+ 
+   1  1   N   1S       2.11082    -.11112     .00000     .00000     .00000    -.00098
+   2  1   N   2S       -.11112    2.07047     .00000     .00000     .00000    -.05208
+   3  1   N   2PX       .00000     .00000    1.00000     .00000     .00000     .00000
+   4  1   N   2PY       .00000     .00000     .00000    1.00000     .00000     .00000
+   5  1   N   2PZ       .00000     .00000     .00000     .00000     .88809     .30288
+ 
+   6  2   H   1S       -.00098    -.05208     .00000     .00000     .30288     .65320
+ 
+1GROSS ORBITAL CHARGES (ALPHA(1), BETA(2), TOTAL(3)) AND ORBITAL SPIN DENSITIES(4)
+
+                           1          2          3          4
+ 
+   1  1   N   1S        .99936     .99936    1.99873     .00000
+   2  1   N   2S        .95364     .95364    1.90727     .00000
+   3  1   N   2PX      1.00000     .00000    1.00000    1.00000
+   4  1   N   2PY      1.00000     .00000    1.00000    1.00000
+   5  1   N   2PZ       .59549     .59549    1.19098     .00000
+ 
+   6  2   H   1S        .45151     .45151     .90303     .00000
+ 
+1MULLIKEN POPULATION MATRIX CONDENSED TO ATOMS (TOTAL)          (DOUBLE THE OFF-DIAGONAL ELEMENTS FOR 'BOND ORDERS')
+
+                           1          2
+ 
+         1   N         6.84715     .24982
+ 
+         2   H          .24982     .65320
+ 
+0ATOMIC CHARGES (ALPHA(1), BETA(2)), ATOMIC SPIN DENSITIES(3), ATOMIC CHARGES (TOTAL(4), NET(5))
+
+                           1          2          3          4          5
+ 
+         1   N         4.54849    2.54849    2.00000    7.09697    -.09697
+ 
+         2   H          .45151     .45151     .00000     .90303     .09697
+ 
+1BOND ORDER AND VALENCE INDICES (I. MAYER, I.J.Q.C., 29, 477-483 (1986))
+
+
+          BOND ORDER MATRIX
+
+                           1          2
+ 
+         1   N          .00000     .99060
+ 
+         2   H          .99060     .00000
+ 
+0                      VALENCE  FREE VALENCE
+
+                           1          2
+ 
+         1   N         2.99060    2.00000
+ 
+         2   H          .99060     .00000
+ 
+0RYSSET ROOT STATISTICS:     INTERPOLATED:       85     CALCULATED:        0     ASSYMPTOTIC APPROXIMATION:       23
+0DTWOL: FMTGEN WAS CALLED       15 TIMES.
+1ENERGY TERMS:
+0KINETIC:     54.099980689
+ V (NE) :   -135.008621609
+ V (EE) :       .000000000
+ NUCLEAR:      3.407763956
+          ----------------
+ TOTAL  :    -77.500876964
+
+0ATOMIC POSITION DERIVATIVE COMPONENTS (MDYNE)
+0CENTER               VNE(OPR)         VNE(WFN)          T(WFN)          VEE(WFN)          COEF            NUCLEAR           TOTAL
+0 1   N     X         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Y         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Z        -.9300202      -33.2073193        3.7065971       14.9195082        1.7854052       13.6680956        -.0577334
+0 2   H     X         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Y         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000         .0000000
+            Z       13.3049123       20.8324272       -3.7065971      -14.9195082       -1.7854052      -13.6680956         .0577334
+1INTERNAL COORDINATE DERIVATIVES (MDYNE OR MDYNE-ANGSTROM/RADIAN)
+
+0  I   AN   Z1     BL                  Z2      ALPHA                Z3      BETA                 Z4
+
+   1    7
+   2    1    1    .057733   (  1)   
+0GRADIENT LENGTH OVER ALL INTERNAL COORDINATES (NO CONSTRAINTS):  5.77334D-02
+ LARGEST (ABSOLUTE) GRADIENT COMPONENT:      .057733
+
+
+0NORMAL TERMINATION, TOTAL CPU TIME FOR THIS CALCULATION WAS      .006 MINUTES.
+0.3u 0.2s 0:01 48%

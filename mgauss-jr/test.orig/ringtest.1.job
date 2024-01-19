@@ -1,0 +1,125 @@
+$JOB J.C9H14.1 GAU,1080 S SLOF=O.C9H14 TIME=10
+$AS 7 TO Z.C9H14.1
+$AS 8 TO 8.C9H14 BLOC=N 
+$RUN GAUSS
+*MOL BA=M3, GOPT, ME=OC, RING, RESTART, GU=N
+*PRT P=Y, G=Y 
+*PUN Z
+*IOP
+  18  26   2  SET ANGLE / DIHEDRAL ANGLE CUTOFF BOND LENGTH TO 2.0 ANG
+  
+EXOCYCLIC METHYLENE CIS-FUSED [2,4]-BICYCLOOCTANE GOPT, STO-3G
+ 0 1
+C1
+C2     C1        C1C2 
+C3     C2        C2C3       C1        C3C2C1
+C4     C3        C3C4       C2        C4C3C2     C1       TAUC4 
+C5     C1        C1C5       C2        C5C1C2     C3       TAUC5 
+C6     C2        C2C6       C1        C6C2C1     C3       TAUC6 
+C7     C6        C6C7       C2        C7C6C2     C1       TAUC7 
+C8     C1        C1C8       C2        C8C1C2     C5       TAUC8 
+C9     C8        C8C9       C1        C9C8C1     C2       TAUC9 
+H10    C1        C1H10      C2        H10C1C2    C5       TAUH10
+H11    C2        C2H11      C1        H11C2C1    C3       TAUH11
+H12    C4        C4H12      C3        H12C4C3    C2       TAUH12
+H13    C4        C4H13      C3        H13C4C3    C2       TAUH13
+H14    C5        C5H14      C1        H14C5C1    C2       TAUH14
+H15    C5        C5H15      C1        H15C5C1    C2       TAUH15
+H16    C6        C6H16      C2        H16C6C2    C7       TAUH16
+H17    C6        C6H17      C2        H17C6C2    C7       TAUH17
+H18    C7        C7H18      C6        H18C7C6    C2       TAUH18
+H19    C7        C7H19      C6        H19C7C6    C2       TAUH19
+H20    C8        C8H20      C1        H20C8C1    C9       TAUH20
+H21    C8        C8H21      C1        H21C8C1    C9       TAUH21
+H22    C9        C9H22      C8        H22C9C8    C1       TAUH22
+H23    C9        C9H23      C8        H23C9C8    C1       TAUH23
+  
+C1C2     =    1.55616 
+C2C3     =    1.53165 
+C3C4     =    1.30584 
+C1C5     =    1.53165 
+C2C6     =    1.55616 
+C6C7     =    1.55616 
+C1C8     =    1.55616 
+C8C9     =    1.55616 
+C1H10    =    1.085 
+C2H11    =    1.085 
+C4H12    =    1.085 
+C4H13    =    1.085 
+C5H14    =    1.085 
+C5H15    =    1.085 
+C6H16    =    1.085 
+C6H17    =    1.085 
+C7H18    =    1.085 
+C7H19    =    1.085 
+C8H20    =    1.085 
+C8H21    =    1.085 
+C9H22    =    1.085 
+C9H23    =    1.085 
+C3C2C1   =   88.88
+C4C3C2   =  133.98
+C5C1C2   =   90.19
+C6C2C1   =   TETRA
+C7C6C2   =   TETRA
+C8C1C2   =   TETRA
+C9C8C1   =   TETRA
+H10C1C2  =  114.00
+H11C2C1  =  114.00
+H12C4C3  =  122.00
+H13C4C3  =  122.00
+H14C5C1  =  114.00
+H15C5C1  =  114.00
+H16C6C2  =   TETRA
+H17C6C2  =   TETRA
+H18C7C6  =   TETRA
+H19C7C6  =   TETRA
+H20C8C1  =   TETRA
+H21C8C1  =   TETRA
+H22C9C8  =   TETRA
+H23C9C8  =   TETRA
+TAUC4    =  180.00
+TAUC5    =    0.00
+TAUC6    =  120.00
+TAUC7    =   60.00
+TAUC8    = -120.00
+TAUC9    =  -60.00
+TAUH10   =  120.00
+TAUH11   = -120.00
+TAUH12   =    0.00
+TAUH13   =  180.00
+TAUH14   =  116.60
+TAUH15   = -116.60
+TAUH16   =  120.00
+TAUH17   = -120.00
+TAUH18   =   60.00
+TAUH19   =  180.00
+TAUH20   = -120.00
+TAUH21   =  120.00
+TAUH22   =  -60.00
+TAUH23   =  180.00
+  
+ 0 0 0
+ 0 0 0 0
+ 100   1   0
+  
+ 0 1 0
+ 0 2 0
+ 0 3 0
+ 0 5 0
+ 0 6 0
+ 0 7 0
+ 0 8 0
+ 0 9 0
+ 0 0 0
+ 0 1 2 0
+ 0 1 5 0
+ 0 2 3 0
+ 0 3 5 0
+ 0 2 6 0
+ 0 6 7 0
+ 0 7 9 0
+ 0 8 9 0
+ 0 1 8 0
+ 0 0 0 0
+$EOJ
+$$

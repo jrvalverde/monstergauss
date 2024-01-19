@@ -1,0 +1,1636 @@
+C/    GL0307B      19 FEB 87                                         MRP
+      SUBROUTINE FORMP(A,B,I,J,KLMAX)
+C
+C     ----------------
+C     QCPE GAUSSIAN 80
+C     FEBRUARY 1987
+C     ----------------
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      COMMON/C0307A/CFILL1(25)
+      COMMON/C0307A/SASB,SAPB,SADB,PASB,PAPB,PADB,DASB,DAPB,DADB,
+     1              SCSD,SCPD,SCDD,PCSD,PCPD,PCDD,DCSD,DCPD,DCDD
+      COMMON/C0307A/CFILL2(45),ET(35),CFILL3(292),
+     1S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15,S16,S17,S18,
+     2S19,S20,S21,S22,S23,S24,S25,S26,S27,S28,S29,S30,S31,S32,S33,S34,
+     3S35,S36,S37,S38,S39,S40,S41,S42,S43,S44,S45,S46,S47,S48,S49,S50,
+     4S51,S52,S53,S54,S55,S56,S57,S58,S59,S60,S61,S62,S63,S64,S65,S66,
+     5S67,S68,S69,S70,S71,S72,S73,S74,S75,S76,S77,S78,S79,S80,S81,S82,
+     6S83,S84,S85,S86,S87,S88,S89,S90,S91,S92,S93,S94,S95,S96,S97,S98,
+     7S99,S100,S101,S102,S103,S104,S105,S106,S107,S108,S109,S110,S111
+      COMMON/C0307A/
+     8S112,S113,S114,S115,S116,S117,S118,S119,S120,S121,S122,S123,S124,
+     9S125,S126,S127,S128,S129,S130,S131,S132,S133,S134,S135,S136,S137,
+     AS138,S139,S140,S141,S142,S143,S144,S145,S146,S147,S148,S149,
+     BS150,S151,S152,S153,S154,S155,S156,S157,S158,S159,S160,S161,
+     CS162,S163,S164,S165,S166,S167,S168,S169,S170,S171,S172,S173,S174,
+     DS175,S176,S177,S178,S179,S180,S181,S182,S183,S184,S185,S186,S187,
+     ES188,S189,S190,S191,S192,S193,S194,S195,S196,S197
+      COMMON/C0307A/CFILL4(4807)
+C
+      DIMENSION A(10),B(10)
+C
+      EQUIVALENCE (A1SP,A1SD)
+      EQUIVALENCE (B1PS,A1SD)
+      EQUIVALENCE (A1PP,A1SD)
+      EQUIVALENCE (A1PD,A1PP)
+      EQUIVALENCE (A2PD,A2PP)
+      EQUIVALENCE (A3PD,A3PP)
+      EQUIVALENCE (A4PD,A4PP)
+      EQUIVALENCE (B1DB,A1SD)
+      EQUIVALENCE (B1DP,A1PP)
+      EQUIVALENCE (B3DP,A3PP)
+      EQUIVALENCE (B2DP,A2PP)
+      EQUIVALENCE (B4DP,A4PP)
+      EQUIVALENCE (A1DD,A1PP)
+      EQUIVALENCE (A2DD,A2PP)
+      EQUIVALENCE (A3DD,A3PP)
+      EQUIVALENCE (A4DD,A4PP)
+C
+      DATA ZERO/0.0D0/
+C*
+      GO TO (100,200,300),I
+  100 GO TO (110,120,130),J
+C     ******************************************************************
+C     00  --  SASB
+C     ******************************************************************
+  110 CONTINUE
+      E=A(1)*B(1)*SASB
+      ET(1)=E*S1
+      IF (KLMAX) 500,510,500
+  510 RETURN
+  500 CONTINUE
+      ET(2)=ZERO
+      ET(3)=ZERO
+      ET(4)=E*S2
+      IF (KLMAX-1) 520,510,520
+  520 CONTINUE
+      ET(5)=E*S4
+      ET(6)=ET(5)
+      ET(7)=E*S6
+      ET(8)=ZERO
+      ET(9)=ZERO
+      ET(10)=ZERO
+      IF (KLMAX-2) 530,510,530
+  530 CONTINUE
+      ET(11)=ZERO
+      ET(12)=ZERO
+      ET(13)=E*S10
+      ET(14)=ZERO
+      ET(15)=ET(13)
+      ET(16)=E*S8
+      ET(17)=ZERO
+      ET(18)=ZERO
+      ET(19)=ZERO
+      ET(20)=ZERO
+      IF (KLMAX-3) 540,510,540
+  540 CONTINUE
+      ET(21)=E*S12
+      ET(22)=E*S16
+      ET(23)=E*S18
+      ET(24)=ZERO
+      ET(25)=ZERO
+      ET(26)=ZERO
+      ET(27)=ET(21)
+      ET(28)=ET(23)
+      ET(29)=ZERO
+      ET(30)=E*S14
+      ET(31)=ZERO
+      ET(32)=ZERO
+      ET(33)=ZERO
+      ET(34)=ZERO
+      ET(35)=ZERO
+      RETURN
+C     ******************************************************************
+C     01  --  SAPB
+C     ******************************************************************
+  120 CONTINUE
+      A1SP=A(1)*SAPB
+      E=B(1)*A1SP
+      XE=B(2)*A1SP
+      YE=B(3)*A1SP
+      ZE=B(4)*A1SP
+  125 ET(1)=E*S1+ZE*S3
+      IF (KLMAX) 550,510,550
+  550 CONTINUE
+      ET(2)=XE*S20
+      ET(3)=YE*S20
+      ET(4)=E*S2+ZE*S35
+      IF (KLMAX-1) 560,510,560
+  560 CONTINUE
+      ET(5)=E*S4+ZE*S36
+      ET(6)=ET(5)
+      ET(7)=E*S6+ZE*S38
+      ET(8)=ZERO
+      ET(9)=XE*S21
+      ET(10)=YE*S21
+      IF (KLMAX-2) 570,510,570
+  570 CONTINUE
+      ET(11)=XE*S23
+      ET(12)=YE*S33
+      ET(13)=E*S10+ZE*S42
+      ET(14)=YE*S23
+      ET(15)=ET(13)
+      ET(16)=E*S8+ZE*S40
+      ET(17)=XE*S33
+      ET(18)=ZERO
+      ET(19)=XE*S25
+      ET(20)=YE*S25
+      IF (KLMAX-3) 580,510,580
+  580 CONTINUE
+      ET(21)=E*S12+ZE*S44
+      ET(22)=E*S16+ZE*S48
+      ET(23)=E*S18+ZE*S50
+      ET(24)=ZERO
+      ET(25)=XE*S27
+      ET(26)=YE*S31
+      ET(27)=ET(21)
+      ET(28)=ET(23)
+      ET(29)=YE*S27
+      ET(30)=E*S14+ZE*S46
+      ET(31)=ZERO
+      ET(32)=ZERO
+      ET(33)=XE*S31
+      ET(34)=XE*S29
+      ET(35)=YE*S29
+      RETURN
+C     ******************************************************************
+C     02  --  SADB
+C     ******************************************************************
+  130 CONTINUE
+      A1SD=A(1)*SADB
+      E=B(1)*A1SD
+      XE=B(2)*A1SD
+      YE=B(3)*A1SD
+      ZE=B(4)*A1SD
+      XXE=B(5)*A1SD
+      YYE=B(6)*A1SD
+      ZZE=B(7)*A1SD
+      XYE=B(8)*A1SD
+      XZE=B(9)*A1SD
+      YZE=B(10)*A1SD
+  135 ET(1)=E*S1+ZE*S3+(XXE+YYE)*S5+ZZE*S7
+      IF (KLMAX) 590,510,590
+  590 CONTINUE
+      ET(2)=XE*S20+XZE*S22
+      ET(3)=YE*S20+YZE*S22
+      ET(4)=E*S2+ZE*S35+(XXE+YYE)*S37+ZZE*S39
+      IF (KLMAX-1) 600,510,600
+  600 CONTINUE
+      ET56=E*S4+ZE*S36+ZZE*S54
+      ET(5)=ET56+XXE*S52+YYE*S67
+      ET(6)=ET56+YYE*S52+XXE*S67
+      ET(7)=E*S6+ZE*S38+(XXE+YYE)*S53+ZZE*S74
+      ET(8)=XYE*S87
+      ET(9)=XE*S21+XZE*S94
+      ET(10)=YE*S21+YZE*S94
+      IF (KLMAX-2) 610,510,610
+  610 CONTINUE
+      ET(11)=XE*S23+XZE*S95
+      ET(12)=YE*S33+YZE*S105
+      ET13=E*S10+ZE*S42+ZZE*S77
+      ET(13)=ET13+XXE*S57+YYE*S68
+      ET(14)=YE*S23+YZE*S95
+      ET(15)=ET13+YYE*S57+XXE*S68
+      ET(16)=E*S8+ZE*S40+(XXE+YYE)*S55+ZZE*S75
+      ET(17)=XE*S33+XZE*S105
+      ET(18)=XYE*S88
+      ET(19)=XE*S25+XZE*S97
+      ET(20)=YE*S25+YZE*S97
+      IF (KLMAX-3) 620,510,620
+  620 CONTINUE
+      ET21=E*S12+ZE*S44+ZZE*S79
+      ET(21)=ET21+XXE*S59+YYE*S70
+      ET(22)=E*S16+ZE*S48+(XXE+YYE)*S63+ZZE*S83
+      ET23=E*S18+ZE*S50+ZZE*S85
+      ET(23)=ET23+XXE*S65+YYE*S72
+      ET(24)=XYE*S90
+      ET(25)=XE*S27+XZE*S99
+      ET(26)=YE*S31+YZE*S103
+      ET(27)=ET21+YYE*S59+XXE*S70
+      ET(28)=ET23+YYE*S65+XXE*S72
+      ET(29)=YE*S27+YZE*S99
+      ET(30)=E*S14+ZE*S46+(XXE+YYE)*S61+ZZE*S81
+      ET(31)=XYE*S90
+      ET(32)=XYE*S92
+      ET(33)=XE*S31+XZE*S103
+      ET(34)=XE*S29+XZE*S101
+      ET(35)=YE*S29+YZE*S101
+      RETURN
+  200 GO TO (210,220,230),J
+C     ******************************************************************
+C     10  --  PASB
+C     ******************************************************************
+  210 CONTINUE
+      B1PS=B(1)*PASB
+      E=A(1)*B1PS
+      XE=A(2)*B1PS
+      YE=A(3)*B1PS
+      ZE=A(4)*B1PS
+      GO TO 125
+C     ******************************************************************
+C     11  --  PAPB
+C     ******************************************************************
+  220 CONTINUE
+      A1PP=A(1)*PAPB
+      A2PP=A(2)*PAPB
+      A3PP=A(3)*PAPB
+      A4PP=A(4)*PAPB
+      E=A1PP*B(1)
+      XE=A1PP*B(2)+A2PP*B(1)
+      YE=A1PP*B(3)+A3PP*B(1)
+      ZE=A1PP*B(4)+A4PP*B(1)
+      XXE=A2PP*B(2)
+      YYE=A3PP*B(3)
+      ZZE=A4PP*B(4)
+      XYE=A2PP*B(3)+A3PP*B(2)
+      XZE=A2PP*B(4)+A4PP*B(2)
+      YZE=A3PP*B(4)+A4PP*B(3)
+      GO TO 135
+C     ******************************************************************
+C     12  --  PADB
+C     ******************************************************************
+  230 CONTINUE
+      A1PD=A(1)*PADB
+      A2PD=A(2)*PADB
+      A3PD=A(3)*PADB
+      A4PD=A(4)*PADB
+      E=A1PD*B(1)
+      XE=A1PD*B(2)+A2PD*B(1)
+      YE=A1PD*B(3)+A3PD*B(1)
+      ZE=A1PD*B(4)+A4PD*B(1)
+      XXE=A1PD*B(5)+A2PD*B(2)
+      YYE=A1PD*B(6)+A3PD*B(3)
+      ZZE=A1PD*B(7)+A4PD*B(4)
+      XYE=A1PD*B(8)+A3PD*B(2)+A2PD*B(3)
+      XZE=A1PD*B(9)+A4PD*B(2)+A2PD*B(4)
+      YZE=A1PD*B(10)+A4PD*B(3)+A3PD*B(4)
+      XXXE=A2PD*B(5)
+      XXYE=A3PD*B(5)+A2PD*B(8)
+      XXZE=A4PD*B(5)+A2PD*B(9)
+      YYYE=A3PD*B(6)
+      YYZE=A4PD*B(6)+A3PD*B(10)
+      ZZZE=A4PD*B(7)
+      XYYE=A3PD*B(8)+A2PD*B(6)
+      XYZE=A4PD*B(8)+A3PD*B(9)+A2PD*B(10)
+      XZZE=A4PD*B(9)+A2PD*B(7)
+      YZZE=A4PD*B(10)+A3PD*B(7)
+  235 ET(1)=E*S1+ZE*S3+(XXE+YYE)*S5+ZZE*S7+ZZZE*S9+(XXZE+YYZE)*S11
+      IF (KLMAX) 630,510,630
+  630 CONTINUE
+      ET(2)=XE*S20+XZE*S22+XXXE*S24+XZZE*S26+XYYE*S34
+      ET(3)=YE*S20+YZE*S22+YYYE*S24+YZZE*S26+XXYE*S34
+      ET(4)=E*S2+ZE*S35+(XXE+YYE)*S37+ZZE*S39+ZZZE*S41+(XXZE+YYZE)*S43
+      IF (KLMAX-1) 640,510,640
+  640 CONTINUE
+      ET5=E*S4+ZE*S36+ZZE*S54+ZZZE*S56
+      ET(5)=ET5+XXE*S52+XXZE*S58+YYE*S67+YYZE*S69
+      ET(6)=ET5+YYE*S52+YYZE*S58+XXE*S67+XXZE*S69
+      ET(7)=E*S6+ZE*S38+(XXE+YYE)*S53+ZZE*S74+ZZZE*S76+(XXZE+YYZE)*S78
+      ET(8)=XYE*S87+XYZE*S89
+      ET(9)=XE*S21+XZE*S94+XXXE*S96+XZZE*S98+XYYE*S106
+      ET(10)=YE*S21+YZE*S94+YYYE*S96+YZZE*S98+XXYE*S106
+      IF (KLMAX-2) 650,510,650
+  650 CONTINUE
+      ET(11)=XE*S23+XZE*S95+XXXE*S107+XZZE*S109+XYYE*S117
+      ET(12)=YE*S33+YZE*S105+YYYE*S116+XXYE*S129+YZZE*S135
+      ET13=E*S10+ZE*S42+ZZE*S77+ZZZE*S119
+      ET(13)=ET13+XXE*S57+YYE*S68+XXZE*S138+YYZE*S147
+      ET(14)=YE*S23+YZE*S95+YYYE*S107+YZZE*S109+XXYE*S117
+      ET(15)=ET13+YYE*S57+XXE*S68+YYZE*S138+XXZE*S147
+      ET(16)=E*S8+ZE*S40+(XXE+YYE)*S55+ZZE*S75+ZZZE*S118+(XXZE+YYZE)*S12
+     10
+      ET(17)=XE*S33+XZE*S105+XXXE*S116+XYYE*S129+XZZE*S135
+      ET(18)=XYE*S88+XYZE*S159
+      ET(19)=XE*S25+XZE*S97+XXXE*S108+XYYE*S134+XZZE*S152
+      ET(20)=YE*S25+YZE*S97+YYYE*S108+XXYE*S134+YZZE*S152
+      IF (KLMAX-3) 660,510,660
+  660 CONTINUE
+      ET21=E*S12+ZE*S44+ZZE*S79+ZZZE*S121
+      ET(21)=ET21+XXE*S59+YYE*S70+XXZE*S139+YYZE*S148
+      ET(22)=E*S16+ZE*S48+(XXE+YYE)*S63+ZZE*S83+ZZZE*S125+(XXZE+YYZE)*S1
+     143
+      ET23=E*S18+ZE*S50+ZZE*S85+ZZZE*S127
+      ET(23)=ET23+XXE*S65+YYE*S72+XXZE*S145+YYZE*S150
+      ET(24)=XYE*S90+XYZE*S160
+      ET(25)=XE*S27+XZE*S99+XXXE*S110+XYYE*S132+XZZE*S153
+      ET(26)=YE*S31+YZE*S103+YYYE*S114+XXYE*S130+YZZE*S157
+      ET(27)=ET21+YYE*S59+XXE*S70+YYZE*S139+XXZE*S148
+      ET(28)=ET23+YYE*S65+XXE*S72+YYZE*S145+XXZE*S150
+      ET(29)=YE*S27+YZE*S99+YYYE*S110+YZZE*S153
+     $+XXYE*S132
+      ET(30)=E*S14+ZE*S46+(XXE+YYE)*S61+ZZE*S81+ZZZE*S123+(XXZE+YYZE)*S1
+     141
+      ET(31)=XYE*S90+XYZE*S160
+      ET(32)=XYE*S92+XYZE*S162
+      ET(33)=XE*S31+XZE*S103+XXXE*S114+XYYE*S130+XZZE*S157
+      ET(34)=XE*S29+XZE*S101+XXXE*S112+XYYE*S136+XZZE*S155
+      ET(35)=YE*S29+YZE*S101+YYYE*S112+XXYE*S136+YZZE*S155
+      RETURN
+  300 GO TO (310,320,330),J
+C     ******************************************************************
+C     20  --  DS
+C     ******************************************************************
+  310 CONTINUE
+      B1DB=B(1)*DASB
+      E=A(1)*B1DB
+      XE=A(2)*B1DB
+      YE=A(3)*B1DB
+      ZE=A(4)*B1DB
+      XXE=A(5)*B1DB
+      YYE=A(6)*B1DB
+      ZZE=A(7)*B1DB
+      XYE=A(8)*B1DB
+      XZE=A(9)*B1DB
+      YZE=A(10)*B1DB
+      GO TO 135
+C     ******************************************************************
+C     21  --  DP
+C     ******************************************************************
+  320 CONTINUE
+      B1DP=B(1)*DAPB
+      B2DP=B(2)*DAPB
+      B3DP=B(3)*DAPB
+      B4DP=B(4)*DAPB
+      E=A(1)*B1DP
+      XE=A(1)*B2DP+A(2)*B1DP
+      YE=A(1)*B3DP+A(3)*B1DP
+      ZE=A(1)*B4DP+A(4)*B1DP
+      XXE=A(2)*B2DP+A(5)*B1DP
+      YYE=A(3)*B3DP+A(6)*B1DP
+      ZZE=A(4)*B4DP+A(7)*B1DP
+      XYE=A(3)*B2DP+A(2)*B3DP+A(8)*B1DP
+      XZE=A(4)*B2DP+A(2)*B4DP+A(9)*B1DP
+      YZE=A(4)*B3DP+A(3)*B4DP+A(10)*B1DP
+      XXXE=A(5)*B2DP
+      XXYE=A(8)*B2DP+A(5)*B3DP
+      XXZE=A(9)*B2DP+A(5)*B4DP
+      YYYE=A(6)*B3DP
+      YYZE=A(10)*B3DP+A(6)*B4DP
+      ZZZE=A(7)*B4DP
+      XYYE=A(6)*B2DP+A(8)*B3DP
+      XYZE=A(10)*B2DP+A(9)*B3DP+A(8)*B4DP
+      XZZE=A(7)*B2DP+A(9)*B4DP
+      YZZE=A(7)*B3DP+A(10)*B4DP
+      GO TO 235
+C     ******************************************************************
+C     22  --  DD
+C     ******************************************************************
+  330 CONTINUE
+      A1DD=A(1)*DADB
+      A2DD=A(2)*DADB
+      A3DD=A(3)*DADB
+      A4DD=A(4)*DADB
+      A5DD=A(5)*DADB
+      A6DD=A(6)*DADB
+      A7DD=A(7)*DADB
+      A8DD=A(8)*DADB
+      A9DD=A(9)*DADB
+      A10DD=A(10)*DADB
+      E=A1DD*B(1)
+      ZE=A1DD*B(4)+A4DD*B(1)
+      XXE=A1DD*B(5)+A2DD*B(2)+A5DD*B(1)
+      YYE=A1DD*B(6)+A3DD*B(3)+A6DD*B(1)
+      ZZE=A1DD*B(7)+A4DD*B(4)+A7DD*B(1)
+      XXZE=A4DD*B(5)+A2DD*B(9)+A9DD*B(2)+A5DD*B(4)
+      YYZE=A4DD*B(6)+A3DD*B(10)+A10DD*B(3)+A6DD*B(4)
+      ZZZE=A4DD*B(7)+A7DD*B(4)
+      XXXXE=A5DD*B(5)
+      XXYYE=A6DD*B(5)+A8DD*B(8)+A5DD*B(6)
+      XXZZE=A7DD*B(5)+A9DD*B(9)+A5DD*B(7)
+      YYYYE=A6DD*B(6)
+      YYZZE=A7DD*B(6)+A10DD*B(10)+A6DD*B(7)
+      ZZZZE=A7DD*B(7)
+      ET(1)=E*S1+ZE*S3+(XXE+YYE)*S5+ZZE*S7+ZZZE*S9+(XXZE+YYZE)*S11+(XXXX
+     1E+YYYYE)*S13+ZZZZE*S15+XXYYE*S17+(XXZZE+YYZZE)*S19
+      IF (KLMAX) 670,510,670
+  670 CONTINUE
+      XE=A1DD*B(2)+A2DD*B(1)
+      YE=A1DD*B(3)+A3DD*B(1)
+      XZE=A1DD*B(9)+A4DD*B(2)+A2DD*B(4)+A9DD*B(1)
+      YZE=A1DD*B(10)+A4DD*B(3)+A3DD*B(4)+A10DD*B(1)
+      XXXE=A2DD*B(5)+A5DD*B(2)
+      XXYE=A3DD*B(5)+A2DD*B(8)+A8DD*B(2)+A5DD*B(3)
+      YYYE=A3DD*B(6)+A6DD*B(3)
+      XYYE=A3DD*B(8)+A6DD*B(2)+A2DD*B(6)+A8DD*B(3)
+      XZZE=A4DD*B(9)+A7DD*B(2)+A2DD*B(7)+A9DD*B(4)
+      YZZE=A4DD*B(10)+A7DD*B(3)+A3DD*B(7)+A10DD*B(4)
+      XXXZE=A9DD*B(5)+A5DD*B(9)
+      XXYZE=A10DD*B(5)+A9DD*B(8)+A8DD*B(9)+A5DD*B(10)
+      YYYZE=A10DD*B(6)+A6DD*B(10)
+      XYYZE=A10DD*B(8)+A6DD*B(9)+A9DD*B(6)+A8DD*B(10)
+      XZZZE=A7DD*B(9)+A9DD*B(7)
+      YZZZE=A7DD*B(10)+A10DD*B(7)
+      ET(2)=XE*S20+XZE*S22+XXXE*S24+XZZE*S26+XXXZE*S28+XZZZE*S30+XYYZE*S
+     132+XYYE*S34
+      ET(3) =YE*S20+YZE*S22+YYYE*S24+YZZE*S26+YYYZE*S28+YZZZE*S30+XXYZE*
+     1S32+XXYE*S34
+      ET(4)=E*S2+ZE*S35+(XXE+YYE)*S37+ZZE*S39+ZZZE*S41+(XXZE+YYZE)*S43+
+     1(XXXXE+YYYYE)*S45+ZZZZE*S47+XXYYE*S49+(XXZZE+YYZZE)*S51
+      IF (KLMAX-1) 680,510,680
+  680 CONTINUE
+      XYE=A1DD*B(8)+A3DD*B(2)+A2DD*B(3)+A8DD*B(1)
+      XYZE=A4DD*B(8)+A3DD*B(9)+A10DD*B(2)+A2DD*B(10)+A9DD*B(3)+A8DD*B(4)
+      XXXYE=A8DD*B(5)+A5DD*B(8)
+      XYZZE=A7DD*B(8)+A10DD*B(9)+A9DD*B(10)+A8DD*B(7)
+      XYYYE=A6DD*B(8)+A8DD*B(6)
+      ET5=E*S4+ZE*S36+ZZE*S54+ZZZE*S56+ZZZZE*S62
+      ET(5)=ET5+XXE*S52+XXZE*S58+XXXXE*S60+XXYYE*S64+XXZZE*S66+YYE*S67+
+     1YYZE*S69+ YYYYE*S71+YYZZE*S73
+      ET(6)=ET5+YYE*S52+YYZE*S58+YYYYE*S60+XXYYE*S64+YYZZE*S66+XXE*S67+
+     1XXZE*S69+XXXXE*S71+XXZZE*S73
+      ET(7)=E*S6+ZE*S38+(XXE+YYE)*S53+ZZE*S74+ZZZE*S76+(XXZE+YYZE)*S78+
+     1(XXXXE+YYYYE)*S80+ZZZZE*S82+XXYYE*S84+(XXZZE+YYZZE)*S86
+      ET(8)=XYE*S87+XYZE*S89+XXXYE*S91+XYYYE*S91+XYZZE*S93
+      ET(9)=XE*S21+XZE*S94+XXXE*S96+XZZE*S98+XXXZE*S100+XZZZE*S102+XYYZE
+     1*S104+XYYE*S106
+      ET(10)=YE*S21+YZE*S94+YYYE*S96+YZZE*S98+YYYZE*S100+YZZZE*S102+XXYZ
+     1E*S104+XXYE*S106
+      IF (KLMAX-2) 690,510,690
+  690 CONTINUE
+      ET(11)=XE*S23+XZE*S95+XXXE*S107+XZZE*S109+XXXZE*S111+XZZZE*S113+XY
+     1YZE*S115+XYYE*S117
+      ET(12)=YE*S33+YZE*S105+YYYE*S116+XXYE*S129+XXYZE*S131+YYYZE*S133+Y
+     1ZZE*S135+YZZZE*S137
+      ET13=E*S10+ZE*S42+ZZE*S77+ZZZE*S119+ZZZZE*S142
+      ET(13)=ET13+XXE*S57+YYE*S68+XXZE*S138+XXXXE*S140+XXYYE*S144+XXZZE*
+     1S146+YYZE*S147+YYYYE*S149+YYZZE*S151
+      ET(14)=YE*S23+YZE*S95+YYYE*S107+YZZE*S109+ YYYZE*S111+YZZZE*S113+
+     1XXYZE*S115+XXYE*S117
+      ET(15)=ET13+YYE*S57+XXE*S68+YYZE*S138+YYYYE*S140+XXYYE*S144+YYZZE*
+     1S146+XXZE*S147+XXXXE*S149+XXZZE*S151
+      ET(16)=E*S8+ZE*S40+(XXE+YYE)*S55+ZZE*S75+ZZZE*S118+(XXZE+YYZE)*S12
+     10+(XXXXE+YYYYE)*S122+ZZZZE*S124+XXYYE*S126+(XXZZE+YYZZE)*S128
+      ET(17)=XE*S33+XZE*S105+XXXE*S116+XYYE*S129+XYYZE*S131+XXXZE*S133+X
+     1ZZE*S135+XZZZE*S137
+      ET(18)=XYE*S88+XYZE*S159+(XXXYE+XYYYE)*S161+XYZZE*S163
+      ET(19)=XE*S25+XZE*S97+XXXE*S108+XYYE*S134+XZZE*S152+XXXZE*S154+XZZ
+     1ZE*S156+XYYZE*S158
+      ET(20)=YE*S25+YZE*S97+YYYE*S108+XXYE*S134+YZZE*S152+YYYZE*S154+YZZ
+     1ZE*S156+XXYZE*S158
+      IF (KLMAX-3) 700,510,700
+  700 CONTINUE
+      ET(21)=E*S12+ZE*S44+XXE*S59+YYE*S70+ZZE*S79+ZZZE*S121+XXZE*S139+YY
+     1ZE*S148+XXXXE*S164+ZZZZE*S166+XXYYE*S168+XXZZE*S170+YYYYE*S171+YYZ
+     2ZE*S173
+      ET(22)=E*S16+ZE*S48+(XXE+YYE)*S63+ZZE*S83+ZZZE*S125+(XXZE+YYZE)*S1
+     143+(XXXXE+YYYYE)*S167+ZZZZE*S175+XXYYE*S191+(XXZZE+YYZZE)*S193
+      ET(23)=E*S18+ZE*S50+XXE*S65+YYE*S72+ZZE*S85+ZZZE*S127+XXZE*S145+YY
+     1ZE*S150+XXXXE*S169+YYYYE*S172+ZZZZE*S177+XXYYE*S192+XXZZE*S194+YYZ
+     2ZE*S195
+      ET(24)=XYE*S90+XYZE*S160+XXXYE*S179+XYZZE*S181+XYYYE*S182
+      ET(25)=XE*S27+XZE*S99+XXXE*S110+XYYE*S132+XZZE*S153+XXXZE*S183+XZZ
+     1ZE*S185+XYYZE*S187
+      ET(26)=YE*S31+YZE*S103+YYYE*S114+XXYE*S130+YZZE*S157+YYYZE*S186+YZ
+     1ZZE*S189+XXYZE*S196
+      ET(27)=E*S12+ZE*S44+YYE*S59+XXE*S70+ZZE*S79+ZZZE*S121+YYZE*S139+XX
+     1ZE*S148+YYYYE*S164+ZZZZE*S166+XXYYE*S168+YYZZE*S170+XXXXE*S171+XXZ
+     2ZE*S173
+      ET(28)=E*S18+ZE*S50+YYE*S65+XXE*S72+ZZE*S85+ZZZE*S127+YYZE*S145+XX
+     1ZE*S150+YYYYE*S169+XXXXE*S172+ZZZZE*S177+XXYYE*S192+YYZZE*S194+XXZ
+     2ZE*S195
+      ET(29)=YE*S27+YZE*S99+YYYE*S110+YZZE*S153+YYYZE*S183+YZZZE*S185+XX
+     1YZE*S187
+     $+XXYE*S132
+      ET(30)=E*S14+ZE*S46+(XXE+YYE)*S61+ZZE*S81+ZZZE*S123+(XXZE+YYZE)*S1
+     141+(XXXXE+YYYYE)*S165+ZZZZE*S174+XXYYE*S176+(XXZZE+YYZZE)*S178
+      ET(31)=XYE*S90+XYZE*S160+XYYYE*S179+XYZZE*S181+XXXYE*S182
+      ET(32)=XYE*S92+XYZE*S162+(XXXYE+XYYYE)*S180+XYZZE*S197
+      ET(33)=XE*S31+XZE*S103+XXXE*S114+XYYE*S130+XZZE*S157+XXX
+     1ZE*S186+XZZZE*S189+XYYZE*S196
+      ET(34)=XE*S29+XZE*S101+XXXE*S112+XYYE*S136+XZZE*S155+XXXZE*S184+XZ
+     1ZZE*S188+XYYZE*S190
+      ET(35)=YE*S29+YZE*S101+YYYE*S112+XXYE*S136+YZZE*S155+YYYZE*S184+YZ
+     1ZZE*S188+XXYZE*S190
+      RETURN
+      END
+      SUBROUTINE FORMQ(C,D,FT,K,L)
+C
+C     ----------------
+C     QCPE GAUSSIAN 80
+C     FEBRUARY 1987
+C     ----------------
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      COMMON/C0307A/CFILL1(25)
+      COMMON/C0307A/SASB,SAPB,SADB,PASB,PAPB,PADB,DASB,DAPB,DADB,
+     1              SCSD,SCPD,SCDD,PCSD,PCPD,PCDD,DCSD,DCPD,DCDD
+      COMMON/C0307A/CFILL2(5376)
+C
+      DIMENSION C(10),D(10),FT(35)
+C
+      GO TO (100,200,300),K
+C
+  100 GO TO (110,120,130),L
+C     ******************************************************************
+C     00
+C     ******************************************************************
+  110 FT(1)=C(1)*D(1)*SCSD
+      RETURN
+C     ******************************************************************
+C     01
+C     ******************************************************************
+  120 CONTINUE
+      C1SP=C(1)*SCPD
+      FT(1)=C1SP*D(1)
+      FT(2)=C1SP*D(2)
+      FT(3)=C1SP*D(3)
+      FT(4)=C1SP*D(4)
+      RETURN
+C     ******************************************************************
+C     02
+C     ******************************************************************
+  130 CONTINUE
+      C1SD=C(1)*SCDD
+      FT(1)=C1SD*D(1)
+      FT(2)=C1SD*D(2)
+      FT(3)=C1SD*D(3)
+      FT(4)=C1SD*D(4)
+      FT(5)=C1SD*D(5)
+      FT(6)=C1SD*D(6)
+      FT(7)=C1SD*D(7)
+      FT(8)=C1SD*D(8)
+      FT(9)=C1SD*D(9)
+      FT(10)=C1SD*D(10)
+      RETURN
+  200 GO TO (210,220,230),L
+C     ******************************************************************
+C     10
+C     ******************************************************************
+  210 CONTINUE
+      D1PD=D(1)*PCSD
+      FT(1)=C(1)*D1PD
+      FT(2)=C(2)*D1PD
+      FT(3)=C(3)*D1PD
+      FT(4)=C(4)*D1PD
+      RETURN
+C     ******************************************************************
+C     11
+C     ******************************************************************
+  220 CONTINUE
+      C1PP=C(1)*PCPD
+      C2PP=C(2)*PCPD
+      C3PP=C(3)*PCPD
+      C4PP=C(4)*PCPD
+      FT(1)=C1PP*D(1)
+      FT(2)=C1PP*D(2)+C2PP*D(1)
+      FT(3)=C1PP*D(3)+C3PP*D(1)
+      FT(4)=C1PP*D(4)+C4PP*D(1)
+      FT(5)=C2PP*D(2)
+      FT(6)=C3PP*D(3)
+      FT(7)=C4PP*D(4)
+      FT(8)=C3PP*D(2)+C2PP*D(3)
+      FT(9)=C4PP*D(2)+C2PP*D(4)
+      FT(10)=C4PP*D(3)+C3PP*D(4)
+      RETURN
+C     ******************************************************************
+C     12
+C     ******************************************************************
+  230 CONTINUE
+      C1PD=C(1)*PCDD
+      C2PD=C(2)*PCDD
+      C3PD=C(3)*PCDD
+      C4PD=C(4)*PCDD
+      FT(1)=C1PD*D(1)
+      FT(2)=C1PD*D(2)+C2PD*D(1)
+      FT(3)=C1PD*D(3)+C3PD*D(1)
+      FT(4)=C1PD*D(4)+C4PD*D(1)
+      FT(5)=C1PD*D(5)+C2PD*D(2)
+      FT(6)=C1PD*D(6)+C3PD*D(3)
+      FT(7)=C1PD*D(7)+C4PD*D(4)
+      FT(8)=C1PD*D(8)+C3PD*D(2)+C2PD*D(3)
+      FT(9)=C1PD*D(9)+C4PD*D(2)+C2PD*D(4)
+      FT(10)=C1PD*D(10)+C4PD*D(3)+C3PD*D(4)
+      FT(11)=C2PD*D(5)
+      FT(12)=C3PD*D(5)+C2PD*D(8)
+      FT(13)=C4PD*D(5)+C2PD*D(9)
+      FT(14)=C3PD*D(6)
+      FT(15)=C4PD*D(6)+C3PD*D(10)
+      FT(16)=C4PD*D(7)
+      FT(17)=C3PD*D(8)+C2PD*D(6)
+      FT(18)=C4PD*D(8)+C3PD*D(9)+C2PD*D(10)
+      FT(19)=C4PD*D(9)+C2PD*D(7)
+      FT(20)=C4PD*D(10)+C3PD*D(7)
+      RETURN
+  300 GO TO (310,320,330),L
+C     ******************************************************************
+C     20
+C     ******************************************************************
+  310 CONTINUE
+      D1DS=D(1)*DCSD
+      FT(1)=C(1)*D1DS
+      FT(2)=C(2)*D1DS
+      FT(3)=C(3)*D1DS
+      FT(4)=C(4)*D1DS
+      FT(5)=C(5)*D1DS
+      FT(6)=C(6)*D1DS
+      FT(7)=C(7)*D1DS
+      FT(8)=C(8)*D1DS
+      FT(9)=C(9)*D1DS
+      FT(10)=C(10)*D1DS
+      RETURN
+C     ******************************************************************
+C     21
+C     ******************************************************************
+  320 CONTINUE
+      D1DP=D(1)*DCPD
+      D2DP=D(2)*DCPD
+      D3DP=D(3)*DCPD
+      D4DP=D(4)*DCPD
+      FT(1)=C(1)*D1DP
+      FT(2)=C(1)*D2DP+C(2)*D1DP
+      FT(3)=C(1)*D3DP+C(3)*D1DP
+      FT(4)=C(1)*D4DP+C(4)*D1DP
+      FT(5)=C(2)*D2DP+C(5)*D1DP
+      FT(6)=C(3)*D3DP+C(6)*D1DP
+      FT(7)=C(4)*D4DP+C(7)*D1DP
+      FT(8)=C(3)*D2DP+C(2)*D3DP+C(8)*D1DP
+      FT(9)=C(4)*D2DP+C(2)*D4DP+C(9)*D1DP
+      FT(10)=C(4)*D3DP+C(3)*D4DP+C(10)*D1DP
+      FT(11)=C(5)*D2DP
+      FT(12)=C(8)*D2DP+C(5)*D3DP
+      FT(13)=C(9)*D2DP+C(5)*D4DP
+      FT(14)=C(6)*D3DP
+      FT(15)=C(10)*D3DP+C(6)*D4DP
+      FT(16)=C(7)*D4DP
+      FT(17)=C(6)*D2DP+C(8)*D3DP
+      FT(18)=C(10)*D2DP+C(9)*D3DP+C(8)*D4DP
+      FT(19)=C(7)*D2DP+C(9)*D4DP
+      FT(20)=C(7)*D3DP+C(10)*D4DP
+      RETURN
+C     ******************************************************************
+C     22
+C     ******************************************************************
+  330 CONTINUE
+      C1DD=C(1)*DCDD
+      C2DD=C(2)*DCDD
+      C3DD=C(3)*DCDD
+      C4DD=C(4)*DCDD
+      C5DD=C(5)*DCDD
+      C6DD=C(6)*DCDD
+      C7DD=C(7)*DCDD
+      C8DD=C(8)*DCDD
+      C9DD=C(9)*DCDD
+      C10DD=C(10)*DCDD
+      FT(1)=C1DD*D(1)
+      FT(2)=C1DD*D(2)+C2DD*D(1)
+      FT(3)=C1DD*D(3)+C3DD*D(1)
+      FT(4)=C1DD*D(4)+C4DD*D(1)
+      FT(5)=C1DD*D(5)+C2DD*D(2)+C5DD*D(1)
+      FT(6)=C1DD*D(6)+C3DD*D(3)+C6DD*D(1)
+      FT(7)=C1DD*D(7)+C4DD*D(4)+C7DD*D(1)
+      FT(8)=C1DD*D(8)+C3DD*D(2)+C2DD*D(3)+C8DD*D(1)
+      FT(9)=C1DD*D(9)+C4DD*D(2)+C2DD*D(4)+C9DD*D(1)
+      FT(10)=C1DD*D(10)+C4DD*D(3)+C3DD*D(4)+C10DD*D(1)
+      FT(11)=C2DD*D(5)+C5DD*D(2)
+      FT(12)=C3DD*D(5)+C2DD*D(8)+C8DD*D(2)+C5DD*D(3)
+      FT(13)=C4DD*D(5)+C2DD*D(9)+C9DD*D(2)+C5DD*D(4)
+      FT(14)=C3DD*D(6)+C6DD*D(3)
+      FT(15)=C4DD*D(6)+C3DD*D(10)+C10DD*D(3)+C6DD*D(4)
+      FT(16)=C4DD*D(7)+C7DD*D(4)
+      FT(17)=C3DD*D(8)+C6DD*D(2)+C2DD*D(6)+C8DD*D(3)
+      FT(18)=C4DD*D(8)+C3DD*D(9)+C10DD*D(2)+C2DD*D(10)+C9DD*D(3)
+     $+C8DD*D(4)
+      FT(19)=C4DD*D(9)+C7DD*D(2)+C2DD*D(7)+C9DD*D(4)
+      FT(20)=C4DD*D(10)+C7DD*D(3)+C3DD*D(7)+C10DD*D(4)
+      FT(21)=C5DD*D(5)
+      FT(22)=C6DD*D(5)+C8DD*D(8)+C5DD*D(6)
+      FT(23)=C7DD*D(5)+C9DD*D(9)+C5DD*D(7)
+      FT(24)=C8DD*D(5)+C5DD*D(8)
+      FT( 25)=C9DD*D(5)+C5DD*D(9)
+      FT(26)=C10DD*D(5)+C9DD*D(8)+C8DD*D(9)+C5DD*D(10)
+      FT(27)=C6DD*D(6)
+      FT(28)=C7DD*D(6)+C10DD*D(10)+C6DD*D(7)
+      FT(29)=C10DD*D(6)+C6DD*D(10)
+      FT(30)=C7DD*D(7)
+      FT(31)=C6DD*D(8)+C8DD*D(6)
+      FT(32)=C7DD*D(8)+C10DD*D(9)+C9DD*D(10)+C8DD*D(7)
+      FT(33)=C10DD*D(8)+C6DD*D(9)+C9DD*D(6)+C8DD*D(10)
+      FT(34)=C7DD*D(9)+C9DD*D(7)
+      FT(35)=C7DD*D(10)+C10DD*D(7)
+      RETURN
+      END
+      SUBROUTINE FABCD(A,XYZA,XYZP,LIMIT)
+C
+C     ----------------
+C     QCPE GAUSSIAN 80
+C     FEBRUARY 1987
+C     ----------------
+C
+C     ROTATION AND SPLITTING MATRIX  --  CODED OCTOBER 4, 1972
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      COMMON/C0307A/CFILL1(43),R(3,3),D(6,6),CFILL2(5331)
+C
+      DIMENSION A(73),XYZA(3),XYZP(3)
+C
+      DATA ONE/1.0D0/
+C     ******************************************************************
+C     S
+C     ******************************************************************
+      A(1)=ONE
+      IF (LIMIT) 100,110,100
+  110 RETURN
+  100 CONTINUE
+C     ******************************************************************
+C     X
+C     ******************************************************************
+      APX=XYZP(1)-XYZA(1)
+      A(2)=APX
+      A(3)=R(1,1)
+      A(4)=R(2,1)
+      A(5)=R(3,1)
+C     ******************************************************************
+C     Y
+C     ******************************************************************
+      APY=XYZP(2)-XYZA(2)
+      A(6)=APY
+      A(7)=R(1,2)
+      A(8)=R(2,2)
+      A(9)=R(3,2)
+C     ******************************************************************
+C     Z
+C     ******************************************************************
+      APZ=XYZP(3)-XYZA(3)
+      A(10)=APZ
+      A(11)=R(1,3)
+      A(12)=R(2,3)
+      A(13)=R(3,3)
+      IF (LIMIT-1) 120,110,120
+  120 CONTINUE
+C     ******************************************************************
+C     XX
+C     ******************************************************************
+      A(14)=APX**2
+      T=APX+APX
+      A(15)=R(1,1)*T
+      A(16)=R(2,1)*T
+      A(17)=R(3,1)*T
+      A(18)=D(1,1)
+      A(19)=D(2,1)
+      A(20)=D(3,1)
+      A(21)=D(4,1)
+      A(22)=D(5,1)
+      A(23)=D(6,1)
+C     ******************************************************************
+C     YY
+C     ******************************************************************
+      A(24)=APY**2
+      T=APY+APY
+      A(25)=R(1,2)*T
+      A(26)=R(2,2)*T
+      A(27)=R(3,2)*T
+      A(28)=D(1,2)
+      A(29)=D(2,2)
+      A(30)=D(3,2)
+      A(31)=D(4,2)
+      A(32)=D(5,2)
+      A(33)=D(6,2)
+C     ******************************************************************
+C     ZZ
+C     ******************************************************************
+      A(34)=APZ**2
+      T=APZ+APZ
+      A(35)=R(1,3)*T
+      A(36)=R(2,3)*T
+      A(37)=R(3,3)*T
+      A(38)=D(1,3)
+      A(39)=D(2,3)
+      A(40)=D(3,3)
+      A(41)=D(4,3)
+      A(42)=D(5,3)
+      A(43)=D(6,3)
+C     ******************************************************************
+C     XY
+C     ******************************************************************
+      A(44)=APX*APY
+      A(45)=R(1,1)*APY+R(1,2)*APX
+      A(46)=R(2,1)*APY+R(2,2)*APX
+      A(47)=R(3,1)*APY+R(3,2)*APX
+      A(48)=D(1,4)
+      A(49)=D(2,4)
+      A(50)=D(3,4)
+      A(51)=D(4,4)
+      A(52)=D(5,4)
+      A(53)=D(6,4)
+C     ******************************************************************
+C     XZ
+C     ******************************************************************
+      A(54)=APX*APZ
+      A(55)=R(1,1)*APZ+R(1,3)*APX
+      A(56)=R(2,1)*APZ+R(2,3)*APX
+      A(57)=R(3,1)*APZ+R(3,3)*APX
+      A(58)=D(1,5)
+      A(59)=D(2,5)
+      A(60)=D(3,5)
+      A(61)=D(4,5)
+      A(62)=D(5,5)
+      A(63)=D(6,5)
+C     ******************************************************************
+C     YZ
+C     ******************************************************************
+      A(64)=APY*APZ
+      A(65)=R(1,2)*APZ+R(1,3)*APY
+      A(66)=R(2,2)*APZ+R(2,3)*APY
+      A(67)=R(3,2)*APZ+R(3,3)*APY
+      A(68)=D(1,6)
+      A(69)=D(2,6)
+      A(70)=D(3,6)
+      A(71)=D(4,6)
+      A(72)=D(5,6)
+      A(73)=D(6,6)
+      RETURN
+      END
+      SUBROUTINE ROTATE
+C
+C     ----------------
+C     QCPE GAUSSIAN 80
+C     FEBRUARY 1987
+C     ----------------
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      COMMON/C0307A/CFILL1(9)
+      COMMON/C0307A/PX,PY,PZ,EP,RAB2,OFAB,
+     1              QX,QY,QZ,EQ,RCD2,OFCD,
+     2              PQX,PQY,PQZ,RPQ
+      COMMON/C0307A/CFILL2(18),R(3,3),D(6,6),CFILL3(5331)
+C     CUTROT IS A CUTOFF IN THE ROTATION ROUTINE.  THIS CAN BE CHANGED
+C     IF NECESSARY
+      DATA ZERO/0.0D0/,ONE/1.0D0/,TWO/2.0D0/,CUTROT/1.0D-12/
+C
+      IF (RPQ-CUTROT) 2,2,3
+    3 PQL=DSQRT(PQX*PQX+PQY*PQY)
+      IF (PQL-CUTROT) 4,4,5
+    5 CONTINUE
+      COSP=PQX/PQL
+      SINP=PQY/PQL
+      COST=PQZ/RPQ
+      SINT=PQL/RPQ
+      R(1,1)=SINP
+      R(1,2)=-COSP
+      R(1,3)=ZERO
+      R(2,1)=COST*COSP
+      R(2,2)=COST*SINP
+      R(2,3)=-SINT
+      R(3,1)=SINT*COSP
+      R(3,2)=SINT*SINP
+      R(3,3)=COST
+      GO TO 15
+    2 CONTINUE
+      DO 6 I=1,3
+      DO 7 J=1,3
+    7 R(I,J)=ZERO
+    6 R(I,I)=ONE
+      GO TO 15
+    4 CONTINUE
+      SGN=PQZ/DABS(PQZ)
+      DO 8 I=1,3
+      DO 8 J=1,3
+    8 R(I,J)=ZERO
+      R(1,1)=ONE
+      R(2,2)=SGN
+      R(3,3)=SGN
+   15 CONTINUE
+      D(1,1)=R(1,1)*R(1,1)
+      D(1,2)=R(1,2)*R(1,2)
+      D(1,3)=R(1,3)*R(1,3)
+      D(1,4)=R(1,1)*R(1,2)
+      D(1,5)=R(1,1)*R(1,3)
+      D(1,6)=R(1,2)*R(1,3)
+      D(2,1)=R(2,1)*R(2,1)
+      D(2,2)=R(2,2)*R(2,2)
+      D(2,3)=R(2,3)*R(2,3)
+      D(2,4)=R(2,1)*R(2,2)
+      D(2,5)=R(2,1)*R(2,3)
+      D(2,6)=R(2,2)*R(2,3)
+      D(3,1)=R(3,1)*R(3,1)
+      D(3,2)=R(3,2)*R(3,2)
+      D(3,3)=R(3,3)*R(3,3)
+      D(3,4)=R(3,1)*R(3,2)
+      D(3,5)=R(3,1)*R(3,3)
+      D(3,6)=R(3,2)*R(3,3)
+      D(4,1)=(R(1,1)*R(2,1))*TWO
+      D(4,2)=(R(1,2)*R(2,2))*TWO
+      D(4,3)=(R(1,3)*R(2,3))*TWO
+      D(4,4)=R(1,1)*R(2,2)+R(2,1)*R(1,2)
+      D(4,5)=R(1,1)*R(2,3)+R(2,1)*R(1,3)
+      D(4,6)=R(1,2)*R(2,3)+R(2,2)*R(1,3)
+      D(5,1)=(R(1,1)*R(3,1))*TWO
+      D(5,2)=(R(1,2)*R(3,2))*TWO
+      D(5,3)=(R(1,3)*R(3,3))*TWO
+      D(5,4)=R(1,1)*R(3,2)+R(3,1)*R(1,2)
+      D(5,5)=R(1,1)*R(3,3)+R(3,1)*R(1,3)
+      D(5,6)=R(1,2)*R(3,3)+R(3,2)*R(1,3)
+      D(6,1)=(R(2,1)*R(3,1))*TWO
+      D(6,2)=(R(2,2)*R(3,2))*TWO
+      D(6,3)=(R(2,3)*R(3,3))*TWO
+      D(6,4)=R(2,1)*R(3,2)+R(3,1)*R(2,2)
+      D(6,5)=R(2,1)*R(3,3)+R(3,1)*R(2,3)
+      D(6,6)=R(2,2)*R(3,3)+R(3,2)*R(2,3)
+      RETURN
+      END
+      SUBROUTINE FORMS(LQMAX)
+C
+C     ----------------
+C     QCPE GAUSSIAN 80
+C     FEBRUARY 1987
+C     ----------------
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      COMMON/C0307A/FM00,FM01,FM02,FM03,FM04,FM05,FM06,FM07,FM08
+      COMMON/C0307A/PX,PY,PZ,EP,RAB2,OFAB,
+     1              QX,QY,QZ,EQ,RCD2,OFCD,
+     2              PQX,PQY,PQZ,RPQ
+      COMMON/C0307A/CFILL1(390),
+     1TW0101,TW0102,TW0201,TW0110,TW1001,TW0103,TW0301,TW0104,TW0401,
+     2TW0111,TW1101,TW0115,TW1501,TW0105,TW0501,TW0131,TW3101,TW0112,
+     3TW1201,TW0606,TW0607,TW0706,TW0613,TW1306,TW0608,TW0806,TW0614,
+     4TW1406,TW0609,TW0906,TW1624,TW3006,TW1623,TW2906,TW0202,TW0210,
+     5TW1002,TW0203,TW0302,TW0204,TW0402,TW0211,TW1102,TW0215,TW1502,
+     6TW0205,TW0502,TW0231,TW3102,TW0212,TW1202,TW1010,TW1003,TW0310,
+     7TW1004,TW0410,TW1011,TW1110,TW1015,TW1510,TW1005,TW0510,TW1031
+      COMMON/C0307A/
+     8TW3110,TW1012,TW1210,TW2610,TW2611,TW2710,TW2615,TW3510,TW2612,
+     9TW2810,TW0303,TW0304,TW0403,TW0311,TW1103,TW0315,TW1503,TW0305,
+     ATW0503,TW0331,TW3103,TW0312,TW1203,TW2020,TW2021,TW2120,TW2025,
+     BTW2520,TW2022,TW2220,TW0707,TW0713,TW1307,TW0708,TW0807,TW0714,
+     CTW1407,TW0709,TW0907,TW1724,TW3007,TW1723,TW2907,TW1313,TW1308,
+     D TW(89),CFILL2(4807)
+C
+      EQUIVALENCE (T0000,FM00),(T0100,FM01),(T0200,FM02)
+      EQUIVALENCE (S0100,FP01)
+      EQUIVALENCE (S0200,FP02)
+      EQUIVALENCE (S0300,FP03)
+      EQUIVALENCE (S0400,FP04)
+      EQUIVALENCE (S0500,FP05)
+      EQUIVALENCE (S0600,FP06)
+      EQUIVALENCE (S0700,FP07)
+      EQUIVALENCE (S0800,FP08)
+      EQUIVALENCE (TW0813,TW(1))
+      EQUIVALENCE (TW1314,TW(2))
+      EQUIVALENCE (TW1413,TW(3))
+      EQUIVALENCE (TW1309,TW(4))
+      EQUIVALENCE (TW0913,TW(5))
+      EQUIVALENCE (TW3224,TW(6))
+      EQUIVALENCE (TW3013,TW(7))
+      EQUIVALENCE (TW3223,TW(8))
+      EQUIVALENCE (TW2913,TW(9))
+      EQUIVALENCE (TW0404,TW(10))
+      EQUIVALENCE (TW0411,TW(11))
+      EQUIVALENCE (TW1104,TW(12))
+      EQUIVALENCE (TW0415,TW(13))
+      EQUIVALENCE (TW1504,TW(14))
+      EQUIVALENCE (TW0405,TW(15))
+      EQUIVALENCE (TW0504,TW(16))
+      EQUIVALENCE (TW0431,TW(17))
+      EQUIVALENCE (TW3104,TW(18))
+      EQUIVALENCE (TW0412,TW(19))
+      EQUIVALENCE (TW1204,TW(20))
+      EQUIVALENCE (TW2323,TW(21))
+      EQUIVALENCE (TW2324,TW(22))
+      EQUIVALENCE (TW2423,TW(23))
+      EQUIVALENCE (TW2914,TW(24))
+      EQUIVALENCE (TW3323,TW(25))
+      EQUIVALENCE (TW2908,TW(26))
+      EQUIVALENCE (TW1823,TW(27))
+      EQUIVALENCE (TW2909,TW(28))
+      EQUIVALENCE (TW1923,TW(29))
+      EQUIVALENCE (TW1111,TW(30))
+      EQUIVALENCE (TW1115,TW(31))
+      EQUIVALENCE (TW1511,TW(32))
+      EQUIVALENCE (TW1105,TW(33))
+      EQUIVALENCE (TW0511,TW(34))
+      EQUIVALENCE (TW1131,TW(35))
+      EQUIVALENCE (TW3111,TW(36))
+      EQUIVALENCE (TW1112,TW(37))
+      EQUIVALENCE (TW1211,TW(38))
+      EQUIVALENCE (TW2711,TW(39))
+      EQUIVALENCE (TW2715,TW(40))
+      EQUIVALENCE (TW3511,TW(41))
+      EQUIVALENCE (TW2712,TW(42))
+      EQUIVALENCE (TW2811,TW(43))
+      EQUIVALENCE (TW0808,TW(44))
+      EQUIVALENCE (TW0814,TW(45))
+      EQUIVALENCE (TW1408,TW(46))
+      EQUIVALENCE (TW0809,TW(47))
+      EQUIVALENCE (TW0908,TW(48))
+      EQUIVALENCE (TW1824,TW(49))
+      EQUIVALENCE (TW3008,TW(50))
+      EQUIVALENCE (TW2121,TW(51))
+      EQUIVALENCE (TW2125,TW(52))
+      EQUIVALENCE (TW2521,TW(53))
+      EQUIVALENCE (TW2122,TW(54))
+      EQUIVALENCE (TW2221,TW(55))
+      EQUIVALENCE (TW1515,TW(56))
+      EQUIVALENCE (TW1505,TW(57))
+      EQUIVALENCE (TW0515,TW(58))
+      EQUIVALENCE (TW1531,TW(59))
+      EQUIVALENCE (TW3115,TW(60))
+      EQUIVALENCE (TW1512,TW(61))
+      EQUIVALENCE (TW1215,TW(62))
+      EQUIVALENCE (TW3515,TW(63))
+      EQUIVALENCE (TW3512,TW(64))
+      EQUIVALENCE (TW2815,TW(65))
+      EQUIVALENCE (TW0505,TW(66))
+      EQUIVALENCE (TW0531,TW(67))
+      EQUIVALENCE (TW3105,TW(68))
+      EQUIVALENCE (TW0512,TW(69))
+      EQUIVALENCE (TW1205,TW(70))
+      EQUIVALENCE (TW2525,TW(71))
+      EQUIVALENCE (TW2522,TW(72))
+      EQUIVALENCE (TW2225,TW(73))
+      EQUIVALENCE (TW3425,TW(74))
+      EQUIVALENCE (TW1414,TW(75))
+      EQUIVALENCE (TW1409,TW(76))
+      EQUIVALENCE (TW0914,TW(77))
+      EQUIVALENCE (TW3324,TW(78))
+      EQUIVALENCE (TW3014,TW(79))
+      EQUIVALENCE (TW0909,TW(80))
+      EQUIVALENCE (TW1924,TW(81))
+      EQUIVALENCE (TW3009,TW(82))
+      EQUIVALENCE (TW3131,TW(83))
+      EQUIVALENCE (TW3112,TW(84))
+      EQUIVALENCE (TW1231,TW(85))
+      EQUIVALENCE (TW1212,TW(86))
+      EQUIVALENCE (TW2812,TW(87))
+      EQUIVALENCE (TW2424,TW(88))
+      EQUIVALENCE (TW2222,TW(89))
+C
+      DATA FP01/1.0D0/,FP02/0.5D0/,FP03/0.25D0/,FP04/0.75D0/,
+     * FP05/0.125D0/,
+     1 FP06/0.375D0/,FP07/0.0625D0/,FP08/0.1875D0/,FP09/1.125D0/,
+     * FP10/0.3125D-1/
+      DATA
+     2 FP11/0.3125D0/,FP12/0.46875D0/,FP13/0.9375D-1/,FP14/0.5625D0/,
+     3FP15/0.15625D-1/,FP16/0.234375D0/,FP17/0.703125D0/,FP18/0.21875D0/
+      DATA
+     4 FP19/0.46875D-1/,FP20/0.28125D0/,FP21/1.6875D0/,FP22/0.9375D0/,
+     C FP23/1.40625D0/,FP24/0.78125D-2/,FP25/0.1640625D0/
+      DATA
+     5 FP26/0.8203125D0/,FP27/0.171875D0/,FP28/0.140625D0/,
+     * FP29/0.78125D-1/,
+     6 FP30/0.1171875D0/,FP31/0.234375D-1/,FP32/0.703125D-1/,
+     * FP33/3.375D0/
+      DATA
+     7 FP34/2.109375D0/,FP35/0.390625D-2/,FP36/0.109375D0/,
+     * FP37/1.640625D0/,
+     8 FP38/0.41015625D0/,FP39/0.15625D0/,FP40/0.65625D0/,
+     * FP41/0.3984375D0/
+      DATA FP42/0.5859375D-1/,FP43/0.17578125D0/,FP44/0.1171875D-1/,
+     B FP45/0.3515625D-1/,FP46/0.546875D-1/,ONE/1.0D0/
+C
+C     SCSD
+      ZZ1=-RPQ
+      EE1=ONE/EP
+      FF1=ONE/EQ
+      EE2=EE1*EE1
+      EE3=EE2*EE1
+      EE4=EE3*EE1
+      ZZ2=ZZ1*ZZ1
+      ZZ3=ZZ2*ZZ1
+      ZZ4=ZZ3*ZZ1
+      T0010=FM00*EE1
+      T0020=FM00*EE2
+      T0111=FM01*EE1*ZZ1
+      T0120=FM01*EE2
+      T0121=FM01*EE2*ZZ1
+      T0130=FM01*EE3
+      T0222=FM02*EE2*ZZ2
+      T0231=FM02*EE3*ZZ1
+      T0232=FM02*EE3*ZZ2
+      T0240=FM02*EE4
+      T0333=FM03*EE3*ZZ3
+      T0342=FM03*EE4*ZZ2
+      T0444=FM04*EE4*ZZ4
+      TW0101=T0000*S0100
+      TW0201=-T0111*S0200
+      TW0301=T0010*S0200+T0222*S0300-T0120*S0300
+      TW0401=-T0121*S0400-T0333*S0500+T0231*S0600
+      TW0501=T0020*S0400+T0232*S0400-T0130*S0400+T0444*S0700-T0342*S0600
+     3+T0240*S0800
+      TW1001=T0010*S0200-T0120*S0300
+      TW1101=-T0121*S0300+T0231*S0500
+      TW1201=T0020*S0300-T0130*S0300+T0232*S0500-T0342*S0700+T0240*S0700
+      TW1501=T0020*S0400-T0130*S0400+T0240*S0800
+      TW3101=T0020*S0300-T0130*S0300+T0240*S0700
+      IF (LQMAX) 100,110,100
+  110 RETURN
+  100 CONTINUE
+C     SCPD,PCSD
+      ZZ5=ZZ4*ZZ1
+      T0101=FM01*ZZ1
+      T0110=FM01*EE1
+      T0212=FM02*EE1*ZZ2
+      T0221=FM02*EE2*ZZ1
+      T0230=FM02*EE3
+      T0323=FM03*EE2*ZZ3
+      T0332=FM03*EE3*ZZ2
+      T0341=FM03*EE4*ZZ1
+      T0434=FM04*EE3*ZZ4
+      T0443=FM04*EE4*ZZ3
+      T0545=FM05*EE4*ZZ5
+      S0201=FP02*FF1
+      S0301=FP03*FF1
+      S0501=FP05*FF1
+      S0601=FP06*FF1
+      S0701=FP07*FF1
+      S0801=FP08*FF1
+      S0901=FP09*FF1
+      S1001=FP10*FF1
+      S1101=FP11*FF1
+      S1201=FP12*FF1
+      S1301=FP13*FF1
+      TW0102=T0101*S0201
+      TW0202=-T0212*S0301+T0110*S0301
+      TW0302=T0111*S0301+T0323*S0501-T0221*S0601
+      TW0402=-T0222*S0601+T0120*S0601-T0434*S0701+T0332*S0601-T0230*S080
+     31
+      TW0502=T0121*S0601+T0333*S0601-T0231*S0901+T0545*S1001-T0443*S1101
+     3+T0341*S1201
+      TW1002=T0111*S0301-T0221*S0501
+      TW1102=-T0222*S0501+T0120*S0501+T0332*S0701-T0230*S0701
+      TW1202=T0121*S0501-T0231*S0301+T0333*S0701-T0443*S1001+T0341*S1301
+      TW1502=T0121*S0601-T0231*S0601+T0341*S1301
+      TW3102=T0121*S0501-T0231*S0501+T0341*S1001
+      TW0606=T0110*S0301
+      TW0706=-T0221*S0501
+      TW0806=T0120*S0501+T0332*S0701-T0230*S0701
+      TW0906=-T0231*S0801-T0443*S1001+T0341*S1301
+      TW1306=T0120*S0601-T0230*S0801
+      TW1406=-T0231*S0801+T0341*S1301
+      TW2906=T0120*S0501-T0230*S0701
+      TW3006=-T0231*S0701+T0341*S1001
+      IF (LQMAX-1) 120,110,120
+  120 CONTINUE
+C     PCPD, SCDD, DCSD
+      ZZ6=ZZ5*ZZ1
+      FF2=FF1*FF1
+      T0202=FM02*ZZ2
+      T0313=FM03*EE1*ZZ3
+      T0211=FM02*EE1*ZZ1
+      T0424=FM04*EE2*ZZ4
+      T0322=FM03*EE2*ZZ2
+      T0220=FM02*EE2
+      T0433=FM04*EE3*ZZ3
+      T0331=FM03*EE3*ZZ1
+      T0442=FM04*EE4*ZZ2
+      T0340=FM03*EE4
+      T0535=FM05*EE3*ZZ5
+      T0544=FM05*EE4*ZZ4
+      T0646=FM06*EE4*ZZ6
+      S0302=FP03*FF2
+      S0502=FP05*FF2
+      S0602=FP06*FF2
+      S0702=FP07*FF2
+      S0802=FP08*FF2
+      S0902=FP09*FF2
+      S1002=FP10*FF2
+      S1102=FP11*FF2
+      S1202=FP12*FF2
+      S1302=FP13*FF2
+      S1402=FP14*FF2
+      S1502=FP15*FF2
+      S1602=FP16*FF2
+      S1702=FP17*FF2
+      S1802=FP18*FF2
+      S1902=FP19*FF2
+      TW0103=T0000*S0201+T0202*S0302-T0100*S0302
+      TW0203=-T0111*S0301-T0313*S0502+T0211*S0602
+      TW0303=T0010*S0301+T0212*S0502-T0110*S0502+T0222*S0501-T0120*S0501
+     3+T0424*S0702-T0322*S0602+T0220*S0802
+      TW0403=-T0121*S0601-T0323*S0802+T0221*S1402-T0333*S0701+T0231*S080
+     31-T0535*S1002+T0433*S1102-T0331*S1202
+      TW0503=T0020*S0601+T0222*S0802-T0120*S0802+T0232*S0601-T0130*S0601
+     3+T0434*S0802-T0332*S0902+T0230*S1402+T0444*S1001-T0342*S0801+T0240
+     4*S1301+T0646*S1502-T0544*S1602+T0442*S1702-T0340*S1602
+      TW1003=T0010*S0301+T0212*S0502-T0110*S0502-T0120*S0501-T0322*S0702
+     3+T0220*S0702
+      TW1103=-T0121*S0501-T0323*S0702+T0221*S0802+T0231*S0701+T0433*S100
+     32-T0331*S1302
+      TW1203=T0020*S0501+T0222*S0702-T0120*S0702-T0130*S0501-T0332*S1802
+     3+T0230*S0502+T0232*S0701+T0434*S1002-T0342*S1001+T0240*S1001-T0544
+     4*S1502+T0442*S1302-T0340*S1902
+      TW1503=T0020*S0601+T0222*S0802-T0120*S0802-T0130*S0601-T0332*S0802
+     3+T0230*S0802+T0240*S1301+T0442*S1902-T0340*S1902
+      TW3103=T0020*S0501+T0222*S0702-T0120*S0702-T0130*S0501-T0332*S0702
+     3+T0230*S0702+T0240*S1001+T0442*S1502-T0340*S1502
+      TW0607=T0211*S0502
+      TW0707=-T0322*S0702+T0220*S0702
+      TW0807=T0221*S0702+T0433*S1002-T0331*S1302
+      TW0907=-T0332*S1302+T0230*S1302-T0544*S1502+T0442*S1302-T0340*S190
+     32
+      TW1307=T0221*S0802-T0331*S1302
+      TW1407=-T0332*S1302+T0230*S1302+T0442*S1902-T0340*S1902
+      TW2907=T0221*S0702-T0331*S1002
+      TW3007=-T0332*S1002+T0230*S1002+T0442*S1502-T0340*S1502
+      TW0110=T0000*S0201-T0100*S0302
+      TW0210=-T0111*S0301+T0211*S0502
+      TW0310=T0010*S0301-T0110*S0502+T0222*S0501-T0120*S0501-T0322*S0702
+     3+T0220*S0702
+      TW0410=-T0121*S0601+T0221*S0802-T0333*S0701+T0231*S0801+T0433*S100
+     32-T0331*S1302
+      TW0510=T0020*S0601-T0120*S0802+T0232*S0601-T0130*S0601-T0332*S0802
+     3+T0230*S0802+T0444*S1001-T0342*S0801+T0240*S1301-T0544*S1502+T0442
+     4*S1302-T0340*S1902
+      TW1010=T0010*S0301-T0110*S0502-T0120*S0501+T0220*S0802
+      TW1110=-T0121*S0501+T0221*S0702+T0231*S0701-T0331*S1302
+      TW1210=T0020*S0501-T0120*S0702-T0130*S0501+T0230*S0502+T0232*S0701
+     3-T0332*S1002-T0342*S1001+T0240*S1001+T0442*S1902-T0340*S1902
+      TW1510=T0020*S0601-T0120*S0802-T0130*S0601+T0230*S1402+T0240*S1301
+     3-T0340*S1602
+      TW2610=T0010*S0301-T0110*S0502-T0120*S0501+T0220*S0702
+      TW2710=-T0121*S0501+T0221*S0702+T0231*S0701-T0331*S1002
+      TW2810=T0020*S0501-T0120*S0702-T0130*S0501+T0230*S0702+T0232*S0701
+     3-T0332*S1002-T0342*S1001+T0240*S1001+T0442*S1502-T0340*S1502
+      TW3110=T0020*S0501-T0120*S0702-T0130*S0501+T0230*S0502+T0240*S1001
+     3-T0340*S1902
+      TW3510=T0020*S0601-T0120*S0802-T0130*S0601+T0230*S0802+T0240*S1301
+     3-T0340*S1902
+      TW2020=T0220*S0702
+      TW2120=-T0331*S1002
+      TW2220=T0230*S1002+T0442*S1502-T0340*S1502
+      TW2520=T0230*S1302-T0340*S1902
+      IF (LQMAX-2) 130,110,130
+  130 CONTINUE
+C     PCDD,DCPD
+      FF3=FF2*FF1
+      FF4=FF3*FF1
+      ZZ7=ZZ6*ZZ1
+      S3902=FP39*FF2
+      S0402=FP04*FF2
+      S2002=FP20*FF2
+      S2102=FP21*FF2
+      S2802=FP28*FF2
+      S0503=FP05*FF3
+      S0603=FP06*FF3
+      S0703=FP07*FF3
+      S0803=FP08*FF3
+      S1003=FP10*FF3
+      S1103=FP11*FF3
+      S1203=FP12*FF3
+      S1303=FP13*FF3
+      S1403=FP14*FF3
+      S1503=FP15*FF3
+      S1603=FP16*FF3
+      S1703=FP17*FF3
+      S1903=FP19*FF3
+      S2003=FP20*FF3
+      S2203=FP22*FF3
+      S2303=FP23*FF3
+      S2403=FP24*FF3
+      S2503=FP25*FF3
+      S2603=FP26*FF3
+      S2703=FP27*FF3
+      S2803=FP28*FF3
+      S2903=FP29*FF3
+      S3003=FP30*FF3
+      S3103=FP31*FF3
+      S3203=FP32*FF3
+      S1304=FP13*FF4
+      S1904=FP19*FF4
+      S2804=FP28*FF4
+      S3004=FP30*FF4
+      S3104=FP31*FF4
+      S3204=FP32*FF4
+      S4204=FP42*FF4
+      S4404=FP44*FF4
+      S4504=FP45*FF4
+      T0311=FM03*EE1*ZZ1
+      T0320=FM03*EE2
+      T0422=FM04*EE2*ZZ2
+      T0636=FM06*EE3*ZZ6
+      T0644=FM06*EE4*ZZ4
+      T0645=FM06*EE4*ZZ5
+      T0747=FM07*EE4*ZZ7
+      T0210=FM02*EE1
+      T0330=FM03*EE3
+      T0440=FM04*EE4
+      T0201=FM02*ZZ1
+      T0321=FM03*EE2*ZZ1
+      T0431=FM04*EE3*ZZ1
+      T0441=FM04*EE4*ZZ1
+      T0312=FM03*EE1*ZZ2
+      T0432=FM04*EE3*ZZ2
+      T0542=FM05*EE4*ZZ2
+      T0303=FM03*ZZ3
+      T0423=FM04*EE2*ZZ3
+      T0533=FM05*EE3*ZZ3
+      T0543=FM05*EE4*ZZ3
+      T0414=FM04*EE1*ZZ4
+      T0534=FM05*EE3*ZZ4
+      T0525=FM05*EE2*ZZ5
+      TW0104=T0101*S0402+T0303*S0503-T0201*S0603
+      TW0204=-T0212*S0602+T0110*S0602-T0414*S0703+T0312*S0603-T0210*S080
+     33
+      TW0304=T0111*S0602+T0313*S0703-T0211*S0803+T0323*S0802-T0221*S1402
+     3+T0525*S1003-T0423*S1103+T0321*S1203
+      TW0404=-T0222*S1402+T0120*S1402-T0424*S1303+T0322*S1403-T0220*S200
+     33-T0434*S1302+T0332*S1402-T0230*S2002-T0636*S1503+T0534*S1603-T043
+     42*S1703+T0330*S1603
+      TW0504=T0121*S1402+T0323*S1303-T0221*S2003+T0333*S1402-T0231*S2102
+     3+T0535*S1303-T0433*S2203+T0331*S2303+T0545*S1902-T0443*S1202+T0341
+     4*S1702+T0747*S2403-T0645*S2503+T0543*S2603-T0441*S2603
+      TW1004=T0111*S0602+T0313*S0703-T0211*S0803-T0221*S0802-T0423*S1003
+     3+T0321*S1303
+      TW1104=-T0222*S0802+T0120*S0802-T0424*S1003+T0322*S0803-T0220*S130
+     33+T0332*S1302-T0230*S1302+T0534*S1503-T0432*S1303+T0330*S1903
+      TW1204=T0121*S0802+T0323*S1003-T0221*S1303-T0231*S0602-T0433*S2703
+     3+T0331*S2003+T0333*S1302+T0535*S1503-T0443*S1902+T0341*S2802-T0645
+     4*S2403+T0543*S2903-T0441*S3003
+      TW1504=T0121*S1402+T0323*S1303-T0221*S2003-T0231*S1402-T0433*S1303
+     3+T0331*S2003+T0341*S2802+T0543*S3103-T0441*S3203
+      TW3104=T0121*S0802+T0323*S1003-T0221*S1303-T0231*S0802-T0433*S1003
+     3+T0331*S1303+T0341*S1902+T0543*S2403-T0441*S3103
+      TW0608=T0110*S0502+T0312*S0703-T0210*S0703
+      TW0708=-T0221*S0702-T0423*S1003+T0321*S1303
+      TW0808=T0120*S0702+T0322*S1003-T0220*S1003+T0332*S1002-T0230*S1002
+     3+T0534*S1503-T0432*S1303+T0330*S1903
+      TW0908=-T0231*S1302-T0433*S1903+T0331*S2803-T0443*S1502+T0341*S190
+     32-T0645*S2403+T0543*S2903-T0441*S3003
+      TW1308=T0120*S0802+T0322*S1303-T0220*S1303-T0230*S1302-T0432*S1903
+     3+T0330*S1903
+      TW1408=-T0231*S1302-T0433*S1903+T0331*S2803+T0341*S1902+T0543*S310
+     33-T0441*S3203
+      TW2908=T0120*S0702+T0322*S1003-T0220*S1003-T0230*S1002-T0432*S1503
+     3+T0330*S1503
+      TW3008=-T0231*S1002-T0433*S1503+T0331*S1903+T0341*S1502+T0543*S240
+     33-T0441*S3103
+      TW0111=T0101*S0302-T0201*S0503
+      TW0211=-T0212*S0502+T0110*S0502+T0312*S0703-T0210*S0703
+      TW0311=T0111*S0502-T0211*S0703+T0323*S0702-T0221*S0802-T0423*S1003
+     3+T0321*S1303
+      TW0411=-T0222*S0802+T0120*S0802+T0322*S1303-T0220*S1303-T0434*S100
+     32+T0332*S0802-T0230*S1302+T0534*S1503-T0432*S1303+T0330*S1903
+      TW0511=T0121*S0802-T0221*S1303+T0333*S0802-T0231*S1402-T0433*S1303
+     3+T0331*S2003+T0545*S1502-T0443*S3902+T0341*S1602-T0645*S2403+T0543
+     4*S2903-T0441*S3003
+      TW1011=T0111*S0502-T0211*S0703-T0221*S0702+T0321*S1303
+      TW1111=-T0222*S0702+T0120*S0702+T0322*S1003-T0220*S1003+T0332*S100
+     32-T0230*S1002-T0432*S1903+T0330*S1903
+      TW1211=T0121*S0702-T0221*S1003-T0231*S0502+T0331*S1303+T0333*S1002
+     3-T0433*S1503-T0443*S1502+T0341*S1902+T0543*S3103-T0441*S3203
+      TW1511=T0121*S0802-T0221*S1303-T0231*S0802+T0331*S2003+T0341*S1902
+     3-T0441*S3003
+      TW2611=T0111*S0502-T0211*S0703-T0221*S0702+T0321*S1003
+      TW2711=-T0222*S0702+T0120*S0702+T0322*S1003-T0220*S1003+T0332*S100
+     32-T0230*S1002-T0432*S1503+T0330*S1503
+      TW2811=T0121*S0702-T0221*S1003-T0231*S0502+T0331*S0703+T0333*S1002
+     3-T0433*S1503-T0443*S1502+T0341*S1902+T0543*S2403-T0441*S3103
+      TW3111=T0121*S0702-T0221*S1003-T0231*S0702+T0331*S0703+T0341*S1502
+     3-T0441*S3103
+      TW3511=T0121*S0802-T0221*S1303-T0231*S0802+T0331*S1303+T0341*S1902
+     3-T0441*S3103
+      TW0613=T0110*S0602-T0210*S0803
+      TW0713=-T0221*S0802+T0321*S1303
+      TW0813=T0120*S0802-T0220*S1303+T0332*S1302-T0230*S1302-T0432*S1903
+     3+T0330*S1903
+      TW0913=-T0231*S2002+T0331*S2803-T0443*S1902+T0341*S2802+T0543*S310
+     33-T0441*S3203
+      TW1313=T0120*S1402-T0220*S2003-T0230*S2002+T0330*S1603
+      TW1413=-T0231*S2002+T0331*S2803+T0341*S2802-T0441*S3003
+      TW2913=T0120*S0802-T0220*S1303-T0230*S1302+T0330*S1903
+      TW3013=-T0231*S1302+T0331*S1903+T0341*S1902-T0441*S3103
+      TW2021=T0321*S1003
+      TW2121=-T0432*S1503+T0330*S1503
+      TW2221=T0331*S1503+T0543*S2403-T0441*S3103
+      TW2521=T0331*S1903-T0441*S3103
+      TW1623=T0110*S0502-T0210*S0703
+      TW1723=-T0221*S0702+T0321*S1003
+      TW1823=T0120*S0702-T0220*S1003+T0332*S1002-T0230*S1002-T0432*S1503
+     3+T0330*S1503
+      TW1923=-T0231*S1302+T0331*S1903-T0443*S1502+T0341*S1902+T0543*S240
+     33-T0441*S3103
+      TW2323=T0120*S0702-T0220*S1003-T0230*S1002+T0330*S1903
+      TW2423=-T0231*S1002+T0331*S1503+T0341*S1502-T0441*S3103
+      TW3223=T0120*S0802-T0220*S1303-T0230*S1302+T0330*S1903
+      TW3323=-T0231*S1302+T0331*S1903+T0341*S1902-T0441*S3103
+      IF (LQMAX-3) 140,110,140
+  140 CONTINUE
+C     DCDD
+      ZZ8=ZZ7*ZZ1
+      S0303=FP03*FF3
+      S0403=FP04*FF3
+      S0903=FP09*FF3
+      S1803=FP18*FF3
+      S2103=FP21*FF3
+      S3303=FP33*FF3
+      S3403=FP34*FF3
+      S4003=FP40*FF3
+      S4103=FP41*FF3
+      S4603=FP46*FF3
+      S0504=FP05*FF4
+      S0704=FP07*FF4
+      S0604=FP06*FF4
+      S0804=FP08*FF4
+      S1004=FP10*FF4
+      S1104=FP11*FF4
+      S1204=FP12*FF4
+      S1504=FP15*FF4
+      S1604=FP16*FF4
+      S1704=FP17*FF4
+      S2004=FP20*FF4
+      S2404=FP24*FF4
+      S2504=FP25*FF4
+      S2604=FP26*FF4
+      S2904=FP29*FF4
+      S3404=FP34*FF4
+      S3504=FP35*FF4
+      S3604=FP36*FF4
+      S3704=FP37*FF4
+      S3804=FP38*FF4
+      S3904=FP39*FF4
+      S4104=FP41*FF4
+      S4304=FP43*FF4
+      S4604=FP46*FF4
+      T0302=FM03*ZZ2
+      T0413=FM04*EE1*ZZ3
+      T0404=FM04*ZZ4
+      T0524=FM05*EE2*ZZ4
+      T0515=FM05*EE1*ZZ5
+      T0626=FM06*EE2*ZZ6
+      T0635=FM06*EE3*ZZ5
+      T0746=FM07*EE4*ZZ6
+      T0737=FM07*EE3*ZZ7
+      T0848=FM08*EE4*ZZ8
+      TW0105=T0000*S0402+T0202*S0403-T0100*S0403+T0404*S0704-T0302*S0604
+     3+T0200*S0804
+      TW0205=-T0111*S0602-T0313*S0603+T0211*S0903-T0515*S1004+T0413*S110
+     34-T0311*S1204
+      TW0305=T0010*S0602+T0212*S0603-T0110*S0603+T0414*S1004-T0312*S0804
+     3+T0210*S1304+T0222*S0802-T0120*S0802+T0424*S0803-T0322*S0903+T0220
+     4*S1403+T0626*S1504-T0524*S1604+T0422*S1704-T0320*S1604
+      TW0405=-T0121*S1402-T0323*S1403+T0221*S2103-T0525*S1904+T0423*S120
+     34-T0321*S1704-T0333*S1302+T0231*S2002-T0535*S1303+T0433*S2203-T033
+     41*S2303-T0737*S2404+T0635*S2504-T0533*S2604+T0431*S2604
+      TW0505=T0020*S1402+T0222*S1403-T0120*S1403+T0424*S1904-T0322*S2004
+     3+T0220*S2804+T0232*S1402-T0130*S1402+T0434*S1403-T0332*S3303+T0230
+     4*S2103+T0636*S1904-T0534*S1704+T0432*S3404-T0330*S1704+T0444*S1902
+     5-T0342*S2002+T0240*S2802+T0646*S1903-T0544*S1703+T0442*S3403-T0340
+     6*S1703+T0848*S3504-T0746*S3604+T0644*S2604-T0542*S3704+T0440*S3804
+      TW1005=T0010*S0602+T0212*S0603-T0110*S0603+T0414*S1004-T0312*S0804
+     3+T0210*S1304-T0120*S0802-T0322*S0803+T0220*S0803-T0524*S1504+T0422
+     4*S1304-T0320*S1904
+      TW1105=-T0121*S0802-T0323*S0803+T0221*S1403-T0525*S1504+T0423*S390
+     34-T0321*S1604+T0231*S1302+T0433*S1303-T0331*S2003+T0635*S2404-T053
+     43*S2904+T0431*S3004
+      TW1205=T0020*S0802+T0222*S0803-T0120*S0803+T0424*S1504-T0322*S1304
+     3+T0220*S1904-T0130*S0802-T0332*S4003+T0230*S0603-T0534*S0504+T0432
+     4*S4104-T0330*S2804+T0232*S1302+T0434*S1303+T0636*S2404-T0342*S1902
+     5+T0240*S1902-T0544*S1903+T0442*S2003-T0340*S2803-T0746*S3504+T0644
+     6*S4204-T0542*S4304+T0440*S4204
+      TW1505=T0020*S1402+T0222*S1403-T0120*S1403+T0424*S1904-T0322*S2004
+     3+T0220*S2804-T0130*S1402-T0332*S1403+T0230*S1403-T0534*S1904+T0432
+     4*S2004-T0330*S2804+T0240*S2802+T0442*S2803-T0340*S2803+T0644*S4404
+     5-T0542*S3204+T0440*S4504
+      TW3105=T0020*S0802+T0222*S0803-T0120*S0803+T0424*S1504-T0322*S1304
+     3+T0220*S1904-T0130*S0802-T0332*S0803+T0230*S0803-T0534*S1504+T0432
+     4*S1304-T0330*S1904+T0240*S1902+T0442*S1903-T0340*S1903+T0644*S3504
+     5-T0542*S3104+T0440*S4404
+      TW0609=T0211*S0803+T0413*S1004-T0311*S1304
+      TW0709=-T0322*S1303+T0220*S1303-T0524*S1504+T0422*S1304-T0320*S190
+     34
+      TW0809=T0221*S1303+T0423*S1504-T0321*S1904+T0433*S1903-T0331*S2803
+     3+T0635*S2404-T0533*S2904+T0431*S3004
+      TW0909=-T0332*S2803+T0230*S2803-T0534*S3104+T0432*S2804-T0330*S320
+     34-T0544*S3103+T0442*S2803-T0340*S3203-T0746*S3504+T0644*S4204-T054
+     42*S4304+T0440*S4204
+      TW1309=T0221*S2003+T0423*S1904-T0321*S2804-T0331*S2803-T0533*S3104
+     3+T0431*S3204
+      TW1409=-T0332*S2803+T0230*S2803-T0534*S3104+T0432*S2804-T0330*S320
+     34+T0442*S3203-T0340*S3203+T0644*S4404-T0542*S3204+T0440*S4504
+      TW2909=T0221*S1303+T0423*S1504-T0321*S1904-T0331*S1903-T0533*S2404
+     3+T0431*S3104
+      TW3009=-T0332*S1903+T0230*S1903-T0534*S2404+T0432*S1904-T0330*S310
+     34+T0442*S3103-T0340*S3103+T0644*S3504-T0542*S3104+T0440*S4404
+      TW0112=T0000*S0302-T0100*S0303+T0202*S0503-T0302*S0704+T0200*S0704
+      TW0212=-T0111*S0502+T0211*S0303-T0313*S0703+T0413*S1004-T0311*S130
+     34
+      TW0312=T0010*S0502-T0110*S0503+T0212*S0703-T0312*S1004+T0210*S1004
+     3+T0222*S0702-T0120*S0702-T0322*S1803+T0220*S0503+T0424*S1003-T0524
+     4*S1504+T0422*S1304-T0320*S1904
+      TW0412=-T0121*S0802+T0221*S0603-T0323*S1303+T0423*S1904-T0321*S280
+     34-T0333*S1002+T0231*S1302+T0433*S2703-T0331*S2003-T0535*S1503+T063
+     45*S2404-T0533*S2904+T0431*S3004
+      TW0512=T0020*S0802-T0120*S0803+T0222*S1303-T0322*S1904+T0220*S1904
+     3+T0232*S0802-T0130*S0802-T0332*S4003+T0230*S0603+T0434*S1303-T0534
+     4*S1904+T0432*S2004-T0330*S2804+T0444*S1502-T0342*S1302+T0240*S1902
+     5-T0544*S0503+T0442*S4103-T0340*S2803+T0646*S2403-T0746*S3504+T0644
+     6*S4204-T0542*S4304+T0440*S4204
+      TW1012=T0010*S0502-T0110*S0503+T0212*S0703-T0312*S1004+T0210*S1004
+     3-T0120*S0702+T0220*S0503-T0322*S1003+T0422*S1904-T0320*S1904
+      TW1112=-T0121*S0702+T0221*S0503-T0323*S1003+T0423*S1504-T0321*S190
+     34+T0231*S1002-T0331*S1303+T0433*S1503-T0533*S3104+T0431*S3204
+      TW1212=T0020*S0702-T0120*S0703+T0222*S1003-T0322*S1504+T0220*S1504
+     3-T0130*S0702+T0230*S0503-T0332*S0503+T0432*S3204-T0330*S1904+T0232
+     4*S1002+T0434*S1503-T0534*S2404-T0342*S1502+T0240*S1502+T0442*S3203
+     5-T0340*S1903-T0544*S2403+T0644*S4404-T0542*S3204+T0440*S4504
+      TW1512=T0020*S0802-T0120*S0803+T0222*S1303-T0322*S1904+T0220*S1904
+     3-T0130*S0802+T0230*S0603-T0332*S1303+T0432*S2804-T0330*S2804+T0240
+     4*S1902-T0340*S2803+T0442*S3103-T0542*S4204+T0440*S4204
+      TW2612=T0010*S0502-T0110*S0503+T0212*S0703-T0312*S1004+T0210*S1004
+     3-T0120*S0702+T0220*S0703-T0322*S1003+T0422*S1504-T0320*S1504
+      TW2712=-T0121*S0702+T0221*S0503-T0323*S1003+T0423*S1504-T0321*S190
+     34+T0231*S1002-T0331*S0703+T0433*S1503-T0533*S2404+T0431*S3104
+      TW2812=T0020*S0702-T0120*S0703+T0222*S1003-T0322*S1504+T0220*S1504
+     3-T0130*S0702+T0230*S1303-T0332*S0503+T0432*S4604-T0330*S1004+T0232
+     4*S1002+T0434*S1503-T0534*S2404-T0342*S1502+T0240*S1502+T0442*S4603
+     5-T0340*S1003-T0544*S2403+T0644*S3504-T0542*S3104+T0440*S4404
+      TW3112=T0020*S0702-T0120*S0703+T0222*S1003-T0322*S1504+T0220*S1504
+     3-T0130*S0702+T0230*S1303-T0332*S1003+T0432*S1004-T0330*S1004+T0240
+     4*S1502-T0340*S1003+T0442*S2403-T0542*S4404+T0440*S4404
+      TW3512=T0020*S0802-T0120*S0803+T0222*S1303-T0322*S1904+T0220*S1904
+     3-T0130*S0802+T0230*S0803-T0332*S1303+T0432*S1904-T0330*S1904+T0240
+     4*S1902-T0340*S1903+T0442*S3103-T0542*S4404+T0440*S4404
+      TW0614=T0211*S0803-T0311*S1304
+      TW0714=-T0322*S1303+T0220*S1303+T0422*S1904-T0320*S1904
+      TW0814=T0221*S1303-T0321*S1904+T0433*S1903-T0331*S2803-T0533*S3104
+     3+T0431*S3204
+      TW0914=-T0332*S2803+T0230*S2803+T0432*S3204-T0330*S3204-T0544*S310
+     33+T0442*S2803-T0340*S3203+T0644*S4404-T0542*S3204+T0440*S4504
+      TW1314=T0221*S2003-T0321*S2804-T0331*S2803+T0431*S3004
+      TW1414=-T0332*S2803+T0230*S2803+T0432*S3204-T0330*S3204+T0442*S320
+     33-T0340*S3203-T0542*S4204+T0440*S4204
+      TW2914=T0221*S1303-T0321*S1904-T0331*S1903+T0431*S3104
+      TW3014=-T0332*S1903+T0230*S1903+T0432*S3104-T0330*S3104+T0442*S310
+     33-T0340*S3103-T0542*S4404+T0440*S4404
+      TW0115=T0000*S0402-T0100*S0403+T0200*S0804
+      TW0215=-T0111*S0602+T0211*S0603-T0311*S1304
+      TW0315=T0010*S0602-T0110*S0603+T0210*S1304+T0222*S0802-T0120*S0802
+     3-T0322*S0803+T0220*S0803+T0422*S1904-T0320*S1904
+      TW0415=-T0121*S1402+T0221*S1403-T0321*S2804-T0333*S1302+T0231*S200
+     32+T0433*S1303-T0331*S2003-T0533*S3104+T0431*S3204
+      TW0515=T0020*S1402-T0120*S1403+T0220*S2804+T0232*S1402-T0130*S1402
+     3-T0332*S1403+T0230*S1403+T0432*S2804-T0330*S2804+T0444*S1902-T0342
+     4*S2002+T0240*S2802-T0544*S1903+T0442*S2003-T0340*S2803+T0644*S4404
+     5-T0542*S3204+T0440*S4504
+      TW1015=T0010*S0602-T0110*S0603+T0210*S1304-T0120*S0802+T0220*S1403
+     3-T0320*S1604
+      TW1115=-T0121*S0802+T0221*S0803-T0321*S1904+T0231*S1302-T0331*S200
+     33+T0431*S3004
+      TW1215=T0020*S0802-T0120*S0803+T0220*S1904-T0130*S0802+T0230*S0603
+     3-T0330*S2804+T0232*S1302-T0332*S1303+T0432*S3104-T0342*S1902+T0240
+     4*S1902+T0442*S2803-T0340*S2803-T0542*S4204+T0440*S4204
+      TW1515=T0020*S1402-T0120*S1403+T0220*S2804-T0130*S1402+T0230*S2103
+     3-T0330*S1704+T0240*S2802-T0340*S1703+T0440*S3804
+      TW2615=T0010*S0602-T0110*S0603+T0210*S1304-T0120*S0802+T0220*S0803
+     3-T0320*S1904
+      TW2715=-T0121*S0802+T0221*S0803-T0321*S1904+T0231*S1302-T0331*S130
+     33+T0431*S3104
+      TW2815=T0020*S0802-T0120*S0803+T0220*S1904-T0130*S0802+T0230*S0803
+     3-T0330*S1904+T0232*S1302-T0332*S1303+T0432*S3104-T0342*S1902+T0240
+     4*S1902+T0442*S1903-T0340*S1903-T0542*S4404+T0440*S4404
+      TW3115=T0020*S0802-T0120*S0803+T0220*S1904-T0130*S0802+T0230*S0603
+     3-T0330*S2804+T0240*S1902-T0340*S2803+T0440*S4204
+      TW3515=T0020*S1402-T0120*S1403+T0220*S2804-T0130*S1402+T0230*S1403
+     3-T0330*S2804+T0240*S2802-T0340*S2803+T0440*S4504
+      TW2022=T0220*S1003+T0422*S1504-T0320*S1504
+      TW2122=-T0331*S1503-T0533*S2404+T0431*S3104
+      TW2222=T0230*S1503+T0432*S2404-T0330*S2404+T0442*S2403-T0340*S2403
+     3+T0644*S3504-T0542*S3104+T0440*S4404
+      TW2522=T0230*S1903+T0432*S3104-T0330*S3104-T0340*S3103-T0542*S4404
+     3+T0440*S4404
+      TW1624=T0211*S0703-T0311*S1004
+      TW1724=-T0322*S1003+T0220*S1003+T0422*S1504-T0320*S1504
+      TW1824=T0221*S1003-T0321*S1504+T0433*S1503-T0331*S1903-T0533*S2404
+     3+T0431*S3104
+      TW1924=-T0332*S1903+T0230*S1903+T0432*S3104-T0330*S3104-T0544*S240
+     33+T0442*S1903-T0340*S3103+T0644*S3504-T0542*S3104+T0440*S4404
+      TW2324=T0221*S1003-T0321*S1504-T0331*S1503+T0431*S3104
+      TW2424=-T0332*S1503+T0230*S1503+T0432*S2404-T0330*S2404+T0442*S240
+     33-T0340*S2403-T0542*S4404+T0440*S4404
+      TW3224=T0221*S1303-T0321*S1904-T0331*S1903+T0431*S3104
+      TW3324=-T0332*S1903+T0230*S1903+T0432*S3104-T0330*S3104+T0442*S310
+     33-T0340*S3103-T0542*S4404+T0440*S4404
+      TW2025=T0220*S1303-T0320*S1904
+      TW2125=-T0331*S1903+T0431*S3104
+      TW2225=T0230*S1903-T0330*S3104+T0442*S3103-T0340*S3103-T0542*S4404
+     3+T0440*S4404
+      TW2525=T0230*S2803-T0330*S3204-T0340*S3203+T0440*S4204
+      TW3425=T0230*S2803-T0330*S3204-T0340*S3203+T0440*S4504
+      TW0131=T0000*S0302-T0100*S0303+T0200*S0704
+      TW0231=-T0111*S0502+T0211*S0503-T0311*S1004
+      TW0331=T0010*S0502-T0110*S0503+T0210*S1004+T0222*S0702-T0120*S0702
+     3-T0322*S0703+T0220*S0703+T0422*S1504-T0320*S1504
+      TW0431=-T0121*S0802+T0221*S0803-T0321*S1904-T0333*S1002+T0231*S130
+     32+T0433*S1003-T0331*S1303-T0533*S2404+T0431*S3104
+      TW0531=T0020*S0802-T0120*S0803+T0220*S1904+T0232*S0802-T0130*S0802
+     3-T0332*S0803+T0230*S0803+T0432*S1904-T0330*S1904+T0444*S1502-T0342
+     4*S1302+T0240*S1902-T0544*S1503+T0442*S1303-T0340*S1903+T0644*S3504
+     5-T0542*S3104+T0440*S4404
+      TW1031=T0010*S0502-T0110*S0503+T0210*S1004-T0120*S0702+T0220*S0503
+     3-T0320*S1904
+      TW1131=-T0121*S0702+T0221*S0703-T0321*S1504+T0231*S1002-T0331*S070
+     33+T0431*S3104
+      TW1231=T0020*S0702-T0120*S0703+T0220*S1504-T0130*S0702+T0230*S1303
+     3-T0330*S1004+T0232*S1002-T0332*S1003+T0432*S2404-T0342*S1502+T0240
+     4*S1502+T0442*S1003-T0340*S1003-T0542*S4404+T0440*S4404
+      TW1531=T0020*S0802-T0120*S0803+T0220*S1904-T0130*S0802+T0230*S0603
+     3-T0330*S2804+T0240*S1902-T0340*S2803+T0440*S4204
+      TW3131=T0020*S0702-T0120*S0703+T0220*S1504-T0130*S0702+T0230*S0503
+     3-T0330*S1904+T0240*S1502-T0340*S1903+T0440*S4504
+      RETURN
+      END

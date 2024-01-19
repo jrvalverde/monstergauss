@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<HTML>
+
+<HEAD>
+<TITLE>Monstergauss</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1 ALIGN=center>Monstergauss</H1>
+
+<HR>
+
+<P>
+Monstergauss was started in the 1970's, derived from early versions of parts
+of the
+<A HREF="http://www.gaussian.com/">Gaussian 80/82</A>
+series of programs.
+The aims were to have a program that was easily portable
+to a variety of computer systems, and which incorporated features not
+found in the Gaussian program suite.
+<P>
+It features analytic gradient optimization of geometries,
+plus various other options such as Restricted Hartree-Fock open
+shell SCF, pair-wise MC-SCF, Boys localization, one electron
+properties, quantitative PMO analysis, a direct CI,
+the Morokuma Energy Decomposition, and a basis set superposition
+error correction by the counterpoise method.
+<P>
+MONSTERGAUSS has been designed to be compatible, with minimal
+changes, with IBM and CDC mainframes, GOULD minicomputers,
+the DEC VAX minicomputers, and Unix-based systems (e.g. Sun and Apollo
+workstations).
+<P>
+Note: almost all the files here are compressed, and must be downloaded
+and uncompressed ('zcat FILENAME | tar xpf -') to be viewed.
+Most of the '.doc' files are in LaTeX format,
+but the basic text should be easy to read.
+<P>
+<UL>
+  <LI> Source code and test cases:
+       <UL>
+         <LI> <A HREF="src.tar.Z">src.tar.Z</A>
+	      - source code for Monstergauss and the support programs
+	      (size: 1081773 bytes).
+         <LI> <A HREF="test.tar.Z">test.tar.Z</A>
+	      - 30 test cases (sample input and expected output)
+	      (size: 685677 bytes).
+	      <BR>
+	      <B>The entire set of tests should be run and checked against
+	      the expected output before trusting any results produced by
+	      the program!</B>
+       </UL>
+
+  <P>
+  <LI> Documentation files:
+       <UL>
+         <LI> <A HREF="gauss.doc.Z">gauss.doc.Z</A>
+	      - Monstergauss installation notes (LaTeX version)
+	      (size: 59093 bytes).
+         <LI> <A HREF="gauss.out.Z">gauss.out.Z</A>
+	      - Monstergauss installation notes (plain text)
+	      (size: 61035 bytes).
+         <LI> <A HREF="gauss.l.Z">gauss.l.Z</A>
+	      - Unix 'man' page for 'mgauss'.
+         <LI> <A HREF="manual.out.Z">manual.out.Z</A>
+	      - Monstergauss Users Manual
+	      (printable, includes FORTRAN carriage control)
+	      (size: 99651 bytes).
+       </UL>
+
+  <P>
+  <LI> Source code conversion programs:
+       <UL>
+         <LI> <A HREF="convrt.doc.Z">convrt.doc.Z</A>
+	      - source code conversion request form (LaTeX version).
+	      <BR>
+	      This is no longer needed as anyone with access to a Unix
+	      system can convert the source code themselves.
+         <LI> <A HREF="convrt.out.Z">convrt.out.Z</A>
+	      - source code conversion request form (plain text).
+	      <BR>
+	      This is no longer needed as anyone with access to a Unix
+	      system can convert the source code themselves.
+         <LI> <A HREF="convrt80.job">convrt80.job</A>
+	      - C shell script to convert Monstergauss to handle 80
+	      basis functions on an Gould system.
+         <LI> <A HREF="convrt150.job">convrt150.job</A>
+	      - C shell script to convert Monstergauss to handle 150
+	      basis functions on an IBM system.
+         <LI> <A HREF="convrt200.job">convrt200.job</A>
+	      - C shell script to convert Monstergauss to handle 200
+	      basis functions on an IBM system.
+         <LI> <A HREF="convrt250.job">convrt250.job</A>
+	      - C shell script to convert Monstergauss to handle 250
+	      basis functions on an IBM system.
+         <LI> <A HREF="convrtunx.job">convrtunx.job</A>
+	      - C shell script to convert Monstergauss to handle
+	      more/fewer basis functions on a Unix system
+	      (this conversion is done "in-place", where the original source
+	      code is replaced by the new version).
+         <LI> <A HREF="convrtvax.job">convrtvax.job</A>
+	      - C shell script to convert Monstergauss to handle
+	      more/fewer basis functions on a VAX system
+	      (this conversion is done "in-place", where the original source
+	      code is replaced by the new version).
+         <LI> <A HREF="maildir">maildir</A>
+	      - Shell script to e-mail all files in the current directory.
+         <LI> <A HREF="manual.job">manual.job</A>
+	      - C shell script to prepare the Monstergauss Users Manual,
+	      using the source files (which contain all the documentation
+	      as comments).
+         <LI> <A HREF="tartape.job">tartape.job</A>
+	      - Korn shell script to copy the source code to a tape drive
+	      or disk file (this is a good file to look at to see what
+	      all the other files contain and what they do).
+       </UL>
+
+  <P>
+  <LI> Basis Set Database:
+       <UL>
+         <LI> <A HREF="basis1.dat">basis1.dat</A>
+	      - H/He basis sets
+	      (size: 8385 bytes).
+         <LI> <A HREF="basis2a.dat">basis2a.dat</A>
+	      - Li/C basis sets
+	      (size: 54259 bytes).
+         <LI> <A HREF="basis2b.dat">basis2b.dat</A>
+	      - N/Ne basis sets
+	      (size: 70249 bytes).
+         <LI> <A HREF="basis3.dat">basis3.dat</A>
+	      - Na/Ar basis sets
+	      (size: 92707 bytes).
+         <LI> <A HREF="basis4a.dat">basis4a.dat</A>
+	      - K/Mn basis sets
+	      (size: 49571 bytes).
+         <LI> <A HREF="basis4b.dat">basis4b.dat</A>
+	      - Fe/Kr basis sets
+	      (size: 54419 bytes).
+         <LI> <A HREF="basis5.dat">basis5.dat</A>
+	      - Rb/Xe basis sets
+	      (size: 26363 bytes).
+         <LI> <A HREF="basis6.dat">basis6.dat</A>
+	      - Cs/Lw basis sets
+	      (size: 22215 bytes).
+       </UL>
+
+  <P>
+  <LI> Other notes (not needed to install/run the program):
+       <UL>
+         <LI> <A HREF="overlay.gould.doc.Z">overlay.gould.doc.Z</A>
+	      - conversion notes for FORTRAN 77 to Gould FORTX32,
+	      including a description of the overlay structure of the program
+	      (LaTeX version)
+	      (size: 20842 bytes).
+         <LI> <A HREF="rhfpaper.doc.Z">rhfpaper.doc.Z</A>
+	      - a paper on the
+	      'Calculation of State Parameters for Open Shell Restricted
+	      Hartree-Fock Self-Consistent Field Theory' (LaTeX version)
+	      (size: 17433 bytes).
+       </UL>
+</UL>
+
+<HR>
+
+<ADDRESS>
+This page created and maintained by Mike Peterson,
+<A HREF="mailto:mikep@noc.utoronto.ca">mikep@noc.utoronto.ca</A>.<BR>
+Created June 18, 2002. Last updated September 10, 2005.
+</ADDRESS>
+
+</BODY>
+
+</HTML>

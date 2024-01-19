@@ -1,0 +1,104 @@
+*MOL BA=M3, EDECOMP, BSSE
+*PRT I=Y
+*IOP
+   4  35   0  TURN ON PRINTING DURING ED/BSSE SCF
+
+NH3 DIMER ENERGY DECOMPOSITION / BASIS SET SUPERPOSITION ERROR TEST
+ 0 1
+   7
+   1   1  1.002
+   0   1  1.000        2    90.0
+   0   1  1.000        2   120.75346   3    90.0       1
+   1   1  1.002        4    53.790974  3     0.0
+   1   1  1.002        4    53.790974  3   180.0
+   7   1  3.052        3    90.000     2     0.0
+   1   7  1.002        1   111.30      3    90.0
+   1   7  1.002        1   111.30      3  -150.0
+   1   7  1.002        1   111.30      3   -30.0
+
+ 1 1 1 1 1 1 2 2 2 2
+ 0 1
+ 0 1
+*MOL BA=M3, EDECOMP
+NH3 DIMER ENERGY DECOMPOSITION TEST
+ 0 1
+   7
+   1   1  1.002
+   0   1  1.000        2    90.0
+   0   1  1.000        2   120.75346   3    90.0       1
+   1   1  1.002        4    53.790974  3     0.0
+   1   1  1.002        4    53.790974  3   180.0
+   7   1  3.052        3    90.000     2     0.0
+   1   7  1.002        1   111.30      3    90.0
+   1   7  1.002        1   111.30      3  -150.0
+   1   7  1.002        1   111.30      3   -30.0
+
+ 1 1 1 1 1 1 2 2 2 2
+ 0 1
+ 0 1
+*MOL BA=M3, BSSE
+NH3 DIMER BASIS SET SUPERPOSITION ERROR TEST
+ 0 1
+   7
+   1   1  1.002
+   0   1  1.000        2    90.0
+   0   1  1.000        2   120.75346   3    90.0       1
+   1   1  1.002        4    53.790974  3     0.0
+   1   1  1.002        4    53.790974  3   180.0
+   7   1  3.052        3    90.000     2     0.0
+   1   7  1.002        1   111.30      3    90.0
+   1   7  1.002        1   111.30      3  -150.0
+   1   7  1.002        1   111.30      3   -30.0
+
+ 1 1 1 1 1 1 2 2 2 2
+ 0 1
+ 0 1
+*MOL BA=E4, EDECOMP
+NH4+ ENERGY DECOMP  (K. MOROKUMA, ACCTS. CHEM. RES., 10, 294 (1977))
+ 1 1
+N
+H   N  1.0124
+H1  N  1.0124  H  108.0
+H2  N  1.0124  H  108.0  H1  120.0
+H3  N  1.0124  H  108.0  H1 -120.0
+
+ 1 2 1 1 1
+ 0 1
+ 1 1
+*MOL BA=E4, EDECOMP
+NH4+ ENERGY DECOMPOSITION TEST WITH FRAGMENT DEFINITIONS REVERSED
+ 1 1
+N
+H   N  1.0124
+H1  N  1.0124  H  108.0
+H2  N  1.0124  H  108.0  H1  120.0
+H3  N  1.0124  H  108.0  H1 -120.0
+
+ 2 1 2 2 2
+ 1 1
+ 0 1
+*MOL BA=E4, EDECOMP
+O=C-BH3 E DECOMPOSITION (K. MOROKUMA, ACCTS. CHEM. RES., 10, 294 (1977))
+ 0 1
+C
+O  C CO
+X  C ONE O  A90
+B  C BC  X  A90 O   T180
+H5 B BH  C  A   X   T0
+H6 B BH  C  A   H5  T120
+H7 B BH  C  A   H5 -T120
+
+CO = 1.13
+BC = 1.57
+BH = 1.19
+A  = 106.3
+
+ONE = 1.0
+A90 = 90.0
+T0  = 0.0
+T120 = 120.0
+T180 = 180.0
+
+ 1 1 1 2 2 2 2
+ 0 1
+ 0 1

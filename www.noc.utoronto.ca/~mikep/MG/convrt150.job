@@ -1,0 +1,47 @@
+#! /bin/csh
+#
+# Step 1 of the Monstergauss source conversion procedure.
+# This file saved as ~mgauss/bin/convrt150.job.
+#
+# Usage: ~mgauss/bin/convrt150.job >&/tmp/convrt150.out &.
+#
+switch ("`uname`")
+case HP-UX:
+   set os = hp
+   breaksw
+case IRIX*:
+   set os = sgi
+   breaksw
+default:
+   set os = UNKNOWN
+   breaksw
+endsw
+#
+if (-f /tmp/convert.input) then
+   echo "File /tmp/convert.input already exists - job aborted."
+   exit(1)
+endif
+~mgauss/bin/$os/convrt1 <<'EOF'
+ 
+#MACH   =IBM      CONVERT TO IBM SYSTEM
+#NA     =      30 NUMBER OF ATOMS
+#NB     =     150 NUMBER OF BASIS FUNCTIONS (A.O.'S)
+#NS     =      80 NUMBER OF SHELLS
+#NP     =     250 NUMBER OF PRIMITIVE GAUSSIANS
+#NR     =      76 NUMBER OF OCCUPIED ORBITALS IN RHF
+#NF     =     100 NUMBER OF FOCK MATRICES IN RHF
+#NC     =     100 NUMBER OF CONFIGURATIONS IN RHF
+#NO     =     125 NUMBER OF OPTIMIZABLE PARAMETERS
+#NT     =      60 NUMBER OF TRANSFORMED ORBITALS
+#NCON   =   32000 NUMBER OF CONFIGURATIONS IN CI
+#MA     =      15 NUMBER OF ACTIVE OCCUPIED MO IN CI
+#MV     =      40 NUMBER OF ACTIVE SUBSTITUTING MO IN CI
+#NDHF   =     100 NUMBER OF BASIS FUNCTIONS IN DHF
+#IRECL  =    6232 RECORD SIZE IN BYTES (GOULD=6144, IBM=6232, REST=6400)
+'EOF'
+#
+echo " "
+echo "Run file /tmp/convert.input to continue processing."
+chmod +x /tmp/convert.input
+echo " "
+echo "Delete file /tmp/convrt150.out now."

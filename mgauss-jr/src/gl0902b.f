@@ -1,0 +1,2033 @@
+C/    GL0902B      01 JAN 87                                         MRP
+      SUBROUTINE SUBR1(MU,C1,NDETL,Z1,J,JA,JB,IA,IB,IMATR)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C1,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION IA(2),IB(2),JA(2),JB(2),KA(2),KB(2),L(5)
+      DIMENSION C1(12,12),C2(12,12),Z1(12),Z2(12),IMATR(24,24,2)
+C
+      GO TO (1001,1002,1003,1004,1005),ICASE
+C
+ 1001 CALL TYPDD1(JA,JB,NU,IP,KA,KB,J,IA,IB)
+      GO TO 1006
+C
+ 1002 CALL TYPDD2(JA,JB,NU,IP,KA,KB,J,IA,IB)
+      GO TO 1006
+C
+ 1003 CALL TYPDD3(JA,JB,NU,IP,KA,KB,J,IA,IB)
+      GO TO 1006
+C
+ 1004 CALL TYPDD4(JA,JB,NU,IP,KA,KB,J,IA,IB)
+      GO TO 1006
+C
+ 1005 CALL TYPDD5(JA,JB,NU,IP,KA,KB,J,IA,IB)
+C
+ 1006 IF(NU.EQ.61)RETURN
+      IF(IP.EQ.-1)IP=2
+      IF(IMATR(MU,NU,IP).EQ.1)RETURN
+   10 IMATR(MU,NU,IP)=1
+      NDETR=NDED(NU)
+      GO TO (2001,2002,2003,2004,2005),ICASE
+C
+ 2001 CALL CODED1(KA,KB,NU,C2,NDETR,Z2)
+      GO TO 2006
+C
+ 2002 CALL CODED2(KA,KB,NU,C2,NDETR,Z2)
+      GO TO 2006
+C
+ 2003 CALL CODED3(KA,KB,NU,C2,NDETR,Z2)
+      GO TO 2006
+C
+ 2004 CALL CODED4(KA,KB,NU,C2,NDETR,Z2)
+      GO TO 2006
+C
+ 2005 CALL CODED5(KA,KB,NU,C2,NDETR,Z2)
+C
+ 2006 IP4=0
+      IF(ICASE.EQ.5)THEN
+         L(1)=0
+         L(4)=5
+         L(5)=6
+         IF(IA(1).EQ.JA(1).AND.IA(2).EQ.JA(2))GO TO 150
+         IF(IA(1).EQ.JA(2).AND.IA(2).EQ.JA(1))GO TO 150
+         IF(IB(1).EQ.JB(1).AND.IB(2).EQ.JB(2))GO TO 151
+         IF(IB(1).EQ.JB(2).AND.IB(2).EQ.JB(1))GO TO 151
+         GO TO 153
+  150    IF(IB(1).EQ.JB(1).AND.IB(2).EQ.JB(2))GO TO 154
+         IF(IB(1).EQ.JB(2).AND.IB(2).EQ.JB(1))GO TO 154
+         IF(IB(1).EQ.JB(1).OR.IB(1).EQ.JB(2))GO TO 155
+         IF(IB(2).EQ.JB(1).OR.IB(2).EQ.JB(2))GO TO 156
+         GO TO 153
+  154    L(1)=2
+         GO TO 153
+  155    L(1)=1
+         L(2)=IB(2)
+         L(3)=JB(1)
+         IF(JB(1).EQ.IB(1)) L(3)=JB(2)
+         GO TO 153
+  156    L(1)=1
+         L(2)=IB(1)
+         L(3)=JB(1)
+         IF(JB(1).EQ.IB(2)) L(3)=JB(2)
+         GO TO 153
+  151    IF(IA(1).EQ.JA(1).OR.IA(1).EQ.JA(2)) GO TO 157
+         IF(IA(2).EQ.JA(1).OR.IA(2).EQ.JA(2)) GO TO 158
+         GO TO 153
+  157    L(1)=1
+         L(2)=IA(2)
+         L(3)=JA(1)
+         IF(JA(1).EQ.IA(1)) L(3)=JA(2)
+         GO TO 153
+  158    L(1)=1
+         L(2)=IA(1)
+         L(3)=JA(1)
+         IF(JA(1).EQ.IA(2)) L(3)=JA(2)
+      END IF
+  153 CALL MATRG(C1,C2,Z1,Z2,NDETL,NDETR,J,MU,NU,IP,IA,IB,JA,JB,IP4,L)
+      IF(IP4.EQ.1)IMATR(MU,NU,IP)=0
+      DO 20 I=1,NCT
+      IF(NU.EQ.MCT(I))GO TO 15
+   20 CONTINUE
+      RETURN
+C
+   15 NU=NU+1
+      GO TO 10
+      END
+      SUBROUTINE SUBR2(MU,C1,NDETL,Z1,J,JA,JB,IA,IB,IMATR)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C1,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION IA(2),IB(2),JA(2),JB(2),L(5)
+      DIMENSION C1(12,12),C2(12,12),Z1(12),Z2(12),IMATR(24,24,2)
+C
+      IP=100
+      GO TO (1001,1002,1003,1004,1005),ICASE
+C
+ 1001 CALL TYPES1(JA,JB,NU)
+      GO TO 1006
+C
+ 1002 CALL TYPES2(JA,JB,NU)
+      GO TO 1006
+C
+ 1003 CALL TYPES3(JA,JB,NU)
+      GO TO 1006
+C
+ 1004 CALL TYPES4(JA,JB,NU)
+      GO TO 1006
+C
+ 1005 CALL TYPES5(JA,JB,NU)
+C
+ 1006 IF(NU.EQ.62)RETURN
+   20 IF(IMATR(MU,NU,1).EQ.1)RETURN
+      IMATR(MU,NU,1)=1
+      NDETS=NDES(NU)
+      GO TO (2001,2002,2003,2004,2005),ICASE
+C
+ 2001 CALL CODES1(JA,JB,NU,C2,NDETS,Z2)
+      GO TO 2006
+C
+ 2002 CALL CODES2(JA,JB,NU,C2,NDETS,Z2)
+      GO TO 2006
+C
+ 2003 CALL CODES3(JA,JB,NU,C2,NDETS,Z2)
+      GO TO 2006
+C
+ 2004 CALL CODES4(JA,JB,NU,C2,NDETS,Z2)
+      GO TO 2006
+C
+ 2005 CALL CODES5(JA,JB,NU,C2,NDETS,Z2)
+C
+ 2006 IP4=0
+      IF(ICASE.EQ.5)THEN
+         L(1)=0
+         L(4)=5
+         L(5)=6
+         IF(IA(1).EQ.JA(1).AND.IB(1).EQ.JB(1))GO TO 200
+         IF(IA(2).EQ.JA(1).AND.IB(2).EQ.JB(1))GO TO 201
+         IF(IA(2).EQ.JA(1).AND.IB(1).EQ.JB(1))GO TO 202
+         IF(IA(1).EQ.JA(1).AND.IB(2).EQ.JB(1))GO TO 203
+         GO TO 204
+  200    L(1)=1
+         L(2)=IA(2)
+         L(3)=IB(2)
+         GO TO 204
+  201    L(1)=1
+         L(2)=IA(1)
+         L(3)=IB(1)
+         GO TO 204
+  202    L(1)=1
+         L(2)=IA(1)
+         L(3)=IB(2)
+         GO TO 204
+  203    L(1)=1
+         L(2)=IA(2)
+         L(3)=IB(1)
+      END IF
+  204 CALL MATRG(C1,C2,Z1,Z2,NDETL,NDETS,J,MU,NU,IP,IA,IB,JA,JB,IP4,L)
+      IF(IP4.EQ.1)IMATR(MU,NU,1)=0
+      DO 10 I=1,NCTS
+      IF(NU.EQ.MCTS(I))GO TO 15
+   10 CONTINUE
+      RETURN
+C
+   15 NU=NU+1
+      GO TO 20
+      END
+      SUBROUTINE SUBR3(MU,C1,NDETSL,Z1,J,JA,JB,IA,IB,KMATR)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C1,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION IA(2),IB(2),JA(2),JB(2),L(5)
+      DIMENSION C1(12,12),C2(12,12),Z1(12),Z2(12),KMATR(24,24,2)
+C
+      IP=200
+      GO TO (1001,1002,1003,1004,1005),ICASE
+C
+ 1001 CALL TYPES1(JA,JB,NU)
+      GO TO 1006
+C
+ 1002 CALL TYPES2(JA,JB,NU)
+      GO TO 1006
+C
+ 1003 CALL TYPES3(JA,JB,NU)
+      GO TO 1006
+C
+ 1004 CALL TYPES4(JA,JB,NU)
+      GO TO 1006
+C
+ 1005 CALL TYPES5(JA,JB,NU)
+C
+ 1006 IF(NU.EQ.62)RETURN
+   20 IF(KMATR(MU,NU,1).EQ.1)RETURN
+      KMATR(MU,NU,1)=1
+      NDETSR=NDES(NU)
+      GO TO (2001,2002,2003,2004,2005),ICASE
+C
+ 2001 CALL CODES1(JA,JB,NU,C2,NDETSR,Z2)
+      GO TO 2006
+C
+ 2002 CALL CODES2(JA,JB,NU,C2,NDETSR,Z2)
+      GO TO 2006
+C
+ 2003 CALL CODES3(JA,JB,NU,C2,NDETSR,Z2)
+      GO TO 2006
+C
+ 2004 CALL CODES4(JA,JB,NU,C2,NDETSR,Z2)
+      GO TO 2006
+C
+ 2005 CALL CODES5(JA,JB,NU,C2,NDETSR,Z2)
+C
+ 2006 IP4=0
+      IF(ICASE.EQ.5)THEN
+         L(1)=0
+         L(4)=5
+         L(5)=6
+         IF(IA(1).EQ.JA(1).AND.IB(1).EQ.JB(1)) L(1)=2
+         IF(IA(1).EQ.JA(1).AND.IB(1).EQ.JB(1)) GO TO 202
+         IF(IA(1).EQ.JA(1)) GO TO 200
+         IF(IB(1).EQ.JB(1)) GO TO 201
+         GO TO 202
+  200    L(2)=IB(1)
+         L(1)=1
+         L(3)=JB(1)
+         GO TO 202
+  201    L(2)=IA(1)
+         L(3)=JA(1)
+         L(1)=1
+      END IF
+  202 CALL MATRG(C1,C2,Z1,Z2,NDETSL,NDETSR,J,MU,NU,IP,IA,IB,JA,JB,IP4,L)
+      IF(IP4.EQ.1)KMATR(MU,NU,1)=0
+      DO 10 I=1,NCTS
+      IF(NU.EQ.MCTS(I))GO TO 15
+   10 CONTINUE
+      RETURN
+C
+   15 NU=NU+1
+      GO TO 20
+      END
+      SUBROUTINE TYPES1(IA,IB,NU)
+C
+      DOUBLE PRECISION FILL
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION IA(2),IB(2)
+C
+      IF(IA(1).LE.NO.AND.IB(1).GT.NO)GO TO 10
+      NU=62
+      RETURN
+C
+C     I TO A
+C
+   10 NU=1
+      RETURN
+      END
+      SUBROUTINE TYPES2(JA,JB,NU)
+C
+      DOUBLE PRECISION FILL
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+C
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION JA(2),JB(2)
+C
+      NDO=NO-NSO
+      NU=62
+      IF(JA(1).LE.NDO.AND.JB(1).GT.NO)NU=3
+      IF(JA(1).LE.NDO.AND.JB(1).LE.NO)NU=1
+      IF(JA(1).GT.NDO.AND.JB(1).GT.NO)NU=2
+      RETURN
+      END
+      SUBROUTINE TYPES3(JA,JB,NU)
+C
+      DOUBLE PRECISION FILL
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION JA(2),JB(2)
+C
+      NDO=NO-NSO
+      NU=62
+      IF(JA(1).LE.NDO.AND.JB(1).GT.NO)NU=3
+      IF(JA(1).LE.NDO.AND.JB(1).LE.NO)NU=1
+      IF(JA(1).GT.NDO.AND.JB(1).GT.NO)NU=2
+      RETURN
+      END
+      SUBROUTINE TYPES4(JA,JB,NU)
+C
+      DOUBLE PRECISION FILL
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION JA(2),JB(2)
+C
+      NDO=NO-NSO
+      NU=62
+      IF(JA(1).LE.NDO.AND.JB(1).GT.NO)NU=3
+      IF(JA(1).LE.NDO.AND.JB(1).LE.NO)NU=1
+      IF(JA(1).GT.NDO.AND.JB(1).GT.NO)NU=2
+      RETURN
+      END
+      SUBROUTINE TYPES5(IA,IB,NU)
+C
+      DOUBLE PRECISION FILL
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION IA(2),IB(2)
+C
+      NU=62
+      NDO=NO-NSO
+      IF(IA(1).LE.NDO.AND.IB(1).EQ.5) NU=1
+      IF(IA(1).LE.NDO.AND.IB(1).EQ.6) NU=2
+      IF(IA(1).EQ.5.AND.IB(1).GT.NO) NU=3
+      IF(IA(1).EQ.6.AND.IB(1).GT.NO) NU=4
+      IF(IA(1).LE.NDO.AND.IB(1).GT.NO) NU=5
+      RETURN
+      END
+      SUBROUTINE CODES1(IA,IB,NST,C2,NDET,Z2)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION C2(12,12),Z2(12),IA(2),IB(2)
+C
+      DATA PT5/0.5D0/
+C
+      NDET=NDES(NST)
+      DO 10 J=1,NDET
+      DO 10 I=1,MNE
+   10 C2(J,I)=C(I)
+      NI=2*IA(1)-1
+      C2(1,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      Z2(1)=DSQRT(PT5)
+      Z2(2)=+Z2(1)
+      RETURN
+      END
+      SUBROUTINE CODES2(IA,IB,NST,C2,NDET,Z2)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION C2(12,12),Z2(12),IA(2),IB(2)
+C
+      DATA PT5/0.5D0/,ONE/1.0D0/,SIX/6.0D0/
+C
+      NDO=NO-NSO
+      NDET=NDES(NST)
+      DO 10 J=1,NDET
+      DO 10 I=1,MNE
+   10 C2(J,I)=C(I)
+      GO TO(20,25,15,30),NST
+   20 Z2(1)=ONE
+      NI=2*IA(1)
+      C2(1,NI)=IB(1)+0.2
+      RETURN
+C
+   15 NI=2*IA(1)-1
+      C2(1,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      Z2(1)=DSQRT(PT5)
+      Z2(2)=Z2(1)
+      RETURN
+C
+   25 NI=NDO+IA(1)
+      C2(1,NI)=IB(1)+0.1
+      Z2(1)=ONE
+      RETURN
+C
+   30 NI=2*IA(1)-1
+      Z2(1)=-ONE/DSQRT(SIX)
+      Z2(2)=-Z2(1)
+      C2(1,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      RETURN
+      END
+      SUBROUTINE CODES3(IA,IB,NST,C2,NDET,Z2)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION C2(12,12),Z2(12),IA(2),IB(2)
+C
+      DATA PT5/0.5D0/,ONE/1.0D0/
+C
+      NDO=NO-NSO
+      NDET=NDES(NST)
+      DO 10 J=1,NDET
+      DO 10 I=1,MNE
+   10 C2(J,I)=C(I)
+      GO TO(20,25,15,30),NST
+   20 Z2(1)=ONE
+      NI=2*IA(1)
+      C2(1,NI)=IB(1)+0.2
+      RETURN
+C
+   15 NI=2*IA(1)-1
+      C2(1,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      Z2(1)=DSQRT(PT5)
+      Z2(2)=Z2(1)
+      RETURN
+C
+   25 NI=NDO+IA(1)
+      C2(1,NI)=IB(1)+0.1
+      Z2(1)=ONE
+      RETURN
+C
+   30 NI=2*IA(1)-1
+      Z2(1)=-PT5
+      Z2(2)=-Z2(1)
+      C2(1,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      RETURN
+      END
+      SUBROUTINE CODES4(IA,IB,NST,C2,NDET,Z2)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION C2(12,12),Z2(12),IA(2),IB(2)
+C
+      DATA PT3/0.3D0/,PT5/0.5D0/,ONE/1.0D0/
+C
+      NDO=NO-NSO
+      NDET=NDES(NST)
+      DO 10 J=1,NDET
+      DO 10 I=1,MNE
+   10 C2(J,I)=C(I)
+      GO TO(20,25,15,30),NST
+   20 Z2(1)=ONE
+      NI=2*IA(1)
+      C2(1,NI)=IB(1)+0.2
+      RETURN
+C
+   15 NI=2*IA(1)-1
+      C2(1,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      Z2(1)=DSQRT(PT5)
+      Z2(2)=Z2(1)
+      RETURN
+C
+   25 NI=NDO+IA(1)
+      C2(1,NI)=IB(1)+0.1
+      Z2(1)=ONE
+      RETURN
+C
+   30 NI=2*IA(1)-1
+      Z2(1)=-DSQRT(PT3)
+      Z2(2)=-Z2(1)
+      C2(1,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      RETURN
+      END
+      SUBROUTINE CODES5(IA,IB,NSI,C2,NDET,Z2)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION C2(12,12),Z2(12),IA(2),IB(2)
+C
+      DATA PT5/0.5D0/,ONE/1.0D0/,TWO/2.0D0/,TWELVE/12.0D0/
+C
+      NDET=NDES(NSI)
+      NDET1=NDET/2
+      DO 100 J=1,NDET1
+      DO 101 I=1,MNE
+      C2(J,I)=C(I)
+  101 C2(J+NDET1,I)=C(I)
+      C2(J+NDET1,9)=6.1
+  100 C2(J+NDET1,10)=5.2
+      GO TO(1,2,3,4,5,6),NSI
+C
+    1 Z2(1)=ONE/DSQRT(TWO)
+      Z2(2)=Z2(1)
+      NI=2*IA(1)-1
+      C2(1,NI+1)=5.2
+      C2(2,NI)=5.1
+      RETURN
+C
+    2 Z2(1)=ONE/DSQRT(TWO)
+      Z2(2)=Z2(1)
+      NI=2*IA(1)-1
+      C2(1,NI)=6.1
+      C2(2,NI+1)=6.2
+      RETURN
+C
+    3 Z2(1)=ONE/DSQRT(TWO)
+      Z2(2)=Z2(1)
+      C2(1,9)=IB(1)+0.1
+      C2(2,10)=IB(1)+0.2
+      RETURN
+C
+    4 Z2(1)=ONE/DSQRT(TWO)
+      Z2(2)=Z2(1)
+      C2(1,10)=IB(1)+0.2
+      C2(2,9)=IB(1)+0.1
+      RETURN
+C
+    5 K=-2
+   50 K=K+2
+      IF(K.EQ.4)RETURN
+      Z2(K+1)=PT5
+      Z2(K+2)=PT5
+      NI=2*IA(1)-1
+      C2(1+K,NI)=IB(1)+0.1
+      C2(2+K,NI+1)=IB(1)+0.2
+      GO TO 50
+C
+    6 Z2(1)=ONE/DSQRT(TWELVE)
+      Z2(2)=-Z2(1)
+      Z2(3)=-Z2(1)
+      Z2(4)=Z2(1)
+      NI=2*IA(1)-1
+      C2(1,NI)=IB(1)+0.1
+      C2(3,NI)=IB(1)+0.1
+      C2(2,NI+1)=IB(1)+0.2
+      C2(4,NI+1)=IB(1)+0.2
+      RETURN
+      END
+      SUBROUTINE MATRG(C1,C2,Z1,Z2,NDETL,NDETR,JCD,MU,NU,IP,IA,IB,JA,
+     1 JB,IP4,L)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      REAL C,C1,C2,X1,X2
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+      COMMON/C902E/INT112(30,2),ZIE12(30),N1E12,IE12(31)
+     1            ,INT13(30,2),ZIE3(30),N1E3,IE3(31)
+     2            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     3            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      DIMENSION IA(2),IB(2),JA(2),JB(2),L(5)
+      DIMENSION C1(12,12),C2(12,12),Z1(12),Z2(12),X1(12),X2(12)
+C
+      DATA ZERO/0.0D0/
+C
+      DO 10 I=1,30
+      INT13(I,1)=0
+      INT13(I,2)=0
+      INT112(I,1)=0
+      INT112(I,2)=0
+      ZIE3(I)=ZERO
+      ZIE12(I)=ZERO
+      Z2E(I)=ZERO
+      IE3(I)=0
+      IE12(I)=0
+      I2E(I)=0
+      DO 10 J=1,4
+   10 INT2(I,J)=0
+      N2E=0
+      N1E12=0
+      N1E3=0
+      IF(ICASE.EQ.5)THEN
+         DO 11 I=1,30
+         INTFS(I,1)=0
+         INTFS(I,2)=0
+         ZFS(I)=ZERO
+   11    IFS(I)=0
+         NFS=0
+      END IF
+      NDETR1 = NDETR
+      IF (ICASE.EQ.5) THEN
+         NDETR1 = NDETR / 2
+      END IF
+      DO 20 I=1,NDETL
+      DO 20 J=1,NDETR1
+      DO 15 K=1,MNE
+      X1(K)=C1(I,K)
+   15 X2(K)=C2(J,K)
+      FACTOR=Z1(I)*Z2(J)
+      IF (ICASE.EQ.5) THEN
+         FACTOR = FACTOR +FACTOR
+      END IF
+   20 CALL MATR(X1,X2,FACTOR,L)
+      CALL ZERO3
+      IF(IP.EQ.300)GO TO 25
+      IF(IP.EQ.200)GO TO 30
+      IF(IP.EQ.100)GO TO 35
+      CALL INTER(JCD,MU,NU,IP,IA,IB,JA,JB,IP4)
+      RETURN
+C
+   25 CALL INT0(JCD,MU,IA,IB)
+      RETURN
+C
+   30 CALL INTESS(JCD,MU,NU,IA,IB,JA,JB,IP4)
+      RETURN
+C
+   35 CALL INTERS(JCD,MU,NU,IA,IB,JA,JB,IP4)
+      RETURN
+      END
+      SUBROUTINE MATR(C1,C2,FACTOR,L)
+C
+      DOUBLE PRECISION FILL,FACTOR,Z
+C
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),FILL(128),J7
+C
+      DIMENSION C1(12),C2(12),X1(12),X2(12),L(5)
+C
+      IT=0
+      Z=FACTOR
+      MP=MNE
+      M=MNE
+      J=0
+   10 J=J+1
+      IF(J.GT.MP)GO TO 30
+   15 DO 20 K=J,M
+      IF(ABS(C1(J)-C2(K)).LT.1.E-3)GO TO 25
+   20 CONTINUE
+      IT=IT+1
+      IF(IT.GT.2)RETURN
+      MP=MP-1
+      IF(J.EQ.MP+1)GO TO 10
+      A1=C1(MP+1)
+      C1(MP+1)=C1(J)
+      Z=-Z
+      C1(J)=A1
+      GO TO 15
+   25 IF(J.EQ.K)GO TO 10
+      A1=C2(J)
+      C2(J)=C2(K)
+      C2(K)=A1
+      Z=-Z
+      GO TO 10
+   30 IT1=IT+1
+      GO TO(40,40,35),IT1
+   35 CALL LIST2(C1(M-1),C2(M-1),C1(M),C2(M),Z,L)
+      RETURN
+C
+   40 ID=0
+      DO 50 I=1,M
+      DO 45 J=1,MP
+      IF(ABS(C(I)-C1(J)).LT.1.0E-3)GO TO 50
+   45 CONTINUE
+      ID=ID+1
+      X1(ID)=C(I)
+   50 CONTINUE
+      IE=0
+      DO 60 I=1,MP
+      DO 55 J=1,M
+      IF(ABS(C1(I)-C(J)).LT.1.0E-3)GO TO 60
+   55 CONTINUE
+      IE=IE+1
+      X2(IE)=C1(I)
+   60 CONTINUE
+      IF(IT.EQ.0)GO TO 80
+      DO 65 I=1,ID
+   65 CALL LIST2(X1(I),X1(I),C1(M),C2(M),-Z,L)
+      IF(IE.EQ.0)GO TO 75
+      DO 70 I=1,IE
+   70 CALL LIST2(X2(I),X2(I),C1(M),C2(M),Z,L)
+   75 CALL LIST1(C1(M),C2(M),Z)
+      RETURN
+C
+   80 DO 85 I=1,ID
+   85 CALL LIST1(X1(I),X1(I),-Z)
+      DO 90 I=1,IE
+   90 CALL LIST1(X2(I),X2(I),Z)
+      DO 95 I=1,ID
+      DO 95 J=1,IE
+   95 CALL LIST2(X1(I),X1(I),X2(J),X2(J),-Z,L)
+      IF(ID.LT.2)GO TO 105
+      DO 100 I=2,ID
+      IJ=I-1
+      DO 100 J=1,IJ
+      CALL LIST2(X1(I),X1(I),X1(J),X1(J),Z,L)
+  100 CALL LIST2(X2(I),X2(I),X2(J),X2(J),Z,L)
+  105 RETURN
+      END
+      SUBROUTINE ZERO3
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      COMMON/C902C/IFILL1(55),ICASE,IFILL2(52),X(128),J7
+      COMMON/C902E/INT112(30,2),Z1E12(30),N1E12,IE12(31)
+     1            ,INT13(30,2),Z1E3(30),N1E3,IE3(31)
+     2            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     3            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      DATA ZERO/0.0D0/,PT001/0.001D0/
+C
+      I=0
+   10 I=I+1
+      IF(I.GT.N2E)GO TO 35
+   15 IF(DABS(Z2E(I)).LT.PT001)GO TO 20
+      GO TO 10
+   20 IF(I.EQ.N2E)GO TO 30
+      I1=I+1
+      DO 25 K=I1,N2E
+      Z2E(K-1)=Z2E(K)
+      DO 25 J=1,4
+   25 INT2(K-1,J)=INT2(K,J)
+      N2E=N2E-1
+      GO TO 15
+   30 N2E=N2E-1
+   35 I=0
+   40 I=I+1
+      IF(I.GT.N1E12)GO TO 65
+   45 IF(DABS(Z1E12(I)).LT.PT001)GO TO 50
+      GO TO 40
+   50 IF(I.EQ.N1E12)GO TO 60
+      I1=I+1
+      DO 55 K=I1,N1E12
+      Z1E12(K-1)=Z1E12(K)
+      INT112(K-1,1)=INT112(K,1)
+   55 INT112(K-1,2)=INT112(K,2)
+      N1E12=N1E12-1
+      GO TO 45
+   60 N1E12=N1E12-1
+   65 I=0
+   70 I=I+1
+      IF (I .GT. N1E3) GO TO 95
+   75 IF(DABS(Z1E3(I)).LT.PT001)GO TO 80
+      GO TO 70
+   80 IF(I.EQ.N1E3)GO TO 90
+      I1=I+1
+      DO 85 K=I1,N1E3
+      Z1E3(K-1)=Z1E3(K)
+      INT13(K-1,1)=INT13(K,1)
+   85 INT13(K-1,2)=INT13(K,2)
+      N1E3=N1E3-1
+      GO TO 75
+   90 N1E3=N1E3-1
+   95 IF(ICASE.EQ.5)THEN
+         I=0
+  170    I=I+1
+         IF(I.GT.NFS)GO TO 195
+  175    IF(DABS(ZFS(I)).LT.PT001) GO TO 180
+         GO TO 170
+  180    IF(I.EQ.NFS)GO TO 190
+         I1=I+1
+         DO 185 K=I1,NFS
+         ZFS(K-1)=ZFS(K)
+         INTFS(K-1,1)=INTFS(K,1)
+  185    INTFS(K-1,2)=INTFS(K,2)
+         NFS=NFS-1
+         GO TO 175
+  190    NFS=NFS-1
+      END IF
+  195 J1=N2E+1
+      DO 100 I=J1,20
+  100 Z2E(I)=ZERO
+      J1=N1E12+1
+      DO 105 I=J1,20
+  105 Z1E12(I)=ZERO
+      J1=N1E3+1
+      DO 110 I=J1,20
+  110 Z1E3(I)=ZERO
+      IF(ICASE.EQ.5)THEN
+         J1=NFS+1
+         DO 107 I=J1,20
+  107    ZFS(I)=ZERO
+      END IF
+C
+      IF(N2E.EQ.0)GO TO 220
+      DO 200 I=1,N2E
+      DO 201 J=1,128
+      IF (DABS(Z2E(I)-X(J)) .LT. PT001) GO TO 200
+  201 CONTINUE
+      J7=J7+1
+      X(J7)=DABS(Z2E(I))
+      X(J7+64)=-X(J7)
+      J=J7
+      IF(Z2E(I).LT.ZERO)J=J7+64
+  200 I2E(I)=J
+C
+  220 IF(N1E12.EQ.0)GO TO 221
+      DO 202 I=1,N1E12
+      DO 203 J=1,128
+      IF (DABS(Z1E12(I)-X(J)) .LT. PT001) GO TO 202
+  203 CONTINUE
+      J7=J7+1
+      X(J7)=DABS(Z1E12(I))
+      X(J7+64)=-X(J7)
+      J=J7
+      IF(Z1E12(I).LT.ZERO)J=J7+64
+  202 IE12(I)=J
+C
+  221 IF(N1E3.EQ.0) GO TO 222
+      DO 204 I=1,N1E3
+      DO 205 J=1,128
+      IF (DABS(Z1E3(I)-X(J)) .LT. PT001) GO TO 204
+  205 CONTINUE
+      J7=J7+1
+      X(J7)=DABS(Z1E3(I))
+      X(J7+64)=-X(J7)
+      J=J7
+      IF (Z1E3(I).LT.ZERO) J=J7+64
+  204 IE3(I)=J
+C
+  222 IF (ICASE .NE. 5) RETURN
+      IF(NFS.EQ.0) RETURN
+      DO 304 I=1,NFS
+      DO 305 J=1,128
+      IF (DABS(ZFS(I)-X(J)) .LT. PT001) GO TO 304
+  305 CONTINUE
+      J7=J7+1
+      X(J7)=DABS(ZFS(I))
+      X(J7+64)=-X(J7)
+      J=J7
+      IF(ZFS(I).LT.ZERO) J=J7+64
+  304 IFS(I)=J
+      RETURN
+      END
+      SUBROUTINE INTER(JCD,MU,NU,IP,IA,IB,JA,JB,IP4)
+C
+      IMPLICIT INTEGER (A,X), DOUBLE PRECISION (Y)
+C
+      COMMON/C902A/XJ1(24,24,2),XJ2(24,24,2),XJ3(24,24,2),XJ4(24,24,2),
+     1 XJ5(24,24,2),XJ6(24,24,2),XK1(24,24,2),XK2(24,24,2),XK3(24,24,2),
+     2 XK4(24,24,2),XK5(24,24,2),XK6(24,24,2)
+      COMMON/C902B/XFILL(6,6,8),XFILL1(66),XFILL2(24,6,20),
+     1                                     XL1(24,24,2),XL1P(24,24,2),
+     2 XL2(24,24,2),XL2P(24,24,2),XL3(24,24,2),XL3P(24,24,2),
+     3 XL4(24,24,2),XL4P(24,24,2),XL1PP(24,24,2),XL2PP(24,24,2),
+     4 XL3PP(24,24,2),XL4PP(24,24,2)
+      COMMON/C902C/IFILL1(55),ICASE,IFILL2(52),Y(128),J7
+C
+      DIMENSION IA(2),IB(2),JA(2),JB(2)
+C
+      GO TO(50,55,10,25,40,45,30,15,35,20),JCD
+C
+   10 XJ3(MU,NU,IP)=1
+      XK3(MU,NU,IP)=1
+      IF(IA(2).EQ.IB(1).AND.IB(1).EQ.JB(1))IP4=1
+      IF(IA(2).EQ.IB(1).AND.IB(1).EQ.JB(1))RETURN
+      CALL FIND1(IB(1),JB(1),IA(1),JA(1),AZ)
+      XJ3(MU,NU,IP)=AZ
+      IF(JB(1).EQ.IA(1).OR.IB(1).EQ.JA(1))IP4=1
+      IF(JB(1).EQ.IA(1).OR.IB(1).EQ.JA(1))RETURN
+      CALL FIND1(IB(1),IA(1),JB(1),JA(1),AZ)
+      XK3(MU,NU,IP)=AZ
+      RETURN
+C
+   15 CALL FIND12(IB(1),JB(1),AZ)
+      XL2(MU,NU,IP)=AZ
+      CALL FIND3(IB(1),JB(1),AZ)
+      XL2P(MU,NU,IP)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(1),JB(1),AZ)
+         XL2PP(MU,NU,IP)=AZ
+      END IF
+      RETURN
+C
+   20 XL4(MU,NU,IP)=1
+      XL4P(MU,NU,IP)=1
+      IF(ICASE.EQ.5)THEN
+         XL4PP(MU,NU,IP)=1
+      END IF
+      CALL FIND12(IA(1),JA(1),AZ)
+      XL4(MU,NU,IP)=AZ
+      CALL FIND3(IA(1),JA(1),AZ)
+      XL4P(MU,NU,IP)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IA(1),JA(1),AZ)
+         XL4PP(MU,NU,IP)=AZ
+      END IF
+      RETURN
+C
+   25 XJ4(MU,NU,IP)=1
+      XK4(MU,NU,IP)=1
+      IF(JA(2).EQ.IA(2).AND.IB(1).EQ.IA(2))IP4=1
+      IF(JA(2).EQ.IA(2).AND.IB(1).EQ.IA(2))RETURN
+      IF(IA(1).EQ.IA(2).AND.IB(1).EQ.IB(2))RETURN
+      CALL FIND1(IB(2),JB(2),IA(2),JA(2),AZ)
+      XJ4(MU,NU,IP)=AZ
+      IF(JB(2).EQ.IA(2).OR.IB(2).EQ.JA(2))IP4=1
+      IF(JB(2).EQ.IA(2).OR.IB(2).EQ.JA(2))RETURN
+      CALL FIND1(IB(2),IA(2),JB(2),JA(2),AZ)
+      XK4(MU,NU,IP)=AZ
+      RETURN
+C
+   30 XL1(MU,NU,IP)=1
+      XL1P(MU,NU,IP)=1
+      IF(ICASE.EQ.5)THEN
+         XL1PP(MU,NU,IP)=1
+      END IF
+      IF(IB(1).EQ.IB(2))RETURN
+      CALL FIND12(IB(2),JB(2),AZ)
+      XL1(MU,NU,IP)=AZ
+      CALL FIND3(IB(2),JB(2),AZ)
+      XL1P(MU,NU,IP)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(2),JB(2),AZ)
+         XL1PP(MU,NU,IP)=AZ
+      END IF
+      RETURN
+C
+   35 XL3(MU,NU,IP)=1
+      XL3P(MU,NU,IP)=1
+      IF(ICASE.EQ.5)THEN
+         XL3PP(MU,NU,IP)=1
+      END IF
+      IF(JA(2).EQ.IA(2).AND.IB(1).EQ.IA(2))IP4=1
+      IF(JA(2).EQ.IA(2).AND.IB(1).EQ.IA(2))RETURN
+      IF(IA(1).EQ.IA(2))RETURN
+      CALL FIND12(JA(2),IA(2),AZ)
+      XL3(MU,NU,IP)=AZ
+      CALL FIND3(JA(2),IA(2),AZ)
+      XL3P(MU,NU,IP)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(JA(2),IA(2),AZ)
+         XL3PP(MU,NU,IP)=AZ
+      END IF
+      RETURN
+C
+   40 XJ5(MU,NU,IP)=1
+      XK5(MU,NU,IP)=1
+      IF(IA(1).EQ.IA(2).OR.IB(1).EQ.IB(2))RETURN
+      CALL FIND1(IB(2),JB(2),IA(1),JA(1),AZ)
+      XJ5(MU,NU,IP)=AZ
+      IF(JB(2).EQ.IA(1).OR.IB(2).EQ.JA(1))IP4=1
+      IF(JB(2).EQ.IA(1).OR.IB(2).EQ.JA(1))RETURN
+      CALL FIND1(IB(2),IA(1),JB(2),JA(1),AZ)
+      XK5(MU,NU,IP)=AZ
+      RETURN
+C
+   45 XJ6(MU,NU,IP)=1
+      XK6(MU,NU,IP)=1
+      IF(IA(1).EQ.IA(2).OR.IB(1).EQ.IB(2))RETURN
+      CALL FIND1(IB(1),JB(1),IA(2),JA(2),AZ)
+      XJ6(MU,NU,IP)=AZ
+      IF(JB(1).EQ.IA(2).OR.IB(1).EQ.JA(2))IP4=1
+      IF(JB(1).EQ.IA(2).OR.IB(1).EQ.JA(2))RETURN
+      CALL FIND1(IB(1),IA(2),JB(1),JA(2),AZ)
+      XK6(MU,NU,IP)=AZ
+      RETURN
+C
+   50 CALL FIND1(IA(1),JA(1),IA(2),JA(2),AZ)
+      XJ1(MU,NU,IP)=AZ
+      XK1(MU,NU,IP)=1
+      IF(IA(1).EQ.IA(2).OR.JA(1).EQ.JA(2))RETURN
+      CALL FIND1(IA(1),JA(2),JA(1),IA(2),AZ)
+      XK1(MU,NU,IP)=AZ
+      RETURN
+C
+   55 CALL FIND1(IB(1),JB(1),IB(2),JB(2),AZ)
+      XJ2(MU,NU,IP)=AZ
+      XK2(MU,NU,IP)=1
+      IF(IB(1).EQ.IB(2).OR.JB(1).EQ.JB(2))RETURN
+      CALL FIND1(IB(1),JB(2),IB(2),JB(1),AZ)
+      XK2(MU,NU,IP)=AZ
+      RETURN
+      END
+      SUBROUTINE INTERS(JCD,MU,NU,IA,IB,JA,JB,IP4)
+C
+      IMPLICIT INTEGER (A,X), DOUBLE PRECISION (Y)
+C
+      COMMON/C902B/XFILL(6,6,8),XFILL2(66)
+     1            ,XG1(24,6),XH1(24,6),XG2(24,6),XH2(24,6),XG3(24,6),
+     2 XH3(24,6),XG4(24,6),XH4(24,6),XI1(24,6,3),XI2(24,6,3),XI3(24,6,3)
+     3 ,XI4(24,6,3),XFILL3(24,24,24)
+      COMMON/C902C/IFILL1(55),ICASE,IFILL2(52),Y(128),J7
+C
+      DIMENSION IA(2),IB(2),JA(2),JB(2)
+C
+      GO TO(10,25,30,40,15,20,45,35),JCD
+C
+   10 CALL FIND1(IB(1),JB(1),IB(2),IA(2),AZ)
+      XG1(MU,NU)=AZ
+      XH1(MU,NU)=1
+      IF(JB(1).EQ.IA(2))IP4=1
+      IF(IB(1).EQ.IB(2).OR.JB(1).EQ.IA(2))RETURN
+      CALL FIND1(IB(1),IA(2),IB(2),JB(1),AZ)
+      XH1(MU,NU)=AZ
+      RETURN
+C
+   15 XI1(MU,NU,1)=1
+      XI1(MU,NU,2)=1
+      IF(ICASE.EQ.5)THEN
+         XI1(MU,NU,3)=1
+      END IF
+      IF(IB(1).EQ.IB(2).OR.IA(1).EQ.IA(2))RETURN
+      CALL FIND12(IB(2),IA(2),AZ)
+      XI1(MU,NU,1)=AZ
+      CALL FIND3(IB(2),IA(2),AZ)
+      XI1(MU,NU,2)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(2),IA(2),AZ)
+         XI1(MU,NU,3)=AZ
+      END IF
+      RETURN
+C
+   20 CALL FIND12(IB(1),IA(2),AZ)
+      XI2(MU,NU,1)=AZ
+      CALL FIND3(IB(1),IA(2),AZ)
+      XI2(MU,NU,2)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(1),IA(2),AZ)
+         XI2(MU,NU,3)=AZ
+      END IF
+      RETURN
+C
+   25 XG2(MU,NU)=1
+      XH2(MU,NU)=1
+      IF(IA(1).EQ.IA(2))RETURN
+      CALL FIND1(IB(1),IA(1),IB(2),JB(1),AZ)
+      XG2(MU,NU)=AZ
+      IF(JB(1).EQ.IA(1))IP4=1
+      IF(IB(1).EQ.IB(2).OR.JB(1).EQ.IA(1))RETURN
+      CALL FIND1(IB(1),JB(1),IB(2),IA(1),AZ)
+      XH2(MU,NU)=AZ
+      RETURN
+C
+   30 CALL FIND1(IB(1),IA(1),IA(2),JA(1),AZ)
+      XG3(MU,NU)=AZ
+      XH3(MU,NU)=1
+      IF(IB(1).EQ.JA(1))IP4=1
+      IF(IA(1).EQ.IA(2).OR.IB(1).EQ.JA(1))RETURN
+      CALL FIND1(IB(1),IA(2),IA(1),JA(1),AZ)
+      XH3(MU,NU)=AZ
+      RETURN
+C
+   35 XI4(MU,NU,1)=1
+      XI4(MU,NU,2)=1
+      IF(ICASE.EQ.5)THEN
+         XI4(MU,NU,3)=1
+      END IF
+      IF(IB(1).EQ.IB(2).OR.IA(1).EQ.IA(2))RETURN
+      CALL FIND12(IB(1),IA(1),AZ)
+      XI4(MU,NU,1)=AZ
+      CALL FIND3(IB(1),IA(1),AZ)
+      XI4(MU,NU,2)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(1),IA(1),AZ)
+         XI4(MU,NU,3)=AZ
+      END IF
+      RETURN
+C
+   40 XG4(MU,NU)=1
+      XH4(MU,NU)=1
+      IF(IB(1).EQ.IB(2))RETURN
+      CALL FIND1(IB(2),IA(2),IA(1),JA(1),AZ)
+      XG4(MU,NU)=AZ
+      IF(IB(2).EQ.JA(1))IP4=1
+      IF(IA(1).EQ.IA(2).OR.IB(2).EQ.JA(1))RETURN
+      CALL FIND1(IB(2),IA(1),IA(2),JA(1),AZ)
+      XH4(MU,NU)=AZ
+      RETURN
+C
+   45 XI3(MU,NU,1)=1
+      XI3(MU,NU,2)=1
+      IF(ICASE.EQ.5)THEN
+         XI3(MU,NU,3)=1
+      END IF
+      IF(IA(1).EQ.IA(2).AND.IB(1).EQ.IB(2))RETURN
+      CALL FIND12(IB(2),IA(1),AZ)
+      XI3(MU,NU,1)=AZ
+      CALL FIND3(IB(2),IA(1),AZ)
+      XI3(MU,NU,2)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(2),IA(1),AZ)
+         XI3(MU,NU,3)=AZ
+      END IF
+      RETURN
+      END
+      SUBROUTINE INTESS(JCD,MU,NU,IA,IB,JA,JB,IP4)
+C
+      IMPLICIT INTEGER (A,X), DOUBLE PRECISION (Y)
+C
+      COMMON/C902B/XM1(6,6),XM2(6,6),XN1(6,6,3),XN2(6,6,3)
+     1 ,XFILL(66),XFILL1(24,6,20),XFILL2(24,24,24)
+      COMMON/C902C/IFILL1(55),ICASE,IFILL2(52),Y(128),J7
+C
+      DIMENSION IA(2),IB(2),JA(2),JB(2)
+C
+      GO TO(10,15,20),JCD
+C
+   10 CALL FIND1(IB(1),IA(1),JB(1),JA(1),AZ)
+      XM1(MU,NU)=AZ
+      XM2(MU,NU)=1
+      IF(JB(1).EQ.IA(1).OR.JA(1).EQ.IB(1))IP4=1
+      IF(JB(1).EQ.IA(1).OR.JA(1).EQ.IB(1))RETURN
+      CALL FIND1(IB(1),JB(1),IA(1),JA(1),AZ)
+      XM2(MU,NU)=AZ
+      RETURN
+C
+   15 CALL FIND12(IB(1),JB(1),AZ)
+      XN1(MU,NU,1)=AZ
+      CALL FIND3(IB(1),JB(1),AZ)
+      XN1(MU,NU,2)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(1),JB(1),AZ)
+         XN1(MU,NU,3)=AZ
+      END IF
+      RETURN
+C
+   20 CALL FIND12(IA(1),JA(1),AZ)
+      XN2(MU,NU,1)=AZ
+      CALL FIND3(IA(1),JA(1),AZ)
+      XN2(MU,NU,2)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IA(1),JA(1),AZ)
+         XN2(MU,NU,3)=AZ
+      END IF
+      RETURN
+      END
+      SUBROUTINE INT0(JCD,MU,IA,IB)
+C
+      IMPLICIT INTEGER (A,X), DOUBLE PRECISION (Y)
+C
+      COMMON/C902B/XFILL(6,6,8)
+     1             ,XR1(24),XR2(24),XS1(6,3)
+     2 ,XFILL1(24,6,20),XFILL2(24,24,24)
+      COMMON/C902C/IFILL1(55),ICASE,IFILL2(52),Y(128),J7
+C
+      DIMENSION IA(2),IB(2)
+C
+      GO TO(10,15),JCD
+C
+   10 CALL FIND1(IB(1),IA(1),IB(2),IA(2),AZ)
+      XR1(MU)=AZ
+      XR2(MU)=1
+      IF(IB(1).EQ.IB(2).OR.IA(1).EQ.IA(2))RETURN
+      CALL FIND1(IB(1),IA(2),IB(2),IA(1),AZ)
+      XR2(MU)=AZ
+      RETURN
+C
+   15 CALL FIND12(IB(1),IA(1),AZ)
+      XS1(MU,1)=AZ
+      CALL FIND3(IB(1),IA(1),AZ)
+      XS1(MU,2)=AZ
+      IF(ICASE.EQ.5)THEN
+         CALL FINDS(IB(1),IA(1),AZ)
+         XS1(MU,3)=AZ
+      END IF
+      RETURN
+      END
+      SUBROUTINE LIST1(A1,A2,Z)
+C
+      DOUBLE PRECISION Y, Z
+C
+      COMMON/C902C/IFILL1(55),ICASE,IFILL2(52),Y(128),J7
+C
+      DIMENSION A(2),IA(2),X(2)
+C
+      A(1)=A1
+      A(2)=A2
+      DO 10 I=1,2
+      IA(I)=INT(A(I))
+   10 X(I)=A(I)-IA(I)
+      IF (ICASE .EQ. 5) GO TO 100
+      IF(ABS(X(1)-0.1).LT.1.0E-3)CALL ENTF12(IA(1),IA(2),Z)
+      IF(ABS(X(1)-0.2).LT.1.0E-3)CALL ENTF3(IA(1),IA(2),Z)
+      RETURN
+C
+C     OPEN SHELL SINGLET ONLY.
+C
+  100 CALL ENTF12(IA(1),IA(2),Z)
+      IF(ABS(X(1)-0.1).LT.1.0E-3)CALL ENTF3(IA(1),IA(2),-Z)
+      IF(ABS(X(1)-0.2).LT.1.0E-3)CALL ENTS(IA(1),IA(2),-Z)
+      RETURN
+      END
+      SUBROUTINE LIST2(A1,A2,A3,A4,Z,L)
+C
+      DOUBLE PRECISION Z
+C
+      DIMENSION A(4),IA(4),X(4),L(5)
+C
+      A(1)=A1
+      A(2)=A2
+      A(3)=A3
+      A(4)=A4
+      DO 10 I=1,4
+      IA(I)=INT(A(I))
+   10 X(I)=A(I)-IA(I)
+      IF(ABS(X(1)-X(2)).GT.1.0E-3)GO TO 15
+      CALL ENTER2(IA(1),IA(2),IA(3),IA(4),Z,L)
+   15 IF(ABS(X(1)-X(4)).GT.1.0E-3)RETURN
+      CALL ENTER2(IA(1),IA(4),IA(3),IA(2),-Z,L)
+      RETURN
+      END
+      SUBROUTINE FIND1(I1,I2,I3,I4,AZ)
+C
+      IMPLICIT INTEGER (A)
+C
+      DOUBLE PRECISION ZIE123,Z2E,ZFS
+C
+      COMMON/C902E/INT123(30,4),ZIE123(60),IE123(64)
+     1            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     2            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      J1=I1
+      J2=I2
+      IF(J1.GE.J2)GO TO 10
+      J2=I1
+      J1=I2
+   10 J3=I3
+      J4=I4
+      IF(J3.GE.J4)GO TO 15
+      J4=I3
+      J3=I4
+   15 IF(J1.GT.J3)GO TO 20
+      IF(J1.EQ.J3.AND.J2.GE.J4)GO TO 20
+      IA=J1
+      IB=J2
+      J1=J3
+      J2=J4
+      J3=IA
+      J4=IB
+   20 IF(N2E.EQ.0)GO TO 30
+      DO 25 I=1,N2E
+      IZ=IABS(J1-INT2(I,1))+IABS(J2-INT2(I,2))+
+     1 IABS(J3-INT2(I,3))+IABS(J4-INT2(I,4))
+      IF(IZ.EQ.0)GO TO 35
+   25 CONTINUE
+   30 AZ=1
+      RETURN
+C
+   35 AZ=I2E(I)
+      RETURN
+      END
+      SUBROUTINE FIND12(I1,I2,AZ)
+C
+C     THIS IS EQUIVALENT TO ROUTINE 'FIND3' FROM THE SCHAEFER OPEN
+C     SHELL SINGLET CI.
+C
+      IMPLICIT INTEGER (A)
+C
+      DOUBLE PRECISION Z1E12,Z23E,ZFS
+C
+      COMMON/C902E/INT112(30,2),Z1E12(30),N1E12,IE12(31)
+     1 ,INT123(30,6),Z23E(60),IE23(64)
+     2            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      J1=I1
+      J2=I2
+      IF(J1.GE.J2)GO TO 10
+      J1=I2
+      J2=I1
+   10 IF(N1E12.EQ.0)GO TO 20
+      DO 15 I=1,N1E12
+      IZ=IABS(J1-INT112(I,1))+IABS(J2-INT112(I,2))
+      IF(IZ.EQ.0)GO TO 25
+   15 CONTINUE
+   20 AZ=1
+      RETURN
+C
+   25 AZ=IE12(I)
+      RETURN
+      END
+      SUBROUTINE FIND3(I1,I2,AZ)
+C
+C     THIS IS EQUIVALENT TO ROUTINE 'FINDR' FROM THE SCHAEFER OPEN
+C     SHELL SINGLET CI.
+C
+      IMPLICIT INTEGER (A)
+C
+      DOUBLE PRECISION Z1E12,Z1E3,Z2E,ZFS
+C
+      COMMON/C902E/INT112(30,2),Z1E12(30),N1E12,IE12(31)
+     1            ,INT13(30,2),Z1E3(30),N1E3,IE3(31)
+     2            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     3            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      J1=I1
+      J2=I2
+      IF(J1.GE.J2)GO TO 10
+      J1=I2
+      J2=I1
+   10 IF(N1E3.EQ.0)GO TO 20
+      DO 15 I=1,N1E3
+      IZ=IABS(J1-INT13(I,1))+IABS(J2-INT13(I,2))
+      IF(IZ.EQ.0)GO TO 25
+   15 CONTINUE
+   20 AZ=1
+      RETURN
+C
+   25 AZ=IE3(I)
+      RETURN
+      END
+      SUBROUTINE FINDS(I1,I2,AZ)
+C
+      IMPLICIT INTEGER (A)
+C
+      DOUBLE PRECISION Z1E12,Z1E3,Z2E,ZFS
+C
+      COMMON/C902E/INT112(30,2),Z1E12(30),N1E12,IE12(31)
+     1            ,INT13(30,2),Z1E3(30),N1E3,IE3(31)
+     2            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     3            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      J1=I1
+      J2=I2
+      IF(J1.GE.J2)GO TO 10
+      J1=I2
+      J2=I1
+   10 IF(NFS.EQ.0)GO TO 20
+      DO 15 I=1,NFS
+      IZ=IABS(J1-INTFS(I,1))+IABS(J2-INTFS(I,2))
+      IF(IZ.EQ.0)GO TO 25
+   15 CONTINUE
+   20 AZ=1
+      RETURN
+C
+   25 AZ=IFS(I)
+      RETURN
+      END
+      SUBROUTINE ENTER2(I1,I2,I3,I4,Z,L)
+C
+      DOUBLE PRECISION Z,Z1E123,Z2E,ZFS,Y,PT5
+C
+      COMMON/C902C/IFILL1(55),ICASE,IFILL2(52),Y(128),J7
+      COMMON/C902E/INT123(30,4),Z1E123(60),IE123(64)
+     1            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     2            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      DIMENSION JJ(4),II(4),L(5)
+C
+      DATA PT5/0.5D0/
+C
+      IF(ICASE.EQ.5)THEN
+         IF(L(1).EQ.0) GO TO 110
+         IF(L(1).EQ.2) GO TO 100
+         IF((I1.EQ.L(2).AND.I2.EQ.L(4)).OR.(I2.EQ.L(2).AND.I1.EQ.L(4)))
+     1    GO TO 61
+         IF((I1.EQ.L(2).AND.I2.EQ.L(5)).OR.(I2.EQ.L(2).AND.I1.EQ.L(5)))
+     1    GO TO 62
+         IF((I1.EQ.L(3).AND.I2.EQ.L(4)).OR.(I2.EQ.L(3).AND.I1.EQ.L(4)))
+     1    GO TO 63
+         IF((I1.EQ.L(3).AND.I2.EQ.L(5)).OR.(I2.EQ.L(3).AND.I1.EQ.L(5)))
+     1    GO TO 64
+         GO TO 110
+   61    IF((I3.EQ.L(3).AND.I4.EQ.L(4)).OR.(I3.EQ.L(4).AND.I4.EQ.L(3)))
+     1    GO TO 99
+         GO TO 110
+   62    IF((I3.EQ.L(3).AND.I4.EQ.L(5)).OR.(I3.EQ.L(5).AND.I4.EQ.L(3)))
+     1    GO TO 98
+         GO TO 110
+   63    IF((I3.EQ.L(2).AND.I4.EQ.L(4)).OR.(I3.EQ.L(4).AND.I4.EQ.L(2)))
+     1    GO TO 99
+         GO TO 110
+   64    IF((I3.EQ.L(2).AND.I4.EQ.L(5)).OR.(I3.EQ.L(5).AND.I4.EQ.L(2)))
+     1    GO TO 98
+         GO TO 110
+  100    IF((I1.EQ.L(4).AND.I2.EQ.L(5)).OR.(I1.EQ.L(5).AND.I2.EQ.L(4)))
+     1    GO TO 76
+         GO TO 111
+   76    IF((I3.EQ.L(4).AND.I4.EQ.L(5)).OR.(I3.EQ.L(5).AND.I4.EQ.L(4)))
+     1    GO TO 77
+         GO TO 111
+   77    CALL ENTF3(L(5),L(5),PT5*Z)
+         CALL ENTS(L(4),L(4),PT5*Z)
+         RETURN
+   99    CALL ENTF3(L(2),L(3),Z)
+         RETURN
+   98    CALL ENTS(L(2),L(3),Z)
+         RETURN
+  111    II(1)=I1
+         II(2)=I2
+         II(3)=I3
+         II(4)=I4
+         JJ(1)=I2
+         JJ(2)=I1
+         JJ(3)=I4
+         JJ(4)=I3
+         L(5)=6
+         L(4)=5
+         DO 112 I=1,2
+         DO 112 J=3,4
+         IF(II(I).EQ.L(4).AND.II(J).EQ.L(4))GO TO 113
+         IF(II(I).EQ.L(5).AND.II(J).EQ.L(5))GO TO 114
+  112    CONTINUE
+         GO TO 110
+  113    CALL ENTF3(JJ(I),JJ(J),Z)
+         RETURN
+  114    CALL ENTS(JJ(I),JJ(J),Z)
+         RETURN
+      END IF
+C
+  110 II(1)=I1
+      II(2)=I2
+      II(3)=I3
+      II(4)=I4
+      DO 10 I=1,4
+   10 JJ(I)=II(I)
+      IF(II(2).LE.II(1))GO TO 15
+      JJ(1)=II(2)
+      JJ(2)=II(1)
+   15 IF(II(4).LE.II(3))GO TO 20
+      JJ(3)=II(4)
+      JJ(4)=II(3)
+   20 IF(JJ(3).LE.JJ(1))GO TO 25
+      IA=JJ(1)
+      IB=JJ(2)
+      JJ(1)=JJ(3)
+      JJ(2)=JJ(4)
+      JJ(3)=IA
+      JJ(4)=IB
+   25 IF(JJ(3).NE.JJ(1))GO TO 30
+      IF(JJ(4).LE.JJ(2))GO TO 30
+      IA=JJ(4)
+      JJ(4)=JJ(2)
+      JJ(2)=IA
+   30 IF(N2E.EQ.0)GO TO 50
+      DO 40 I=1,N2E
+      IZ=0
+      DO 35 J=1,4
+   35 IZ=IZ+IABS(JJ(J)-INT2(I,J))
+      IF(IZ.EQ.0)GO TO 45
+   40 CONTINUE
+      GO TO 50
+   45 Z2E(I)=Z2E(I)+Z
+      RETURN
+C
+   50 N2E=N2E+1
+      DO 55 J=1,4
+   55 INT2(N2E,J)=JJ(J)
+      Z2E(N2E)=Z
+      RETURN
+      END
+      SUBROUTINE ENTF12(I1,I2,Z)
+C
+C     THIS IS EQUIVALENT TO ROUTINE 'ENT1' FROM THE SCHAEFER OPEN
+C     SHELL SINGLET CI.
+C
+      DOUBLE PRECISION Z,Z1E12,Z12E,ZFS
+C
+      COMMON/C902E/INT112(30,2),Z1E12(30),N1E12,IE12(31)
+     1 ,INT123(30,6),Z12E(60),I23E(64)
+     2            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      DIMENSION JJ(2),II(2)
+C
+      II(1)=I1
+      II(2)=I2
+      JJ(1)=II(1)
+      JJ(2)=II(2)
+      IF(II(2).LE.II(1))GO TO 10
+      JJ(1)=II(2)
+      JJ(2)=II(1)
+   10 IF(N1E12.EQ.0)GO TO 25
+      DO 15 I=1,N1E12
+      IZ=IABS(JJ(1)-INT112(I,1))+IABS(JJ(2)-INT112(I,2))
+      IF(IZ.EQ.0)GO TO 20
+   15 CONTINUE
+      GO TO 25
+   20 Z1E12(I)=Z1E12(I)+Z
+      RETURN
+C
+   25 N1E12=N1E12+1
+      INT112(N1E12,1)=JJ(1)
+      INT112(N1E12,2)=JJ(2)
+      Z1E12(N1E12)=Z
+      RETURN
+      END
+      SUBROUTINE ENTF3(I1,I2,Z)
+C
+C     THIS IS EQUIVALENT TO ROUTINE 'ENTR' FROM THE SCHAEFER OPEN
+C     SHELL SINGLET CI.
+C
+      DOUBLE PRECISION Z,Z1E12,Z1E3,Z2E,ZFS
+C
+      COMMON/C902E/INT112(30,2),Z1E12(30),N1E12,IE12(31)
+     1            ,INT13(30,2),Z1E3(30),N1E3,IE3(31)
+     2            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     3            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      DIMENSION II(2),JJ(2)
+C
+      II(1)=I1
+      II(2)=I2
+      JJ(1)=II(1)
+      JJ(2)=II(2)
+      IF(II(2).LE.II(1))GO TO 10
+      JJ(1)=II(2)
+      JJ(2)=II(1)
+   10 IF(N1E3.EQ.0)GO TO 25
+      DO 15 I=1,N1E3
+      IZ=IABS(JJ(1)-INT13(I,1))+IABS(JJ(2)-INT13(I,2))
+      IF(IZ.EQ.0)GO TO 20
+   15 CONTINUE
+      GO TO 25
+   20 Z1E3(I)=Z1E3(I)+Z
+      RETURN
+C
+   25 N1E3=N1E3+1
+      INT13(N1E3,1)=JJ(1)
+      INT13(N1E3,2)=JJ(2)
+      Z1E3(N1E3)=Z
+      RETURN
+      END
+      SUBROUTINE ENTS(I1,I2,Z)
+C
+      DOUBLE PRECISION Z,Z1E12,Z1E3,Z2E,ZFS
+C
+      COMMON/C902E/INT112(30,2),Z1E12(30),N1E12,IE12(31)
+     1            ,INT13(30,2),Z1E3(30),N1E3,IE3(31)
+     2            ,INT2(30,4),Z2E(30),N2E,I2E(31)
+     3            ,INTFS(30,2),ZFS(30),NFS,IFS(31)
+C
+      DIMENSION II(2),JJ(2)
+C
+      II(1)=I1
+      II(2)=I2
+      JJ(1)=II(1)
+      JJ(2)=II(2)
+      IF(II(2).LE.II(1))GO TO 10
+      JJ(1)=II(2)
+      JJ(2)=II(1)
+   10 IF(NFS.EQ.0)GO TO 25
+      DO 15 I=1,NFS
+      IZ=IABS(JJ(1)-INTFS(I,1))+IABS(JJ(2)-INTFS(I,2))
+      IF(IZ.EQ.0)GO TO 20
+   15 CONTINUE
+      GO TO 25
+   20 ZFS(I)=ZFS(I)+Z
+      RETURN
+C
+   25 NFS=NFS+1
+      INTFS(NFS,1)=JJ(1)
+      INTFS(NFS,2)=JJ(2)
+      ZFS(NFS)=Z
+      RETURN
+      END
+      SUBROUTINE OUTPUT (IOP15)
+C
+      IMPLICIT INTEGER (X)
+C
+      DOUBLE PRECISION Y
+C
+      COMMON/C902A/XJ1(24,24,2),XJ2(24,24,2),XJ3(24,24,2),XJ4(24,24,2),
+     1 XJ5(24,24,2),XJ6(24,24,2),XK1(24,24,2),XK2(24,24,2),XK3(24,24,2),
+     2 XK4(24,24,2),XK5(24,24,2),XK6(24,24,2)
+      COMMON/C902B/XM1(6,6),XM2(6,6),XN1(6,6,3),XN2(6,6,3)
+     1             ,XR1(24),XR2(24),XS1(6,3)
+     2            ,XG1(24,6),XH1(24,6),XG2(24,6),XH2(24,6),XG3(24,6),
+     3 XH3(24,6),XG4(24,6),XH4(24,6),XI1(24,6,3),XI2(24,6,3),XI3(24,6,3)
+     4 ,XI4(24,6,3)
+     5                                      ,XL1(24,24,2),XL1P(24,24,2),
+     6 XL2(24,24,2),XL2P(24,24,2),XL3(24,24,2),XL3P(24,24,2),
+     7 XL4(24,24,2),XL4P(24,24,2),XL1PP(24,24,2),XL2PP(24,24,2),
+     8 XL3PP(24,24,2),XL4PP(24,24,2)
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2 ,IFILL(30),Y(128),J7
+      COMMON/IO/IN,IOUT,IODUM(215)
+C
+  300 FORMAT (1X,6I4)
+  400 FORMAT (1X,24I4)
+ 1000 FORMAT ('0Y'/(1X,6(I6,1PD16.7)))
+C
+      IF(ICASE.EQ.5)THEN
+         XJ3(4,23,2)=1
+         XJ3(5,22,2)=1
+         XJ3(16,23,2)=1
+         XJ3(17,23,2)=1
+         XJ3(18,22,2)=1
+         XJ3(19,22,2)=1
+         XJ4(6,23,2)=1
+         XJ4(7,22,2)=1
+         XJ4(12,23,2)=1
+         XJ4(13,23,2)=1
+         XJ4(14,22,2)=1
+         XJ4(15,22,2)=1
+         XJ6(12,23,1)=1
+         XJ6(13,23,1)=1
+         XJ6(14,22,1)=1
+         XJ6(15,22,1)=1
+         XJ6(16,23,1)=1
+         XJ6(17,23,1)=1
+         XJ6(18,22,1)=1
+         XJ6(19,22,1)=1
+         XL2P(23,23,1)=1
+         XJ6(8,23,2)=1
+         XK5(9,23,2)=1
+         XJ5(9,23,2)=1
+         XK6(8,23,2)=1
+         DO 451 I=8,11
+         DO 451 J=1,2
+         XJ3(23,I,J)=1
+         XJ4(23,I,J)=1
+         XK3(23,I,J)=1
+         XK4(23,I,J)=1
+         XJ3(I,23,J)=1
+         XJ4(I,23,J)=1
+         XK3(I,23,J)=1
+  451    XK4(I,23,J)=1
+         XL4PP(23,23,1)=1
+         XL4P(23,23,1)=1
+         XL4(23,23,1)=1
+         XL1(23,23,1)=1
+         XL1P(23,23,1)=1
+         XL1PP(23,23,1)=1
+         XJ5(23,23,1)=1
+         XK1(23,10,1)=1
+         XK1(10,23,1)=1
+         XK2(23,11,1)=1
+         XK2(11,23,1)=1
+         DO 450 J=1,NDC
+         DO 450 I=1,NDC
+         IF(XJ1(I,J,1).EQ.0.AND.XJ1(I,J,2).NE.0) XJ1(I,J,1)=XJ1(I,J,2)
+         IF(XJ2(I,J,1).EQ.0.AND.XJ2(I,J,2).NE.0) XJ2(I,J,1)=XJ2(I,J,2)
+         IF(XK1(I,J,1).EQ.0.AND.XK1(I,J,2).NE.0) XK1(I,J,1)=XK1(I,J,2)
+  450    IF(XK2(I,J,1).EQ.0.AND.XK2(I,J,2).NE.0) XK2(I,J,1)=XK2(I,J,2)
+      END IF
+      IF (IOP15 .NE. 1) RETURN
+C
+      WRITE(IOUT,10)
+   10 FORMAT ('1DUMP OF COUPLING COEFFICIENT DATA'/'0XG1')
+      DO 15 I=1,24
+   15 WRITE(IOUT,300)(XG1(I,J),J=1,6)
+      WRITE(IOUT,20)
+   20 FORMAT (' XH1')
+      DO 25 I=1,24
+   25 WRITE(IOUT,300)(XH1(I,J),J=1,6)
+      WRITE(IOUT,30)
+   30 FORMAT (' XG2')
+      DO 35 I=1,24
+   35 WRITE(IOUT,300)(XG2(I,J),J=1,6)
+      WRITE(IOUT,40)
+   40 FORMAT (' XH2')
+      DO 45 I=1,24
+   45 WRITE(IOUT,300)(XH2(I,J),J=1,6)
+      WRITE(IOUT,50)
+   50 FORMAT (' XG3')
+      DO 55 I=1,24
+   55 WRITE(IOUT,300)(XG3(I,J),J=1,6)
+      WRITE(IOUT,41)
+   41 FORMAT (' XH3')
+      DO 42 I=1,24
+   42 WRITE(IOUT,300)(XH3(I,J),J=1,6)
+      WRITE(IOUT,60)
+   60 FORMAT (' XG4')
+      DO 65 I=1,24
+   65 WRITE(IOUT,300)(XG4(I,J),J=1,6)
+      WRITE(IOUT,51)
+   51 FORMAT (' XH4')
+      DO 52 I=1,24
+   52 WRITE(IOUT,300)(XH4(I,J),J=1,6)
+      WRITE(IOUT,70)
+   70 FORMAT (' XI1')
+      IPSM=2
+      IF(ICASE.EQ.5) IPSM=3
+      DO 75 K=1,IPSM
+      DO 75 I=1,24
+   75 WRITE(IOUT,300)(XI1(I,J,K),J=1,6)
+      WRITE(IOUT,80)
+   80 FORMAT (' XI2')
+      DO 85 K=1,IPSM
+      DO 85 I=1,24
+   85 WRITE(IOUT,300)(XI2(I,J,K),J=1,6)
+      WRITE(IOUT,90)
+   90 FORMAT (' XI3')
+      DO 95 K=1,IPSM
+      DO 95 I=1,24
+   95 WRITE(IOUT,300)(XI3(I,J,K),J=1,6)
+      WRITE(IOUT,100)
+  100 FORMAT (' XI4')
+      DO 105 K=1,IPSM
+      DO 105 I=1,24
+  105 WRITE(IOUT,300)(XI4(I,J,K),J=1,6)
+      WRITE(IOUT,110)
+  110 FORMAT (' XJ1')
+      DO 115 K=1,2
+      DO 115 I=1,24
+  115 WRITE(IOUT,400)(XJ1(I,J,K),J=1,24)
+      WRITE(IOUT,120)
+  120 FORMAT (' XJ2')
+      DO 125 K=1,2
+      DO 125 I=1,24
+  125 WRITE(IOUT,400)(XJ2(I,J,K),J=1,24)
+      WRITE(IOUT,130)
+  130 FORMAT (' XJ3')
+      DO 135 K=1,2
+      DO 135 I=1,24
+  135 WRITE(IOUT,400)(XJ3(I,J,K),J=1,24)
+      WRITE(IOUT,140)
+  140 FORMAT (' XJ4')
+      DO 145 K=1,2
+      DO 145 I=1,24
+  145 WRITE(IOUT,400)(XJ4(I,J,K),J=1,24)
+      WRITE(IOUT,150)
+  150 FORMAT (' XJ5')
+      DO 155 K=1,2
+      DO 155 I=1,24
+  155 WRITE(IOUT,400)(XJ5(I,J,K),J=1,24)
+      WRITE(IOUT,160)
+  160 FORMAT (' XJ6')
+      DO 165 K=1,2
+      DO 165 I=1,24
+  165 WRITE(IOUT,400)(XJ6(I,J,K),J=1,24)
+      WRITE(IOUT,170)
+  170 FORMAT (' XK1')
+      DO 175 K=1,2
+      DO 175 I=1,24
+  175 WRITE(IOUT,400)(XK1(I,J,K),J=1,24)
+      WRITE(IOUT,180)
+  180 FORMAT (' XK2')
+      DO 185 K=1,2
+      DO 185 I=1,24
+  185 WRITE(IOUT,400)(XK2(I,J,K),J=1,24)
+      WRITE(IOUT,190)
+  190 FORMAT (' XK3')
+      DO 195 K=1,2
+      DO 195 I=1,24
+  195 WRITE(IOUT,400)(XK3(I,J,K),J=1,24)
+      WRITE(IOUT,200)
+  200 FORMAT (' XK4')
+      DO 205 K=1,2
+      DO 205 I=1,24
+  205 WRITE(IOUT,400)(XK4(I,J,K),J=1,24)
+      WRITE(IOUT,210)
+  210 FORMAT (' XK5')
+      DO 215 K=1,2
+      DO 215 I=1,24
+  215 WRITE(IOUT,400)(XK5(I,J,K),J=1,24)
+      WRITE(IOUT,220)
+  220 FORMAT (' XK6')
+      DO 225 K=1,2
+      DO 225 I=1,24
+  225 WRITE(IOUT,400)(XK6(I,J,K),J=1,24)
+      WRITE(IOUT,230)
+  230 FORMAT (' XL1')
+      DO 235 K=1,2
+      DO 235 I=1,24
+  235 WRITE(IOUT,400)(XL1(I,J,K),J=1,24)
+      WRITE(IOUT,240)
+  240 FORMAT (' XL1P')
+      DO 245 K=1,2
+      DO 245 I=1,24
+  245 WRITE(IOUT,400)(XL1P(I,J,K),J=1,24)
+      WRITE(IOUT,250)
+  250 FORMAT (' XL2')
+      DO 255 K=1,2
+      DO 255 I=1,24
+  255 WRITE(IOUT,400)(XL2(I,J,K),J=1,24)
+      WRITE(IOUT,260)
+  260 FORMAT (' XL2P')
+      DO 265 K=1,2
+      DO 265 I=1,24
+  265 WRITE(IOUT,400)(XL2P(I,J,K),J=1,24)
+      WRITE(IOUT,270)
+  270 FORMAT (' XL3')
+      DO 275 K=1,2
+      DO 275 I=1,24
+  275 WRITE(IOUT,400)(XL3(I,J,K),J=1,24)
+      WRITE(IOUT,280)
+  280 FORMAT (' XL3P')
+      DO 285 K=1,2
+      DO 285 I=1,24
+  285 WRITE(IOUT,400)(XL3P(I,J,K),J=1,24)
+      WRITE(IOUT,290)
+  290 FORMAT (' XL4')
+      DO 295 K=1,2
+      DO 295 I=1,24
+  295 WRITE(IOUT,400)(XL4(I,J,K),J=1,24)
+      WRITE(IOUT,310)
+  310 FORMAT (' XL4P')
+      DO 315 K=1,2
+      DO 315 I=1,24
+  315 WRITE(IOUT,400)(XL4P(I,J,K),J=1,24)
+      IF(ICASE.EQ.5) THEN
+         WRITE(IOUT,311)
+  311    FORMAT (' XL1PP')
+         DO 316 K=1,2
+         DO 316 I=1,24
+  316    WRITE(IOUT,400)(XL1PP(I,J,K),J=1,24)
+         WRITE(IOUT,312)
+  312    FORMAT (' XL2PP')
+         DO 317 K=1,2
+         DO 317 I=1,24
+  317    WRITE(IOUT,400)(XL2PP(I,J,K),J=1,24)
+         WRITE(IOUT,313)
+  313    FORMAT (' XL3PP')
+         DO 318 K=1,2
+         DO 318 I=1,24
+  318    WRITE(IOUT,400)(XL3PP(I,J,K),J=1,24)
+         WRITE(IOUT,314)
+  314    FORMAT (' XL4PP')
+         DO 319 K=1,2
+         DO 319 I=1,24
+  319    WRITE(IOUT,400)(XL4PP(I,J,K),J=1,24)
+      END IF
+      WRITE(IOUT,320)
+  320 FORMAT (' XM1')
+      DO 325 I=1,6
+  325 WRITE(IOUT,300)(XM1(I,J),J=1,6)
+      WRITE(IOUT,330)
+  330 FORMAT (' XM2')
+      DO 335 I=1,6
+  335 WRITE(IOUT,300)(XM2(I,J),J=1,6)
+      WRITE(IOUT,340)
+  340 FORMAT (' XN1')
+      DO 345 K=1,IPSM
+      DO 345 I=1,6
+  345 WRITE(IOUT,300)(XN1(I,J,K),J=1,6)
+      WRITE(IOUT,350)
+  350 FORMAT (' XN2')
+      DO 355 K=1,IPSM
+      DO 355 I=1,6
+  355 WRITE(IOUT,300)(XN2(I,J,K),J=1,6)
+      WRITE(IOUT,360)
+  360 FORMAT (' XR1')
+      WRITE(IOUT,400)(XR1(I),I=1,24)
+      WRITE(IOUT,370)
+  370 FORMAT (' XR2')
+      WRITE(IOUT,400)(XR2(I),I=1,24)
+      WRITE(IOUT,380)
+  380 FORMAT (' XS1')
+      DO 385 J=1,IPSM
+  385 WRITE(IOUT,300)(XS1(I,J),I=1,6)
+      WRITE(IOUT,1000)(I,Y(I),I=1,128)
+      RETURN
+      END
+      SUBROUTINE WRTOUT
+C
+      IMPLICIT INTEGER (X)
+C
+      DOUBLE PRECISION Y,FILL
+C
+      COMMON/C902A/XJ1(24,24,2),XJ2(24,24,2),XJ3(24,24,2),XJ4(24,24,2),
+     1 XJ5(24,24,2),XJ6(24,24,2),XK1(24,24,2),XK2(24,24,2),XK3(24,24,2),
+     2 XK4(24,24,2),XK5(24,24,2),XK6(24,24,2)
+      COMMON/C902B/XM1(6,6),XM2(6,6),XN1(6,6,3),XN2(6,6,3)
+     1             ,XR1(24),XR2(24),XS1(6,3)
+     2            ,XG1(24,6),XH1(24,6),XG2(24,6),XH2(24,6),XG3(24,6),
+     3 XH3(24,6),XG4(24,6),XH4(24,6),XI1(24,6,3),XI2(24,6,3),XI3(24,6,3)
+     4 ,XI4(24,6,3),                         XL1(24,24,2),XL1P(24,24,2),
+     5 XL2(24,24,2),XL2P(24,24,2),XL3(24,24,2),XL3P(24,24,2),
+     6 XL4(24,24,2),XL4P(24,24,2),XL1PP(24,24,2),XL2PP(24,24,2),
+     7 XL3PP(24,24,2),XL4PP(24,24,2)
+      COMMON/C902C/NSC,C(12),NDED(26),NO,NSO,MNE,MNX1,MNX2,
+     1 NDES(6),NDC,NDER(4),ICASE,NCT,MCT(10),NCTS,MCTS(10)
+     2        ,NCD(24),NCS(6),Y(128),J7
+      COMMON/C902D/FILL(24),CC(12,12,2),ICUP(24,24,4)
+      COMMON/IO/IODUM1(5),IMOINT,ISCRCH,IFINT,ILABEL,ICOUPL,IFORMT,
+     1 IODUM2(206)
+C
+C     PACK TWO INTEGERS INTO A WORD, 16 BITS EACH.
+C
+      DATA IPACK/65536/
+C
+      REWIND ICOUPL
+C
+C     CLEAR ARRAY ICUP.
+C
+      DO 5 K=1,4
+      DO 5 J=1,24
+      DO 5 I=1,24
+    5 ICUP(I,J,K) = 0
+C
+      WRITE (ICOUPL) NCD,NCS
+      WRITE (ICOUPL) Y
+C
+      DO 10 I=1,NDC
+      DO 10 J=1,NDC
+   10 ICUP(I,J,1) = XJ1(I,J,1)*IPACK + XK1(I,J,1)
+      WRITE (ICOUPL) ICUP
+C
+      DO 11 I=1,NDC
+      DO 11 J=1,NDC
+      DO 11 K=1,2
+      ICUP(I,J,K) = XK3(I,J,K)*IPACK + XK4(I,J,K)
+   11 ICUP(I,J,K+2) = XK5(I,J,K)*IPACK + XK6(I,J,K)
+      IPSM = 23
+      IF (ICASE .EQ. 5) IPSM = 24
+      DO 31 I=1,NDC
+   31 ICUP(IPSM,I,1) = XR1(I)*IPACK + XR2(I)
+      IF (ICASE .NE. 5) THEN
+         DO 32 I=1,NSC
+         DO 32 J=1,NSC
+   32    ICUP(24,I,J) = XM1(I,J)
+      END IF
+      WRITE (ICOUPL) ICUP
+C
+      IF (ICASE .EQ. 5) THEN
+         WRITE (ICOUPL) XM1
+      END IF
+C
+      DO 12 I=1,NDC
+      DO 12 J=1,NSC
+      ICUP(I,J,1) = XG3(I,J)*IPACK + XH3(I,J)
+   12 ICUP(I,J,3) = XG4(I,J)*IPACK + XH4(I,J)
+      WRITE (ICOUPL) ICUP
+C
+      DO 13 I=1,NDC
+      DO 13 J=1,NDC
+   13 ICUP(I,J,1) = XJ2(I,J,1)*IPACK + XK2(I,J,1)
+      WRITE (ICOUPL) ICUP
+C
+      DO 14 I=1,NDC
+      DO 14 J=1,NSC
+      ICUP(I,J,1) = XG1(I,J)*IPACK + XH1(I,J)
+   14 ICUP(I,J,3) = XG2(I,J)*IPACK + XH2(I,J)
+      WRITE (ICOUPL) ICUP
+C
+      DO 15 I=1,NDC
+      DO 15 J=1,NDC
+      DO 15 K=1,2
+      ICUP(I,J,K) = XJ3(I,J,K)*IPACK + XJ4(I,J,K)
+   15 ICUP(I,J,K+2) = XJ5(I,J,K)*IPACK + XJ6(I,J,K)
+      IF (ICASE .NE. 5) THEN
+         DO 33 I=1,NSC
+         DO 33 J=1,NSC
+   33    ICUP(24,I,J) = XM2(I,J)
+      END IF
+      WRITE (ICOUPL) ICUP
+C
+      IF (ICASE .EQ. 5) THEN
+         WRITE (ICOUPL) XM2
+      END IF
+C
+      DO 16 I=1,NDC
+      DO 16 J=1,NDC
+      DO 16 K=1,2
+      ICUP(I,J,K) = XL1(I,J,K)*IPACK + XL2(I,J,K)
+   16 ICUP(I,J,K+2) = XL3(I,J,K)*IPACK + XL4(I,J,K)
+      WRITE (ICOUPL) ICUP
+C
+      DO 17 I=1,NDC
+      DO 17 J=1,NSC
+      ICUP(I,J,1) = XI1(I,J,1)*IPACK + XI2(I,J,1)
+   17 ICUP(I,J,3) = XI3(I,J,1)*IPACK + XI4(I,J,1)
+      DO 18 I=1,NSC
+      DO 18 J=1,NSC
+   18 ICUP(I,J,2) = XN1(I,J,1)*IPACK + XN2(I,J,1)
+      DO 19 I=1,NSC
+   19 ICUP(24,I,1) = XS1(I,1)
+      WRITE (ICOUPL) ICUP
+C
+      DO 20 I=1,NDC
+      DO 20 J=1,NDC
+      DO 20 K=1,2
+      ICUP(I,J,K) = XL1P(I,J,K)*IPACK + XL2P(I,J,K)
+   20 ICUP(I,J,K+2) = XL3P(I,J,K)*IPACK + XL4P(I,J,K)
+      WRITE (ICOUPL) ICUP
+C
+      DO 21 I=1,NDC
+      DO 21 J=1,NSC
+      ICUP(I,J,1) = XI1(I,J,2)*IPACK + XI2(I,J,2)
+   21 ICUP(I,J,3) = XI3(I,J,2)*IPACK + XI4(I,J,2)
+      DO 22 I=1,NSC
+      DO 22 J=1,NSC
+   22 ICUP(I,J,2) = XN1(I,J,2)*IPACK + XN2(I,J,2)
+      DO 23 I=1,NSC
+   23 ICUP(24,I,1) = XS1(I,2)
+      WRITE (ICOUPL) ICUP
+C
+C     WRITE OUT EXTRA ARRAYS FOR THE OPEN SHELL SINGLET CASE.
+C
+      IF (ICASE .EQ. 5) THEN
+         DO 40 I=1,NDC
+         DO 40 J=1,NDC
+         DO 40 K=1,2
+         ICUP(I,J,K) = XL1PP(I,J,K)*IPACK + XL2PP(I,J,K)
+   40    ICUP(I,J,K + 2) = XL3PP(I,J,K)*IPACK + XL4PP(I,J,K)
+         WRITE (ICOUPL) ICUP
+C
+         DO 41 I=1,NDC
+         DO 41 J=1,NSC
+         ICUP(I,J,1) = XI1(I,J,3)*IPACK + XI2(I,J,3)
+   41    ICUP(I,J,3) = XI3(I,J,3)*IPACK + XI4(I,J,3)
+         DO 42 I=1,NSC
+         DO 42 J=1,NSC
+   42    ICUP(I,J,2) = XN1(I,J,3)*IPACK + XN2(I,J,3)
+         DO 43 I=1,NSC
+   43    ICUP(24,I,1) = XS1(I,3)
+         WRITE (ICOUPL) ICUP
+      END IF
+C
+      ENDFILE ICOUPL
+      REWIND ICOUPL
+      RETURN
+      END

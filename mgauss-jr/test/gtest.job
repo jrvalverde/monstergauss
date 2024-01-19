@@ -1,0 +1,48 @@
+#! /bin/csh
+#
+# Script to run all the Monstergauss test jobs sequentially.
+#
+# This script assumes that the Monstergauss login name is 'mgauss',
+# and that the directories 'test' and 'bin' (and 'src' for testing
+# "gausstst") are immediately under the home directory.
+#
+# The way the script works depends on how it is invoked:
+#
+# Invocation      Executable file   Output file name
+# -------------   ---------------   ----------------
+# gtest.job       ../bin/gauss      testNN.out
+# gtest.new.job   ../src/gausstst   testNN.out.new
+#
+# The easiest way to make this happen automatically is:
+#    ln -s gtest.job gtest.new.job   (preferred)
+# or
+#    cp -p gtest.job gtest.new.job
+#
+set command = `basename $0`
+if ("$command" == "gtest.job") then
+   set executable = "../bin/gauss"
+   set extension = ""
+else if ("$command" == "gtest.new.job") then
+   set executable = "../src/gausstst"
+   set extension = ".new"
+else
+   echo "Usage: gtest.job         (to produce testNN.out),"
+   echo "    or gtest.new.job     (to produce testNN.out.new)."
+   exit(1)
+endif
+#
+# Loop over the test cases.
+#
+cd $HOME/test
+foreach tin (test[0-3][0-9].in)
+   set tout = "`basename $tin .in`.out$extension"
+   if (-f $tout) then
+      echo "Output file $tout already exists --- skipping."
+      continue
+   endif
+   echo "Running $executable <$tin >&$tout."
+   setenv GAUSS07 /tmp/GAUSS07.$tout
+   (time $executable <$tin) >&$tout
+   /bin/rm -f $GAUSS07
+   unsetenv GAUSS07
+end

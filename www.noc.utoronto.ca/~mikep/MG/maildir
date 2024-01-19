@@ -1,0 +1,20 @@
+#! /bin/sh
+#
+# Mail all files in the current directory.
+#
+# Set recipients e-mail address.
+#
+addr='PUT E-MAIL ADDRESS HERE'
+#
+# Loop over all files, pausing after each one.
+#
+for f in *
+do
+   echo Doing $f
+   mail -s "$f" $addr <<EOF
+~r $f
+EOF
+   sleep 45
+done
+#
+exit 0

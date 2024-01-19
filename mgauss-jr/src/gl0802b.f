@@ -1,0 +1,1076 @@
+C/    GL0802B      20 JUN 89                                         MRP
+      FUNCTION OLAP1(L,M,N,GAMA)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION DFTR(7)
+C
+      DATA PI/3.14159265358979D0/
+C     DFTR(1)=1.0D0; DFTR(I)=DFTR(I-1)*(2*I-3).
+      DATA DFTR/1.D0,1.D0,3.D0,15.D0,105.D0,945.0D0,10395.0D0/
+      DATA ZERO/0.0D0/,PT5/.5D0/
+C
+      LH=L/2
+      MH=M/2
+      NH=N/2
+      IF (2*LH-L) 50,1,50
+    1 IF (2*MH-M) 50,2,50
+    2 IF (2*NH-N) 50,3,50
+    3 OLAP1=(DSQRT(PI/GAMA))**3*(PT5/GAMA)**(LH+MH+NH)
+      OLAP1=OLAP1*DFTR(LH+1)*DFTR(MH+1)*DFTR(NH+1)
+      RETURN
+   50 OLAP1=ZERO
+      RETURN
+      END
+      SUBROUTINE OPAA1(L,M,N,GA,V,D,MPROP)
+C
+C     ELECTRIC FIELD.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(3),D(3),FNU(9),FN(9),DP(5)
+C
+      DATA PI/3.14159265358979D0/
+C     FN(I)=(I-1)!.
+      DATA FN/1.0D0,1.0D0,2.0D0,6.0D0,24.0D0,120.0D0,720.0D0,
+     1 5040.0D0,40320.0D0/
+      DATA ONE/1.0D0/,TWO/2.0D0/,PT25/.25D0/,FOUR/4.0D0/
+      DATA PT2/.2D0/,THREE/3.0D0/,SEVEN/7.0D0/,ANINE/9.D0/,ELEVEN/11.D0/
+      DATA THIRTN/13.0D0/, FIFTN/15.0D0/
+C
+      ITOT=L+M+N
+      ITOTH=ITOT/2
+      PRE=FOUR*PI*FN(L+1)*FN(M+1)*FN(N+1)
+      IF (2*ITOTH-ITOT) 1,2,1
+    1 PRE=-PRE
+    2 DEL=PT25/GA
+      X=GA*(D(1)**2+D(2)**2+D(3)**2)
+      XX=TWO*X
+      CALL FMC(8,X,EXPMX,FMCH)
+      FNU(9)=FMCH
+      FNU(8)=(EXPMX+XX*FNU(9))/FIFTN
+      FNU(7)=(EXPMX+XX*FNU(8))/THIRTN
+      FNU(6)=(EXPMX+XX*FNU(7))/ELEVEN
+      FNU(5)=(EXPMX+XX*FNU(6))/ANINE
+      FNU(4)=(EXPMX+XX*FNU(5))/SEVEN
+      FNU(3)=(EXPMX+XX*FNU(4))*PT2
+      FNU(2)=(EXPMX+XX*FNU(3))/THREE
+      FNU(1)=EXPMX+XX*FNU(2)
+      DP(1)=ONE
+      DP(2)=DEL
+      DP(3)=DEL*DEL
+      DP(4)=DEL*DP(3)
+      DP(5)=DEL*DP(4)
+      V(1)=PRE*AAINER(1,0,0,L,M,N,D,DP,FNU,FN)
+      V(2)=PRE*AAINER(0,1,0,L,M,N,D,DP,FNU,FN)
+      V(3)=PRE*AAINER(0,0,1,L,M,N,D,DP,FNU,FN)
+      RETURN
+      END
+      SUBROUTINE OPAA2(L,M,N,GA,V,D,MPROP)
+C
+C     FIELD GRADIENT.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(6),D(3),FNU(9),FN(9),DP(5)
+C
+      DATA PI/3.14159265358979D0/
+C     FN(I)=(I-1)!.
+      DATA FN/1.0D0,1.0D0,2.0D0,6.0D0,24.0D0,120.0D0,720.0D0,
+     1 5040.0D0,40320.0D0/
+      DATA ONE/1.0D0/,TWO/2.0D0/,PT25/.25D0/,EIGHT/8.0D0/
+      DATA ONEPT3/1.33333333333333D0/
+      DATA PT2/.2D0/,THREE/3.0D0/,SEVEN/7.0D0/,ANINE/9.D0/,ELEVEN/11.D0/
+      DATA THIRTN/13.0D0/, FIFTN/15.0D0/
+C
+      ITOT=L+M+N
+      ITOTH=ITOT/2
+      PRE=(EIGHT*PI*GA)*FN(L+1)*FN(M+1)*FN(N+1)
+      IF (2*ITOTH-ITOT) 1,2,1
+    1 PRE=-PRE
+    2 DEL=PT25/GA
+      X=GA*(D(1)**2+D(2)**2+D(3)**2)
+      XX=TWO*X
+      CALL FMC(8,X,EXPMX,FMCH)
+      FNU(9)=FMCH
+      FNU(8)=(EXPMX+XX*FNU(9))/FIFTN
+      FNU(7)=(EXPMX+XX*FNU(8))/THIRTN
+      FNU(6)=(EXPMX+XX*FNU(7))/ELEVEN
+      FNU(5)=(EXPMX+XX*FNU(6))/ANINE
+      FNU(4)=(EXPMX+XX*FNU(5))/SEVEN
+      FNU(3)=(EXPMX+XX*FNU(4))*PT2
+      FNU(2)=(EXPMX+XX*FNU(3))/THREE
+      FNU(1)=EXPMX+XX*FNU(2)
+      DP(1)=ONE
+      DP(2)=DEL
+      DP(3)=DEL*DEL
+      DP(4)=DEL*DP(3)
+      DP(5)=DEL*DP(4)
+      V(1)=PRE*AAINER(2,0,0,L,M,N,D,DP,FNU,FN)
+      V(2)=PRE*AAINER(0,2,0,L,M,N,D,DP,FNU,FN)
+      V(3)=PRE*AAINER(0,0,2,L,M,N,D,DP,FNU,FN)
+      V(4)=PRE*AAINER(1,1,0,L,M,N,D,DP,FNU,FN)
+      V(5)=PRE*AAINER(1,0,1,L,M,N,D,DP,FNU,FN)
+      V(6)=PRE*AAINER(0,1,1,L,M,N,D,DP,FNU,FN)
+      CALL OPAC3(L,M,N,GA,DP,D,MPROP)
+      DP(1)=ONEPT3*PI*DP(1)
+      V(1)=V(1)+DP(1)
+      V(2)=V(2)+DP(1)
+      V(3)=V(3)+DP(1)
+      RETURN
+      END
+      SUBROUTINE OPAA3(L,M,N,GA,V,D,MPROP)
+C
+C     MAGNETIC SHIELDING.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION VX(3),D(3),V(7)
+C
+      CALL OPAA1(L,M,N,GA,VX,D,MPROP)
+      V(1)=VX(1)*D(1)
+      V(2)=VX(2)*D(2)
+      V(3)=VX(3)*D(3)
+      V(4)=VX(2)*D(1)
+      V(5)=VX(3)*D(1)
+      V(6)=VX(3)*D(2)
+      CALL OPAA1(L+1,M,N,GA,VX,D,MPROP)
+      V(1)=V(1)+VX(1)
+      V(4)=V(4)+VX(2)
+      V(5)=V(5)+VX(3)
+      CALL OPAA1(L,M+1,N,GA,VX,D,MPROP)
+      V(2)=V(2)+VX(2)
+      V(6)=V(6)+VX(3)
+      CALL OPAA1(L,M,N+1,GA,VX,D,MPROP)
+      V(3)=V(3)+VX(3)
+      V(7)=V(1)+V(2)+V(3)
+      DO 300 I=1,7
+  300 V(I)=-V(I)
+      RETURN
+      END
+      SUBROUTINE OPAB1(L,M,N,GA,V,D,MPROP)
+C
+C     DIPOLE MOMENT.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(4),D(3),G(4)
+C
+      DATA ZERO/0.0D0/
+C
+      G(1)=-OLAP1(L,M,N,GA)
+      G(2)=-OLAP1(L+1,M,N,GA)
+      G(3)=-OLAP1(L,M+1,N,GA)
+      G(4)=-OLAP1(L,M,N+1,GA)
+      V(1)=G(2)+D(1)*G(1)
+      V(2)=G(3)+D(2)*G(1)
+      V(3)=G(4)+D(3)*G(1)
+      V(4) = ZERO
+      RETURN
+      END
+      SUBROUTINE OPAB2(L,M,N,GA,V,D,MPROP)
+C
+C     QUADRUPOLE MOMENT.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(7),D(3),G(10)
+C
+      DATA TWO/2.0D0/,THREE/3.0D0/,PT5/.5D0/
+C
+      G(1)=OLAP1(L,M,N,GA)
+      G(2)=OLAP1(L+1,M,N,GA)
+      G(3)=OLAP1(L,M+1,N,GA)
+      G(4)=OLAP1(L,M,N+1,GA)
+      G(5)=OLAP1(L+2,M,N,GA)
+      G(6)=OLAP1(L,M+2,N,GA)
+      G(7)=OLAP1(L,M,N+2,GA)
+      G(8)=OLAP1(L+1,M+1,N,GA)
+      G(9)=OLAP1(L+1,M,N+1,GA)
+      G(10)=OLAP1(L,M+1,N+1,GA)
+      V(1)=G(5)+TWO*D(1)*G(2)+D(1)**2*G(1)
+      V(2)=G(6)+TWO*D(2)*G(3)+D(2)**2*G(1)
+      V(3)=G(7)+TWO*D(3)*G(4)+D(3)**2*G(1)
+      V(4)=(G(8) +D(1)*G(3)+D(2)*G(2)+D(1)*D(2)*G(1))*PT5
+      V(5)=(G(9) +D(1)*G(4)+D(3)*G(2)+D(1)*D(3)*G(1))*PT5
+      V(6)=(G(10)+D(2)*G(4)+D(3)*G(3)+D(2)*D(3)*G(1))*PT5
+      V(7)=V(1)+V(2)+V(3)
+      V(1)=(THREE*V(1)-V(7))*PT5
+      V(2)=(THREE*V(2)-V(7))*PT5
+      V(3)=(THREE*V(3)-V(7))*PT5
+      V(4)=THREE*V(4)
+      V(5)=THREE*V(5)
+      V(6)=THREE*V(6)
+      DO 300 I=1,7
+  300 V(I)=-V(I)
+      RETURN
+      END
+      SUBROUTINE OPAB3(L,M,N,GA,V,DD,MPROP)
+C
+C     THIRD MOMENT OR OCTUPOLE MOMENT.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(10),DD(3),G(20),D(20)
+C
+      DATA TWO/2.0D0/,THREE/3.0D0/,FOUR/4.0D0/,ONEPT5/1.5D0/,PT5/.5D0/
+      DATA TWOPT5/2.5D0/
+C
+      G(1)=OLAP1(L,M,N,GA)
+      G(2)=OLAP1(L+1,M,N,GA)
+      G(3)=OLAP1(L,M+1,N,GA)
+      G(4)=OLAP1(L,M,N+1,GA)
+      G(5)=OLAP1(L+2,M,N,GA)
+      G(6)=OLAP1(L,M+2,N,GA)
+      G(7)=OLAP1(L,M,N+2,GA)
+      G(8)=OLAP1(L+1,M+1,N,GA)
+      G(9)=OLAP1(L+1,M,N+1,GA)
+      G(10)=OLAP1(L,M+1,N+1,GA)
+      G(11)=OLAP1(L+3,M,N,GA)
+      G(12)=OLAP1(L,M+3,N,GA)
+      G(13)=OLAP1(L,M,N+3,GA)
+      G(14)=OLAP1(L+2,M+1,N,GA)
+      G(15)=OLAP1(L+2,M,N+1,GA)
+      G(16)=OLAP1(L+1,M+2,N,GA)
+      G(17)=OLAP1(L,M+2,N+1,GA)
+      G(18)=OLAP1(L+1,M,N+2,GA)
+      G(19)=OLAP1(L,M+1,N+2,GA)
+      G(20)=OLAP1(L+1,M+1,N+1,GA)
+      D(2)=DD(1)
+      D(3)=DD(2)
+      D(4)=DD(3)
+      D(5)=DD(1)**2
+      D(6)=DD(2)**2
+      D(7)=DD(3)**2
+      D(8)=D(2)*D(3)
+      D(9)=D(2)*D(4)
+      D(10)=D(3)*D(4)
+      D(11)=D(5)*D(2)
+      D(12)=D(6)*D(3)
+      D(13)=D(7)*D(4)
+      D(14)=D(5)*D(3)
+      D(15)=D(5)*D(4)
+      D(16)=D(6)*D(2)
+      D(17)=D(6)*D(4)
+      D(18)=D(7)*D(2)
+      D(19)=D(7)*D(3)
+      D(20)=D(8)*D(4)
+      V(1)=G(11)+THREE*(D(2)*G(5)+D(5)*G(2))+D(11)*G(1)
+      V(2)=G(12)+THREE*(D(3)*G(6)+D(6)*G(3))+D(12)*G(1)
+      V(3)=G(13)+THREE*(D(4)*G(7)+D(7)*G(4))+D(13)*G(1)
+      V(4)=G(14)+TWO*(D(2)*G(8)+D(8)*G(2))+D(3)*G(5)+D(5)*G(3)+D(14)*G(1
+     1)
+      V(5)=G(15)+TWO*(D(2)*G(9)+D(9)*G(2))+D(4)*G(5)+D(5)*G(4)+D(15)*G(1
+     1)
+      V(6)=G(16)+TWO*(D(3)*G(8)+D(8)*G(3))+D(2)*G(6)+D(6)*G(2)+D(16)*G(1
+     1)
+      V(7)=G(17)+TWO*(D(3)*G(10)+D(10)*G(3))+D(4)*G(6)+D(6)*G(4)+D(17)*G
+     1(1)
+      V(8)=G(18)+TWO*(D(4)*G(9)+D(9)*G(4))+D(2)*G(7)+D(7)*G(2)+D(18)*G(1
+     1)
+      V(9)=G(19)+TWO*(D(4)*G(10)+D(10)*G(4))+D(3)*G(7)+D(7)*G(3)+D(19)*G
+     1(1)
+      V(10)=G(20)+D(2)*G(10)+D(3)*G(9)+D(4)*G(8)+D(10)*G(2)+D(9)*G(3)+
+     1D(8)*G(4)+D(20)*G(1)
+      IF (MPROP.EQ.8) GO TO 10
+      G(1)=V(1)-ONEPT5*(V(6)+V(8))
+      G(2)=V(2)-ONEPT5*(V(4)+V(9))
+      G(3)=V(3)-ONEPT5*(V(5)+V(7))
+      G(4)=PT5*(FOUR*V(4)-V(2)-V(9))
+      G(5)=PT5*(FOUR*V(5)-V(7)-V(3))
+      G(6)=PT5*(FOUR*V(6)-V(1)-V(8))
+      G(7)=PT5*(FOUR*V(7)-V(5)-V(3))
+      G(8)=PT5*(FOUR*V(8)-V(1)-V(6))
+      G(9)=PT5*(FOUR*V(9)-V(4)-V(2))
+      G(10)=TWOPT5*V(10)
+      DO 301 I=1,10
+  301 V(I)=-G(I)
+      RETURN
+   10 DO 300 I=1,10
+  300 V(I)=-V(I)
+      RETURN
+      END
+      SUBROUTINE OPAB4(L,M,N,GA,V,D,MPROP)
+C
+C     SECOND MOMENT OR DIAMAGNETIC SUSCEPTIBILITY.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(7),D(3),G(10)
+C
+      DATA TWO/2.0D0/
+C
+      G(1)=OLAP1(L,M,N,GA)
+      G(2)=OLAP1(L+1,M,N,GA)
+      G(3)=OLAP1(L,M+1,N,GA)
+      G(4)=OLAP1(L,M,N+1,GA)
+      G(5)=OLAP1(L+2,M,N,GA)
+      G(6)=OLAP1(L,M+2,N,GA)
+      G(7)=OLAP1(L,M,N+2,GA)
+      G(8)=OLAP1(L+1,M+1,N,GA)
+      G(9)=OLAP1(L+1,M,N+1,GA)
+      G(10)=OLAP1(L,M+1,N+1,GA)
+      V(1)=G(5)+TWO*D(1)*G(2)+D(1)**2*G(1)
+      V(2)=G(6)+TWO*D(2)*G(3)+D(2)**2*G(1)
+      V(3)=G(7)+TWO*D(3)*G(4)+D(3)**2*G(1)
+      V(4)=G(8) +D(1)*G(3)+D(2)*G(2)+D(1)*D(2)*G(1)
+      V(5)=G(9) +D(1)*G(4)+D(3)*G(2)+D(1)*D(3)*G(1)
+      V(6)=G(10)+D(2)*G(4)+D(3)*G(3)+D(2)*D(3)*G(1)
+      V(7)=V(1)+V(2)+V(3)
+      IF (MPROP.EQ.7) GO TO 10
+      DO 11 I=1,6
+      IF (I.GE.4) GO TO 20
+      V(I)=V(7)-V(I)
+      GO TO 11
+   20 V(I)=-V(I)
+   11 CONTINUE
+   10 DO 300 I=1,7
+  300 V(I)=-V(I)
+      RETURN
+      END
+      SUBROUTINE OPAB5(L,M,N,GA,V,D,MM)
+C
+C     DIPOLE VELOCITY AND MAGNETIC DIPOLE
+C     (ROTATORY STRENGTH).
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C#
+C     PARAMETER (NB=#NB)
+C##
+      PARAMETER (NB=200)
+C###
+      PARAMETER (NBP3=NB+3)
+C
+      COMMON/OEP1/DUM(22),IDUM(6),ALPHA,BETA,EA(3),
+     1 IDUM2(6),CPROP(3),CPROPA(3),DINT(NBP3,10),AO(1000)
+C
+      DIMENSION V(6),D(3)
+C
+      SAVE D1, D2, D3
+C
+      G0=OLAP1(L,M,N,GA)
+      G1=OLAP1(L+1,M,N,GA)
+      G2=OLAP1(L,M+1,N,GA)
+      G3=OLAP1(L,M,N+1,GA)
+      A1=EA(1)
+      A2=EA(2)
+      A3=EA(3)
+      IF (MM.LE.0) GO TO 10
+      B=BETA+BETA
+      D1=D(1)
+      D2=D(2)
+      D3=D(3)
+C     D/DX
+      V(1)=B*(G1+G0*A1)
+C     D/DY
+      V(2)=B*(G2+G0*A2)
+C     D/DZ
+      V(3)=B*(G3+G0*A3)
+C     YD/DZ-ZD/DY
+      V(4)=B*((D2*G3+A3*(G2+D2*G0))-(D3*G2+A2*(G3+D3*G0)))
+C     ZD/DX-XD/DZ
+      V(5)=B*((D3*G1+A1*(G3+D3*G0))-(D1*G3+A3*(G1+D1*G0)))
+C     XD/DY-YD/DX
+      V(6)=B*((D1*G2+A2*(G1+D1*G0))-(D2*G1+A1*(G2+D2*G0)))
+      RETURN
+   10 V(1)=-G0*A1
+      V(2)=-G0*A2
+      V(3)=-G0*A3
+      V(4)=(G3+D3*G0)*A2-(G2+D2*G0)*A3
+      V(5)=(G1+D1*G0)*A3-(G3+D3*G0)*A1
+      V(6)=(G2+D2*G0)*A1-(G1+D1*G0)*A2
+      RETURN
+      END
+      SUBROUTINE OPAC1(L,M,N,GA,V,D,MPROP)
+C
+C     PLANAR DENSITY.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(3),D(3),DD(3)
+      DIMENSION DFTR(7)
+C
+      DATA PI/3.14159265358979D0/
+C     DFTR(1)=1.0D0; DFTR(I)=DFTR(I-1)*(2*I-3).
+      DATA DFTR/1.D0,1.D0,3.D0,15.D0,105.D0,945.0D0,10395.0D0/
+      DATA ZERO/0.0D0/,ONE/1.0D0/,TWO/2.0D0/,PT5/.5D0/,F160/160.0D0/
+C
+      DO 1 I=1,3
+      DD(I)=-D(I)
+    1 V(I)=ZERO
+      G=PT5/GA
+      LH=L/2
+      MH=M/2
+      NH=N/2
+      PRE=TWO*G*PI
+      IF (2*NH-N) 9,3,9
+    3 IF (2*MH-M) 7,4,7
+    4 V(1)=ONE
+      IF (L) 39,41,39
+   39 V(1)=DD(1)**L
+   41 IF ((GA*DD(1)**2).GT.F160) GO TO 42
+      V(1)=PRE*V(1)*DEXP(-GA*DD(1)**2)*G**(MH+NH)*DFTR(MH+1)*DFTR(NH+1)
+      GO TO 43
+   42 V(1)=ZERO
+   43 IF (2*LH-L) 50,5,50
+    5 V(2)=ONE
+      IF (M) 49,51,49
+   49 V(2)=DD(2)**M
+   51 IF ((GA*DD(2)**2).GT.F160) GO TO 52
+      V(2)=PRE*V(2)*DEXP(-GA*DD(2)**2)*G**(LH+NH)*DFTR(LH+1)*DFTR(NH+1)
+      GO TO 6
+   52 V(2)=ZERO
+    6 V(3)=ONE
+      IF (N) 59,61,59
+   59 V(3)=DD(3)**N
+   61 IF ((GA*DD(3)**2).GT.F160) GO TO 62
+      V(3)=PRE*V(3)*DEXP(-GA*DD(3)**2)*G**(LH+MH)*DFTR(LH+1)*DFTR(MH+1)
+      RETURN
+   62 V(3)=ZERO
+      RETURN
+    7 IF (2*LH-L) 50,8,50
+    8 V(2)=ONE
+      IF (M) 79,81,79
+   79 V(2)=DD(2)**M
+   81 IF ((GA*DD(2)**2).GT.F160) GO TO 82
+      V(2)=PRE*V(2)*DEXP(-GA*DD(2)**2)*G**(LH+NH)*DFTR(LH+1)*DFTR(NH+1)
+      RETURN
+   82 V(2)=ZERO
+      RETURN
+    9 IF (2*MH-M) 50,10,50
+   10 IF (2*LH-L) 50,6,50
+   50 RETURN
+      END
+      SUBROUTINE OPAC2(L,M,N,GA,V,D,MPROP)
+C
+C     LINE DENSITY.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(3),D(3),DD(3),DS(3)
+      DIMENSION DFTR(7)
+C
+      DATA PI/3.14159265358979D0/
+C     DFTR(1)=1.0D0; DFTR(I)=DFTR(I-1)*(2*I-3).
+      DATA DFTR/1.D0,1.D0,3.D0,15.D0,105.D0,945.0D0,10395.0D0/
+      DATA ZERO/0.0D0/,ONE/1.0D0/,TWO/2.0D0/,PT5/.5D0/
+C
+      DO 1 I=1,3
+      DD(I)=-D(I)
+      DS(I)=D(I)**2
+    1 V(I)=ZERO
+      G=PT5/GA
+      PRE=DSQRT(TWO*G*PI)
+      LH=L/2
+      MH=M/2
+      NH=N/2
+      IF (2*NH-N) 4,3,4
+    3 V(1)=ONE
+      IF (L) 28,29,28
+   28 V(1)=DD(1)**L
+   29 IF (M) 30,31,30
+   30 V(1)=V(1)*DD(2)**M
+   31 V(1)=PRE*G**NH*V(1)*DEXP(-GA*(DS(1)+DS(2)))*DFTR(NH+1)
+    4 IF (2*MH-M) 6,5,6
+    5 V(2)=ONE
+      IF (L) 48,49,48
+   48 V(2)=DD(1)**L
+   49 IF (N) 50,51,50
+   50 V(2)=V(2)*DD(3)**N
+   51 V(2)=PRE*G**MH*V(2)*DEXP(-GA*(DS(1)+DS(3)))*DFTR(MH+1)
+    6 IF (2*LH-L) 8,7,8
+    7 V(3)=ONE
+      IF (M) 68,69,68
+   68 V(3)=DD(2)**M
+   69 IF (N) 70,71,70
+   70 V(3)=V(3)*DD(3)**N
+   71 V(3)=PRE*G**LH*V(3)*DEXP(-GA*(DS(2)+DS(3)))*DFTR(LH+1)
+    8 RETURN
+      END
+      SUBROUTINE OPAC3(L,M,N,GA,V,D,MPROP)
+C
+C     CHARGE DENSITY.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(1),D(3),DD(3)
+C
+      DATA ZERO/0.0D0/,ONE/1.0D0/,A180/180.D0/
+C
+      DDSQ=ZERO
+      DO 1 I=1,3
+      DD(I)=-D(I)
+    1 DDSQ=DDSQ+D(I)**2
+      V(1)=ONE
+      IF (L) 2,3,2
+    2 V(1)=DD(1)**L
+    3 IF (M) 4,5,4
+    4 V(1)=V(1)*DD(2)**M
+    5 IF (N) 6,7,6
+    6 V(1)=V(1)*DD(3)**N
+    7 IF (GA*DDSQ.GT.A180) GO TO 8
+      V(1)=V(1)*DEXP(-GA*DDSQ)
+      RETURN
+    8 V(1)=ZERO
+      RETURN
+      END
+      SUBROUTINE OPAD1(L,M,N,GA,V,D,MPROP)
+C
+C     OVERLAP.
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION V(1),D(3)
+C
+      V(1)=OLAP1(L,N,M,GA)
+      RETURN
+      END
+      SUBROUTINE FMC(M,X,EXPMX,FMCH)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DATA ZERO/0.0D0/,ONE/1.0D0/,TENM8/1.0D-8/,TENM6/1.0D-6/,PT5/.5D0/
+      DATA TWO/2.0D0/,A9/9.D0/,A180/180.D0/
+      DATA PT88/0.88622692D0/,A18/18.D0/,A80/80.D0/,A2P6/2.6D0/
+      DATA PT44/0.44311346D0/,A22/22.D0/,A86P96/86.96D0/,A2P7/2.7D0/
+      DATA PT66/0.66467019D0/,A24/24.D0/,A90P9/90.9D0/,A1P5/1.5D0/
+      DATA A1P66/1.6616755D0/,A26/26.D0/,A105P3/105.3D0/,A1P9/1.9D0/,
+     1 A2P5/2.5D0/
+      DATA A5P8/5.8158642D0/,A29/29.D0/,A113P3/113.3D0/,A3P5/3.5D0/
+      DATA A26P2/26.171389D0/,A31/31.D0/,A112P3/112.3D0/,A4P5/4.5D0/
+      DATA A144/143.94264D0/,A35/35.D0/,A104/104.273D0/,PT7/0.7D0/,
+     1 A5P5/5.5D0/
+      DATA A935/935.62715D0/,A37/37.D0/,A114/114.3D0/,PT3/0.3D0/,
+     1 A6P5/6.5D0/
+      DATA A7017/7017.2036D0/,A39/39.D0/,A111/111.1D0/,A7P5/7.5D0/
+      DATA A59646/59646.231D0/,A41/41.D0/,A105/105.3D0/,A8P5/8.5D0/
+C
+      IF (X.LE.TENM6) GO TO 998
+      IF (X-A9) 10,10,20
+C
+   10 A=DFLOAT(M)+PT5
+      EXPMX=DEXP(-X)
+      TERM=ONE
+      PTLSUM=ONE
+      COEF=PT5*EXPMX/A
+      DO 11 I=2,50
+      A=A+ONE
+      TERM=TERM*X/A
+      CUT=DABS(PTLSUM)*TENM8
+      IF (DABS(TERM).LE. CUT) GO TO 12
+      PTLSUM=PTLSUM+TERM
+   11 CONTINUE
+   12 FMCH=PTLSUM*COEF
+      RETURN
+C
+   20 XI=ONE/X
+      EXPMX=ZERO
+      IF (X.LT.A180) EXPMX=DEXP(-X)
+      ICNT=M+1
+      GO TO (30,40,50,60,70,80,90,100,110,120),ICNT
+   30 APPROX=PT88/DSQRT(X)
+      XM=A18
+      NOTRMS=A80*XI-A2P6
+      A=PT5
+      GO TO 130
+   40 APPROX=PT44/(DSQRT(X)*X)
+      XM=A22
+      NOTRMS=A86P96*XI-A2P7
+      A=PT5
+      GO TO 130
+   50 APPROX=PT66/(X*X*DSQRT(X))
+      XM=A24
+      NOTRMS=A90P9*XI-TWO
+      A=A1P5
+      GO TO 130
+   60 APPROX=A1P66/(DSQRT(X)*X**3)
+      XM=A26
+      NOTRMS=A105P3*XI-A1P9
+      A=A2P5
+      GO TO 130
+   70 APPROX=A5P8/(DSQRT(X)*X**4)
+      XM=A29
+      NOTRMS=A113P3*XI-A1P9
+      A=A3P5
+      GO TO 130
+   80 APPROX=A26P2/(DSQRT(X)*X**5)
+      XM=A31
+      NOTRMS=A112P3*XI+ONE
+      A=A4P5
+      GO TO 130
+   90 APPROX=A144/(DSQRT(X)*X**6)
+      XM=A35
+      NOTRMS=A104*XI+PT7
+      A=A5P5
+      GO TO 130
+  100 APPROX=A935/(DSQRT(X)*X**7)
+      XM=A37
+      NOTRMS=A114*XI+PT3
+      A=A6P5
+      GO TO 130
+  110 APPROX=A7017/(DSQRT(X)*X**8)
+      XM=A39
+      NOTRMS=A111*XI+A1P9
+      A=A7P5
+      GO TO 130
+  120 APPROX=A59646/(DSQRT(X)*X**9)
+      XM=A41
+      NOTRMS=A105*XI+A3P5
+      A=A8P5
+  130 IF (X.GE. XM) GO TO 150
+      FIMULT=PT5*XI*EXPMX
+      TERM=ONE
+      PTLSUM=ONE
+      IF (NOTRMS.LE. 1) GO TO 140
+      DO 135 I=2,NOTRMS
+      TERM=TERM*A*XI
+      PTLSUM=PTLSUM+TERM
+  135 A=A-ONE
+  140 FMCH=APPROX-FIMULT*PTLSUM
+      RETURN
+C
+  150 FMCH=APPROX
+      RETURN
+C
+  998 FMCH=ONE/(TWO*M+ONE)
+      EXPMX=ONE
+      RETURN
+      END
+      FUNCTION AAINER(R,S,T,L,M,N,D,DP,FNU,FN)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      INTEGER R,S,T,U,V,W,UVWT,RSTT,UVWTH,UUU,VVV,WWW
+C
+      DIMENSION D(3),DP(5),FNU(9),FN(9),FD(9)
+C
+      DATA ZERO/0.0D0/,TENM7/1.0D-7/
+C     FD(I)=1/(I-1)!.
+      DATA FD/2*1.0D0,0.5D0,1.66666666666667D-1,4.16666666666667D-2,
+     1 8.33333333333333D-3,1.38888888888889D-3,
+     2 1.98412698412698D-4,2.48015873015873D-5/
+C
+      RSTT=R+S+T
+      LMNT=L+M+N
+      LMNRST=RSTT+LMNT
+      LH=L/2
+      MH=M/2
+      NH=N/2
+      AAINER=ZERO
+      NHH = NH + 1
+      MHH = MH + 1
+      LHH = LH + 1
+      DO 6 III = 1,LHH
+      I = III - 1
+      IL=L-2*I+1
+      ILR=R+IL
+      ILRH=(ILR-1)/2
+      ILRHH = ILRH + 1
+      FI=FN(ILR)*FD(IL)*FD(I+1)
+      DO 5 JJJ = 1,MHH
+      J = JJJ-1
+      JM=M-2*J+1
+      JMS=S+JM
+      JMSH=(JMS-1)/2
+      JMSHH = JMSH + 1
+      FIJ=FN(JMS)*FD(JM)*FD(J+1)*FI
+      DO 4 KKK = 1,NHH
+      K = KKK -1
+      KN=N-2*K+1
+      KNT=T+KN
+      KNTH=(KNT-1)/2
+      KNTHH = KNTH + 1
+      IJKT=I+J+K
+      FIJK=FN(KNT)*FD(KN)*FD(K+1)*DP(IJKT+1)*FIJ
+      LMRSIJ=LMNRST-2*IJKT
+      DO 3 UUU = 1,ILRHH
+      U = UUU - 1
+      ILRU=ILR-2*U
+      FU=FD(U+1)*FD(ILRU)
+      IF (DABS (D(1))-TENM7) 10,10,11
+   10 IF (ILRU-1) 12,12, 3
+   11 FU=FU*D(1)**(ILRU-1)
+   12 DO 2 VVV = 1,JMSHH
+      V = VVV - 1
+      JMSV=JMS-2*V
+      FUV=FU*FD(V+1)*FD(JMSV)
+      IF (DABS (D(2))-TENM7) 20,20,21
+   20 IF (JMSV-1) 22,22,2
+   21 FUV=FUV*D(2)**(JMSV-1)
+   22 DO 1 WWW = 1,KNTHH
+      W = WWW - 1
+      KNTW=KNT-2*W
+      FUVW=FUV*FD(W+1)*FD(KNTW)
+      IF (DABS (D(3))-TENM7) 30,30,31
+   30 IF (KNTW-1) 32,32,1
+   31 FUVW=FUVW*D(3)**(KNTW-1)
+   32 UVWT=U+V+W
+      UVWTH=UVWT/2
+      IF (2*UVWTH-UVWT) 33,34,33
+   33 FUVW=-FUVW
+   34 NUINDX=LMRSIJ-UVWT
+      FUVW=FUVW*FNU(NUINDX+1)*DP(UVWT+1)
+      AAINER=FIJK*FUVW+AAINER
+    1 CONTINUE
+    2 CONTINUE
+    3 CONTINUE
+    4 CONTINUE
+    5 CONTINUE
+    6 CONTINUE
+      RETURN
+      END
+      SUBROUTINE PRNT
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C#
+C     PARAMETER (NA=#NA, NB=#NB)
+C##
+      PARAMETER (NA= 36, NB=200)
+C###
+      PARAMETER (NBP3=NB+3)
+C
+      CHARACTER ITITLE*4,LABEL*4,LPROP*24,IRX*4,IRY*4,IRZ*4
+C
+      COMMON /A/ IOP(99)
+      COMMON /A/ NATOMS,ICHARG,MULTIP,IAN(NA),NAE,NBE,NE,NBASIS,C(NA,3)
+      COMMON /A/ CDUM(4),ICDUM(401)
+C
+      COMMON/OEP1/FILL(27),IFILL(6),MPROP,NT,ISAVE,NLINES,IGRID,IFILL2,
+     1 CPROP(3),CPROPA(3),DINT(NBP3,10),AO(1000)
+      COMMON /OEP5/ LABEL,LPROP,ITITLE(10)
+C
+      COMMON/IO/IN,IOUT,IODUM(215)
+C*
+      DATA IRX/' RX '/,IRY/' RY '/,IRZ/' RZ '/
+      DATA TENM7/1.0D-7/
+C
+ 1020 FORMAT(/'0INTEGRALS OVER THE MOLECULAR ORBITALS'/'0',9X,
+     1 10(8X,A4))
+ 1030 FORMAT(/'0',9X,10(8X,A4))
+ 1040 FORMAT(' NUCLEAR    ',10(1X,F11.6))
+ 1050 FORMAT(' ELECTRONIC ',10(1X,F11.6))
+ 1060 FORMAT(' TOTAL      ',10(1X,F11.6))
+ 1080 FORMAT(1X,I6,5X,10(1X,F11.6))
+ 1090 FORMAT(/'0',A24,'   IN PRINCIPAL AXIS COORDINATE FRAME'/
+     1 '0',9X,10(8X,A4))
+ 1100 FORMAT(/'0ASYMMETRY PARAMETER =',F12.6)
+C
+      NORB=NAE
+      II=0
+    1 WRITE (IOUT,1030) ITITLE
+      WRITE (IOUT,1040) (DINT(1,L),L=1,NT)
+      WRITE (IOUT,1050) (DINT(2,L),L=1,NT)
+      WRITE (IOUT,1060) (DINT(3,L),L=1,NT)
+      NLINES=NLINES+6
+      IF (IOP(22).EQ.0) GO TO 6
+      WRITE (IOUT,1020) ITITLE
+      DO 4 I=1,NORB
+      MU=I+3
+    4 WRITE (IOUT,1080) I,(DINT(MU,L),L=1,NT)
+      NLINES=NLINES+5+NORB
+    6 IF (MPROP.EQ.8) GO TO 18
+      IF (MPROP.EQ.3) GO TO 12
+      IF (MPROP.EQ.5) GO TO 12
+      IF (MPROP.EQ.7) GO TO 12
+      RETURN
+   12 IF (DABS(DINT(3,4)).LE.TENM7.AND.DABS(DINT(3,5)).LE.TENM7.AND.
+     1 DABS(DINT(3,6)).LE.TENM7) GO TO 16
+      ITITLE(7) = ' '
+      WRITE (IOUT,1090) LPROP,ITITLE
+      NLINES=NLINES+17
+      IF (IOP(22).EQ.1) NLINES=NLINES+5+NORB
+      CALL PAXIS(DINT,NORB,ITITLE)
+   16 IF (MPROP.NE.3) RETURN
+      AMAX=DINT(3,1)
+      AMIN=AMAX
+      DO 20 I=2,3
+      IF (DABS(DINT(3,I)).GT.DABS(AMAX)) AMAX=DINT(3,I)
+   20 IF (DABS(DINT(3,I)).LT.DABS(AMIN)) AMIN=DINT(3,I)
+      Q1=(AMIN+AMIN+AMAX)/AMAX
+      WRITE (IOUT,1100) Q1
+      RETURN
+   18 IF (II.NE.0) RETURN
+      ITITLE(1)=IRX
+      ITITLE(2)=IRY
+      ITITLE(3)=IRZ
+      ITITLE(4) = ' '
+      ITITLE(5) = ' '
+      ITITLE(6) = ' '
+      ITITLE(7) = ' '
+      ITITLE(8) = ' '
+      ITITLE(9) = ' '
+      ITITLE(10) = ' '
+      NT=3
+      II=1
+      CALL RSQ(DINT,NORB)
+      GO TO 1
+      END
+      SUBROUTINE PAXIS(DINT,NORB,ITITLE)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C#
+C     PARAMETER (NA=#NA, NB=#NB)
+C##
+      PARAMETER (NA= 36, NB=200)
+C###
+      PARAMETER (NBP3=NB+3)
+C
+      COMMON /A/ IOP(99),IC1(NA),IC2(7),CD1(NA,3),CD2(4),IC3(401)
+      COMMON/IO/IN,IOUT,IODUM(215)
+C
+      CHARACTER*4 ITITLE(10)
+C
+      DIMENSION DINT(NBP3,10),U(3,3),Y(3,3),PRNCT(3,3),PRNC(3,3)
+C
+ 1000 FORMAT(' ELECTRONIC ',10(1X,F11.6))
+ 1010 FORMAT(' NUCLEAR    ',10(1X,F11.6))
+ 1020 FORMAT(' TOTAL      ',10(1X,F11.6))
+ 1030 FORMAT(/'0INTEGRALS OVER THE MOLECULAR ORBITALS'/
+     1 '0',9X,10(8X,A4))
+ 1040 FORMAT(1X,I6,5X,10(1X,F11.6))
+ 1050 FORMAT(/'0ROTATION MATRIX'/'0   EIGENVALUE',21X,'EIGENVECTORS'/)
+ 1060 FORMAT(1X,F12.6,5X,3(F12.6,3X))
+C*
+      PRNCT(1,1)=DINT(3,1)
+      PRNCT(1,2)=DINT(3,4)
+      PRNCT(1,3)=DINT(3,5)
+      PRNCT(2,2)=DINT(3,2)
+      PRNCT(2,3)=DINT(3,6)
+      PRNCT(3,3)=DINT(3,3)
+      CALL DIAG70(PRNCT,U)
+      DINT(3,1)=PRNCT(1,1)
+      DINT(3,2)=PRNCT(2,2)
+      DINT(3,3)=PRNCT(3,3)
+      DINT(3,4)=PRNCT(1,2)
+      DINT(3,5)=PRNCT(1,3)
+      DINT(3,6)=PRNCT(2,3)
+      DO 4 I=1,3
+      DO 4 J=1,I
+      TEM=U(I,J)
+      U(I,J)=U(J,I)
+    4 U(J,I)=TEM
+      DO 20 N=1,2
+      PRNC(1,1)=DINT(N,1)
+      PRNC(1,2)=DINT(N,4)
+      PRNC(1,3)=DINT(N,5)
+      PRNC(2,2)=DINT(N,2)
+      PRNC(2,3)=DINT(N,6)
+      PRNC(3,3)=DINT(N,3)
+      CALL MABAT(U,PRNC,Y,3)
+      DINT(N,1)=PRNC(1,1)
+      DINT(N,2)=PRNC(2,2)
+      DINT(N,3)=PRNC(3,3)
+      DINT(N,4)=PRNC(1,2)
+      DINT(N,5)=PRNC(1,3)
+      DINT(N,6)=PRNC(2,3)
+      IF (N.EQ.1) GO TO 21
+      WRITE (IOUT,1000) (DINT(2,I),I=1,6)
+      GO TO 20
+   21 WRITE (IOUT,1010) (DINT(1,I),I=1,6)
+   20 CONTINUE
+      WRITE (IOUT,1020) (DINT(3,I),I=1,6)
+      IF (IOP(22).EQ.1) WRITE (IOUT,1030) ITITLE
+      DO 1 I=1,NORB
+      N=I+3
+      PRNC(1,1)=DINT(N,1)
+      PRNC(1,2)=DINT(N,4)
+      PRNC(1,3)=DINT(N,5)
+      PRNC(2,2)=DINT(N,2)
+      PRNC(2,3)=DINT(N,6)
+      PRNC(3,3)=DINT(N,3)
+      CALL MABAT(U,PRNC,Y,3)
+      DINT(N,1)=PRNC(1,1)
+      DINT(N,2)=PRNC(2,2)
+      DINT(N,3)=PRNC(3,3)
+      DINT(N,4)=PRNC(1,2)
+      DINT(N,5)=PRNC(1,3)
+      DINT(N,6)=PRNC(2,3)
+    1 IF (IOP(22).EQ.1) WRITE (IOUT,1040) I,(DINT(N,J),J=1,6)
+      WRITE (IOUT,1050)
+      DO 50 N=1,3
+   50 WRITE (IOUT,1060) DINT(3,N),(U(N,J),J=1,3)
+      RETURN
+      END
+      SUBROUTINE RSQ(DINT,NORB)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C#
+C     PARAMETER (NB=#NB)
+C##
+      PARAMETER (NB=200)
+C###
+      PARAMETER (NBP3=NB+3)
+C
+      DIMENSION DINT(NBP3,10)
+C
+      DO 10 I=1,3
+      DINT(I,1)=DINT(I,1)+DINT(I,6)+DINT(I,8)
+      DINT(I,2)=DINT(I,4)+DINT(I,2)+DINT(I,9)
+   10 DINT(I,3)=DINT(I,5)+DINT(I,7)+DINT(I,3)
+      DO 20 I=1,NORB
+      MU=I+3
+      DINT(MU,1)=DINT(MU,1)+DINT(MU,6)+DINT(MU,8)
+      DINT(MU,2)=DINT(MU,4)+DINT(MU,2)+DINT(MU,9)
+   20 DINT(MU,3)=DINT(MU,5)+DINT(MU,7)+DINT(MU,3)
+      RETURN
+      END
+      SUBROUTINE MABAT(A,B,Y,NABY)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION A(NABY,NABY),B(NABY,NABY),Y(NABY,NABY)
+C
+      DATA ZERO/0.0D0/
+C
+      DO 10 I=1,NABY
+      DO 10 K=1,NABY
+      SUM=ZERO
+      DO 8 J=1,K
+    8 SUM=SUM+A(I,J)*B(J,K)
+      Y(I,K)=SUM
+      K1=K+1
+      IF (K1.GT.NABY) GO TO 10
+      DO 9 J=K1,NABY
+    9 SUM=SUM+A(I,J)*B(K,J)
+      Y(I,K)=SUM
+   10 CONTINUE
+C
+      DO 12 K=1,NABY
+      DO 12 I=1,K
+      SUM=ZERO
+      DO 11 J=1,NABY
+   11 SUM=SUM+Y(I,J)*A(K,J)
+      B(I,K)=SUM
+   12 CONTINUE
+      RETURN
+      END
+      SUBROUTINE DIAG70(A,EIVR)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      DIMENSION A(3,3),EIVR(3,3)
+C
+      DATA ZERO/0.0D0/,ONE/1.D0/,TWO/2.D0/,PT55/.55D0/,PT5/.5D0/
+      DATA PT25/.25D0/,TENM6/1.0D-6/,TENM9/1.0D-9/,TENM10/1.0D-10/
+      DATA SIN45/0.707106781D0/
+C
+      N=3
+      DO 101 J=1,N
+      DO 100 I=1,N
+  100 EIVR(I,J)=ZERO
+  101 EIVR(J,J)=ONE
+C
+C     FIND THE ABSOLUTELY LARGEST ELEMENT OF A
+C
+      ATOP=ZERO
+      DO 111 I=1,N
+      DO 111J=I,N
+      IF (ATOP-DABS(A(I,J))) 104,111,111
+  104 ATOP=DABS(A(I,J))
+  111 CONTINUE
+      IF (ATOP) 109,109,113
+  109 RETURN
+C
+C     CALCULATE THE STOPPING CRITERION -- DSTOP
+C
+  113 AVGF=DFLOAT(N*(N-1))*PT55
+      D=ZERO
+      DO 114 JJ=2,N
+      DO 114 II=2,JJ
+      S=A(II-1,JJ)/ATOP
+  114 D=S*S+D
+      DSTOP=TENM6*D
+C
+C     CALCULATE THE THRESHOLD, THRSH
+C
+      THRSH=DSQRT(D/AVGF)*ATOP
+C
+C     START A SWEEP
+C
+  115 IFLAG=0
+      DO 130 JCOL=2,N
+      JCOL1=JCOL-1
+      DO 130 IROW=1,JCOL1
+      AIJ=A(IROW,JCOL)
+C
+C     COMPARE THE OFF-DIAGONAL ELEMENT WITH THRSH
+C
+      IF (DABS(AIJ)-THRSH) 130,130,117
+  117 AII=A(IROW,IROW)
+      AJJ=A(JCOL,JCOL)
+      S=AJJ-AII
+C
+C     CHECK TO SEE IF THE CHOSEN ROTATION IS LESS THAN THE ROUNDING
+C     ERROR IF SO , THEN DO NOT ROTATE.
+C
+      IF (DABS(AIJ)-TENM9*DABS(S)) 130,130,118
+  118 IFLAG=1
+C
+C     IF THE ROTATION IS VERY CLOSE TO 45 DEGREES, SET SIN AND COS
+C     TO 1/(ROOT 2).
+C
+      IF (TENM10*DABS(AIJ)-DABS(S)) 116,119,119
+  119 S=SIN45
+      C=S
+      GO TO 120
+C
+C     CALCULATION OF SIN AND COS FOR ROTATION THAT IS NOT VERY CLOSE
+C     TO 45 DEGREES
+C
+  116 T=AIJ/S
+      S=PT25/DSQRT(PT25+T*T)
+C
+C     COS = C ,  SIN= S
+C
+      C=DSQRT(PT5+S)
+      S=TWO*T*S/C
+C
+C        CALCULATION OF THE NEW ELEMENTS OF MATRIX A
+C
+  120 DO 121 I=1,IROW
+      T=A(I,IROW)
+      U=A(I,JCOL)
+      A(I,IROW)=C*T-S*U
+  121 A(I,JCOL)=S*T+C*U
+      I2=IROW+2
+      IF (I2-JCOL) 127,127,123
+  127 CONTINUE
+      DO 122 I=I2,JCOL
+      T=A(I-1,JCOL)
+      U=A(IROW,I-1)
+      A(I-1,JCOL)=S*U+C*T
+  122 A(IROW,I-1)=C*U-S*T
+  123 A(JCOL,JCOL)=S*AIJ+C*AJJ
+      A(IROW,IROW)=C*A(IROW,IROW)-S*(C*AIJ-S*AJJ)
+      DO 124 J=JCOL,N
+      T=A(IROW,J)
+      U=A(JCOL,J)
+      A(IROW,J)=C*T-S*U
+  124 A(JCOL,J)=S*T+C*U
+C
+C     ROTATION COMPLETED.
+C
+      DO 125 I=1,N
+      T=EIVR(I,IROW)
+      EIVR(I,IROW)=C*T-EIVR(I,JCOL)*S
+  125 EIVR(I,JCOL)=S*T+EIVR(I,JCOL)*C
+C
+C     CALCULATE THE NEW NORM D AND COMPARE WITH DSTOP
+C
+      S=AIJ/ATOP
+      D=D-S*S
+      IF (D-DSTOP) 1260,129,129
+C
+C     RECALCULATE DSTOP AND THRSH TO DISCARD ROUNDING ERRORS
+C
+ 1260 D=ZERO
+      DO 128 JJ=2,N
+      DO 128 II=2,JJ
+      S=A(II-1,JJ)/ATOP
+  128 D=S*S+D
+      DSTOP=TENM6*D
+  129 THRSH=DSQRT(D/AVGF)*ATOP
+  130 CONTINUE
+      IF (IFLAG.NE.0) GO TO 115
+      RETURN
+      END

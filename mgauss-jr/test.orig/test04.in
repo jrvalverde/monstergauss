@@ -1,0 +1,8 @@
+*MOL GE=S, FO, BA=V3
+*PRT T=Y
+METHANOL TIMING TEST, 3-21G
+ 0 1
+   2
+C 2 H H H
+O 1 H
+

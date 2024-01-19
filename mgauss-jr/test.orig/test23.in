@@ -1,0 +1,32 @@
+*MOL GE=S, BA=E6*
+*PRT T=Y
+*IOP
+   2  66   0  DROP PROGRAM SHELL (SP INTEGRALS, LINK 306) FROM ROUTE
+   2  67   1  ADD PROGRAM UNCON (SP/D INTEGRALS, LINK 307) TO ROUTE
+   2  68   0  DROP PROGRAM PHOENX (SP/D INTEGRALS, LINK 308) FROM ROUTE
+
+METHANOL TIMING TEST, 6-31G*, DO ALL INTEGRALS IN UNCON (LINK 307)
+ 0 1
+   2
+C 2 H H H
+O 1 H
+
+*MOL GEOM=ANG, BASIS=M3*, DMOMENT
+*PRT T=Y
+*IOP
+   2  66   0  DROP PROGRAM SHELL (SP INTEGRALS, LINK 306) FROM ROUTE
+   2  67   1  ADD PROGRAM UNCON (SP/D INTEGRALS, LINK 307) TO ROUTE
+   2  68   0  DROP PROGRAM PHOENX (SP/D INTEGRALS, LINK 308) FROM ROUTE
+
+THIOPHENE STO-3G*  (5D)  DO ALL INTEGRALS IN UNCON (LINK 307)
+ 0 1
+   6 1.214                                  1.261
+   6 0.705
+   6-0.705
+   6-1.214                                  1.261
+  16                                        2.437
+   1 2.212                                  1.473
+   1 1.551                                  -0.57
+   1-1.551                                  -0.57
+   1-2.212                                  1.473
+

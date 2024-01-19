@@ -1,0 +1,78 @@
+*MOL UHF, ACONFIG, GUESS=HDIAG, GOPT, ME=BFGS, FP, LMO, CO=C
+*PRT I=Y
+*PUN L
+H2C=O  N-PI* STATE, GEOMETRY OPTIMIZATION (STOP AFTER 3 ITERATIONS)
+ 0 3
+C
+O C CO
+X O ONE C T90
+H C CH O HCO X HCOD
+H C CH O HCO X -HCOD
+
+CO = 1.41
+CH = 1.09
+HCO = TETRA
+HCOD = 100.0
+
+ONE = 1.0
+T90 = 90.0
+
+111111111
+1111111
+   3   1   0   0
+0.01
+*MOL UHF, GUESS=NONE, GOPT, ME=B, RESTART, OEP
+*PRT I=Y
+*PUN C, D, Z
+H2C=O  N-PI* STATE, GEOMETRY OPTIMIZATION RESTART
+ 0 3
+C
+O C CO
+X O ONE C T90
+H C CH O HCO X HCOD
+H C CH O HCO X -HCOD
+
+CO = 1.41
+CH = 1.09
+HCO = TETRA
+HCOD = 100.0
+
+ONE = 1.0
+T90 = 90.0
+
+  10   1   0   0
+0.01
+   9   1  C    0
+  10   0  Z    00.0         0.0         1.0
+  11   0 XZ    01.0         0.0         1.0
+  12   0       0
+  13  -1  C    0
+  15   1  C    0
+  16   0  Z    00.0         0.0         1.0
+  17   0 XZ    01.0         0.0         1.0
+
+*MOL UHF, GUESS=N, GOPT=READ, ME=VA05
+*IOP
+   1  18   1 RESTART OPTIMIZED GEOMETRY FROM DISK FILE
+
+H2C=O  N-PI* STATE, ORDER CHECK WITH VA05 METHOD
+ 0 3
+C
+O C CO
+X O ONE C T90
+H C CH O HCO X HCOD
+H C CH O HCO X -HCOD
+
+CO = 1.41
+CH = 1.09
+HCO = TETRA
+HCOD = 100.0
+
+ONE = 1.0
+T90 = 90.0
+
+  1  2  3  4  5                             0.0
+
+   5   1   0   0   0
+
+   1   2   3   4
